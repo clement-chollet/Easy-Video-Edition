@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace EasyVideoEdition.View
 {
     /// <summary>
-    /// Logique d'interaction pour ViewOpenFile.xaml
+    /// Logique d'interaction pour Save.xaml
     /// </summary>
-    public partial class ViewOpenFile : UserControl
+    public partial class Save : UserControl
     {
-        public ViewOpenFile()
+        public Save()
         {
             InitializeComponent();
         }

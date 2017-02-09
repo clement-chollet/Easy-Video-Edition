@@ -7,32 +7,27 @@
         xmlns:View="clr-namespace:EasyVideoEdition.View"
         xmlns:ViewModels="clr-namespace:EasyVideoEdition.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
-    
-    <Window.Resources>
-        <DataTemplate DataType="{x:Type ViewModels:FileOpeningViewModel}">
-            <View:ViewOpenFile />
-        </DataTemplate>
-        
-        <DataTemplate DataType="{x:Type ViewModels:SaveFileViewModel}">
-            <View:ViewSaveFile />
-        </DataTemplate>
-        
-        <DataTemplate DataType="{x:Type ViewModels:VideoPlayerViewModel}">
-            <View:ViewVideoPlayer />
-        </DataTemplate>
+        Title="CroustyVideo" Height="720" Width="1280"
+        MinHeight ="710"
+        MinWidth="710">
 
-        <DataTemplate DataType="{x:Type ViewModels:SubtitlesViewModel}">
-            <View:ViewSubtitles />
-        </DataTemplate>
-    </Window.Resources>
-    
-    <Grid Name="MainWindowGrid">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="70*"/>
-            <RowDefinition Height="500*"/>
-        </Grid.RowDefinitions>
-        <ContentControl Name="ControlView" Grid.Row="0"/>
-        <ContentControl Name="ActiveView" Grid.Row="1" Content="{Binding viewModel}"/>
+    <Grid SizeChanged="Window_SizeChanged">
+        <TabControl x:Name="tabControl" BorderBrush="#FF979797" ItemsSource="{Binding Items}" >
+
+            <TabControl.Resources>
+                <DataTemplate DataType="{x:Type ViewModels:FileOpeningViewModel}">
+                    <View:Open/>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type ViewModels:SaveFileViewModel}">
+                    <View:Save/>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type ViewModels:nullViewModel}">
+                    <View:Visual_adding/>
+                </DataTemplate>
+            </TabControl.Resources>
+
+        </TabControl>
     </Grid>
 </Window>

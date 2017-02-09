@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace EasyVideoEdition.ViewModel
@@ -72,6 +73,10 @@ namespace EasyVideoEdition.ViewModel
         private void OpenFile()
         {
             browser.OpenFile();
+            MessageBox.Show(MainViewModel.viewModelList.ElementAt(2)+ "");
+            SubtitlesViewModel sb = (SubtitlesViewModel) MainViewModel.viewModelList.ElementAt(2);
+            sb.InitSRTFile(browser.filePath);
+
         }
 
 

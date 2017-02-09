@@ -25,17 +25,24 @@ namespace EasyVideoEdition
         public MainWindow()
         {
             InitializeComponent();
-            //ViewModel Creation
-            MainViewModel mvm = new MainViewModel();
 
-            //View Creation
-            ViewChoiceOption ViewChoiceOption = new ViewChoiceOption();
+            MainViewModel mainVM = new MainViewModel();
+            this.DataContext = mainVM;
+            tabControl.SelectedIndex = 0;
 
-            //DataContext Init
-            MainWindowGrid.DataContext = mvm;
-            ViewChoiceOption.DataContext = mvm;
+            foreach (TabItem t in tabControl.Items)
+            {
+                t.Width = this.ActualWidth / 8.3;
+            }
 
-            ControlView.Content = ViewChoiceOption;
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            foreach (TabItem t in tabControl.Items)
+            {
+                t.Width = this.ActualWidth / 8.3;
+            }
         }
     }
 }

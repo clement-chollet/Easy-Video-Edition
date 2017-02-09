@@ -66,23 +66,32 @@
     <Compile Include="ViewModel\FileOpeningViewModel.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\nullViewModel.cs" />
     <Compile Include="ViewModel\SaveFileViewModel.cs" />
     <Compile Include="ViewModel\SubtitlesViewModel.cs" />
-    <Compile Include="ViewModel\VideoPlayerViewModel.cs" />
-    <Compile Include="View\ViewChoiceOption.xaml.cs">
-      <DependentUpon>ViewChoiceOption.xaml</DependentUpon>
+    <Compile Include="View\Audio_adding.xaml.cs">
+      <DependentUpon>Audio_adding.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ViewOpenFile.xaml.cs">
-      <DependentUpon>ViewOpenFile.xaml</DependentUpon>
+    <Compile Include="View\Audio_edition.xaml.cs">
+      <DependentUpon>Audio_edition.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ViewSaveFile.xaml.cs">
-      <DependentUpon>ViewSaveFile.xaml</DependentUpon>
+    <Compile Include="View\Chapters_adding.xaml.cs">
+      <DependentUpon>Chapters_adding.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ViewSubtitles.xaml.cs">
-      <DependentUpon>ViewSubtitles.xaml</DependentUpon>
+    <Compile Include="View\Open.xaml.cs">
+      <DependentUpon>Open.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ViewVideoPlayer.xaml.cs">
-      <DependentUpon>ViewVideoPlayer.xaml</DependentUpon>
+    <Compile Include="View\Save.xaml.cs">
+      <DependentUpon>Save.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Subtitles_adding.xaml.cs">
+      <DependentUpon>Subtitles_adding.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Visual_adding.xaml.cs">
+      <DependentUpon>Visual_adding.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Visual_edition.xaml.cs">
+      <DependentUpon>Visual_edition.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -96,23 +105,35 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\ViewChoiceOption.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="View\Audio_adding.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ViewOpenFile.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ViewSaveFile.xaml">
+    <Page Include="View\Audio_edition.xaml">
+      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ViewSubtitles.xaml">
+    <Page Include="View\Chapters_adding.xaml">
+      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ViewVideoPlayer.xaml">
+    <Page Include="View\Open.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Save.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Subtitles_adding.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Visual_adding.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Visual_edition.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -24,7 +24,7 @@ namespace EasyVideoEdition.ViewModel
 
         private Slider slide;
         private MediaElement MediaElementVideoPlayer;
-        private static ViewVideoPlayer view;
+        private static Visual_adding view;
 
         private VideoPlayer _videoPlayer = new VideoPlayer();
 
@@ -90,7 +90,7 @@ namespace EasyVideoEdition.ViewModel
         /// Static method that allow the viewModel to be aware of the mediaPlayer. Needed for the player command
         /// </summary>
         /// <param name="viewVP"></param>
-        static public void InitializeVM(ViewVideoPlayer viewVP)
+        static public void InitializeVM(Visual_adding viewVP)
         {
             view = viewVP;
         }

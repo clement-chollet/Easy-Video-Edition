@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using EasyVideoEdition.ViewModel;
+using System.Collections.ObjectModel;
 
 namespace EasyVideoEdition
 {
@@ -17,127 +18,37 @@ namespace EasyVideoEdition
     /// </summary>
     class MainViewModel : ObjectBase
     {
-        #region Attributes
-        private BaseViewModel _viewModel;
-        public BaseViewModel viewModel
+        private ObservableCollection<TabItem> _items = new ObservableCollection<TabItem>();
+        public ObservableCollection<TabItem> Items
         {
             get
             {
-                return _viewModel;
-            }
-            set
-            {
-                _viewModel = value;
-                RaisePropertyChanged("viewModel");
+                return _items;
             }
         }
 
-        //Declaration of the viewModel 
-        private FileOpeningViewModel _fileOpeningViewModel;
-        private SaveFileViewModel _saveFileViewModel;
-        private VideoPlayerViewModel _videoPlayerViewModel;
-        private SubtitlesViewModel _subtitlesViewModel;
-
-        //Access right for the different view
-        public bool editVideoEnabled
+        private static List<BaseViewModel> _viewModelList = new List<BaseViewModel>();
+        public static List<BaseViewModel> viewModelList
         {
             get
             {
-                return !(_fileOpeningViewModel.browser.canOpenFile);
+                return _viewModelList;
             }
         }
-        #endregion
 
-        #region CommandList
-        public ICommand GoToOpenCommand
-        {
-            get; private set;
-        }
-
-        public ICommand GoToSaveCommand
-        {
-            get; private set;
-        }
-
-        public ICommand GoToSubCommand
-        {
-            get; private set;
-        }
-
-        public ICommand GoToPlayCommand
-        {
-            get; private set;
-        }
-        #endregion
-
-        /// <summary>
-        /// Creation of the MainViewModel. Nottably, create the commands, and all of the other view Model
-        /// </summary>
         public MainViewModel()
         {
-            //Place the creation of the viewModel here
-            _fileOpeningViewModel = new FileOpeningViewModel();
-            _saveFileViewModel = new SaveFileViewModel();
+            _viewModelList.Add(new FileOpeningViewModel());
+            _viewModelList.Add(new nullViewModel());
+            _viewModelList.Add(new SubtitlesViewModel());
+            _viewModelList.Add(new SaveFileViewModel());
 
-            viewModel = _fileOpeningViewModel;
-            GoToOpenCommand = new RelayCommand(GoToOpen);
-            GoToPlayCommand = new RelayCommand(GoToPlay, GoToPlayCanExecute);
-            GoToSubCommand = new RelayCommand(GoToSub, GoToPlayCanExecute);
-            GoToSaveCommand = new RelayCommand(GoToSave);
+            _items.Add(new TabItem { Header = "Ouvrir", Content = new FileOpeningViewModel() });
+            _items.Add(new TabItem { Header = "Ajout Visuel", Content = new nullViewModel() });
+            _items.Add(new TabItem { Header = "Ajout de sous titre", Content = new SubtitlesViewModel()});
+            _items.Add(new TabItem { Header = "Enregistrer", Content = new SaveFileViewModel() });
+
+            _items.Add(new TabItem { Header = "Ajout Visuel", Content = "", Visibility = System.Windows.Visibility.Hidden, Height = 50 });
         }
-
-        /// <summary>
-        /// Open the OpenFile View
-        /// </summary>
-        private void GoToOpen()
-        {
-            viewModel = _fileOpeningViewModel;
-        }
-
-        /// <summary>
-        /// Open the VideoPlayerView 
-        /// </summary>
-        private void GoToPlay()
-        {
-            viewModel = _videoPlayerViewModel;
-        }
-
-        /// <summary>
-        /// Open the Subtile View
-        /// </summary>
-        private void GoToSub()
-        {
-            viewModel = _subtitlesViewModel;
-        }
-
-        /// <summary>
-        /// Indicate if the user can go to the Player and the Subtitle view.
-        /// </summary>
-        /// <param name="parameter"></param>
-        /// <returns></returns>
-        private bool GoToPlayCanExecute(object parameter)
-        {
-            if (!(_fileOpeningViewModel.browser.canOpenFile))
-            {
-                _videoPlayerViewModel = new VideoPlayerViewModel(_fileOpeningViewModel.browser.filePath);
-                _subtitlesViewModel = new SubtitlesViewModel(_fileOpeningViewModel.browser.filePath);
-            }
-                
-            return !(_fileOpeningViewModel.browser.canOpenFile);
-        }
-
-        /// <summary>
-        /// Open the SaveFil View
-        /// </summary>
-        private void GoToSave()
-        {
-            viewModel = _saveFileViewModel;
-        }
-
-        #region CommandDefinition
-
-        #endregion
-
-
     }
 }

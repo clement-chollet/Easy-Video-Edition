@@ -150,6 +150,7 @@ namespace EasyVideoEdition.Model
         public void OpenFile()
         {
             OpenFileDialog opf = new OpenFileDialog();
+            
             opf.Multiselect = false;
 
             if (opf.ShowDialog() != false)

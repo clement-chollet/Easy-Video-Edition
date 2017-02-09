@@ -130,12 +130,18 @@ namespace EasyVideoEdition.ViewModel
         ///  Creates the viewModel of subtitles. 
         /// </summary>
         /// <param name="filePath">Path of the video with we want to add subtile</param>
-        public SubtitlesViewModel(String filePath)
+        public SubtitlesViewModel()
+        {
+           /* subtitles = new Subtitles(filePath);
+            subtitles.ReadSrtFile();*/
+
+            AddSubtitleCommand = new RelayCommand(AddSubtitle);
+        }
+
+        public void InitSRTFile(string filePath)
         {
             subtitles = new Subtitles(filePath);
             subtitles.ReadSrtFile();
-
-            AddSubtitleCommand = new RelayCommand(AddSubtitle);
         }
 
         #region CommandDefinition

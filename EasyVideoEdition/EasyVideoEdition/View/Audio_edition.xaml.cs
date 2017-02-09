@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace EasyVideoEdition.View
 {
     /// <summary>
-    /// Logique d'interaction pour UserControl1.xaml
+    /// Logique d'interaction pour Audio_edition.xaml
     /// </summary>
-    public partial class ViewChoiceOption : UserControl
+    public partial class Audio_edition : UserControl
     {
-        public ViewChoiceOption()
+        public Audio_edition()
         {
             InitializeComponent();
         }

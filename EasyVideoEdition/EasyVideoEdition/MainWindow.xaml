@@ -26,6 +26,10 @@
                 <DataTemplate DataType="{x:Type ViewModels:nullViewModel}">
                     <View:Visual_adding/>
                 </DataTemplate>
+
+                <DataTemplate DataType="{x:Type ViewModels:SubtitlesViewModel}">
+                    <View:Subtitles_adding/>
+                </DataTemplate>
             </TabControl.Resources>
 
         </TabControl>

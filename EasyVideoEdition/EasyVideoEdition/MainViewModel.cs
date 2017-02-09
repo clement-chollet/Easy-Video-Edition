@@ -18,7 +18,12 @@ namespace EasyVideoEdition
     /// </summary>
     class MainViewModel : ObjectBase
     {
+        #region Attributes
         private ObservableCollection<TabItem> _items = new ObservableCollection<TabItem>();
+        private static List<BaseViewModel> _viewModelList = new List<BaseViewModel>();
+        #endregion
+
+        #region Get/Set
         public ObservableCollection<TabItem> Items
         {
             get
@@ -26,8 +31,6 @@ namespace EasyVideoEdition
                 return _items;
             }
         }
-
-        private static List<BaseViewModel> _viewModelList = new List<BaseViewModel>();
         public static List<BaseViewModel> viewModelList
         {
             get
@@ -35,7 +38,12 @@ namespace EasyVideoEdition
                 return _viewModelList;
             }
         }
+        #endregion
 
+        /// <summary>
+        /// Main View Model, manage all the other view model, and allow each viewModel to now eatch other.
+        /// This class also manage the list for the tabItem.
+        /// </summary>
         public MainViewModel()
         {
             _viewModelList.Add(new FileOpeningViewModel());
@@ -43,10 +51,11 @@ namespace EasyVideoEdition
             _viewModelList.Add(new SubtitlesViewModel());
             _viewModelList.Add(new SaveFileViewModel());
 
-            _items.Add(new TabItem { Header = "Ouvrir", Content = new FileOpeningViewModel() });
-            _items.Add(new TabItem { Header = "Ajout Visuel", Content = new nullViewModel() });
-            _items.Add(new TabItem { Header = "Ajout de sous titre", Content = new SubtitlesViewModel()});
-            _items.Add(new TabItem { Header = "Enregistrer", Content = new SaveFileViewModel() });
+
+            _items.Add(new TabItem { Header = "Ouvrir", Content = _viewModelList.ElementAt(0) });
+            _items.Add(new TabItem { Header = "Ajout Visuel", Content = _viewModelList.ElementAt(1) });
+            _items.Add(new TabItem { Header = "Ajout de sous titre", Content = _viewModelList.ElementAt(2) });
+            _items.Add(new TabItem { Header = "Enregistrer", Content = _viewModelList.ElementAt(3) });
 
             _items.Add(new TabItem { Header = "Ajout Visuel", Content = "", Visibility = System.Windows.Visibility.Hidden, Height = 50 });
         }

@@ -169,6 +169,11 @@ namespace EasyVideoEdition.Model
             int ret = 0;
 
             subtitlesCollection.Clear();                                                                                         //Clear the collection of subtitles
+           
+
+            if (!File.Exists(this.srtPath))
+                File.Create(this.srtPath).Close();
+
             StreamReader file = new StreamReader(this.srtPath);
             while ((line = file.ReadLine()) != null)
             {
@@ -194,7 +199,6 @@ namespace EasyVideoEdition.Model
                 }
 
             }
-
         }
 
         /// <summary>

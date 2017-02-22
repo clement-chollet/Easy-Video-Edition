@@ -35,7 +35,6 @@ namespace EasyVideoEdition.ViewModel
 
         private SaveFileViewModel()
         {
-
         }
     }
 }

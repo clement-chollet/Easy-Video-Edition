@@ -95,7 +95,8 @@ namespace EasyVideoEdition.ViewModel
         private void OpenFile()
         {
             browser.OpenFile();
-            SubtitlesViewModel.INSTANCE.InitSRTFile(browser.filePath);
+            if(browser.filePath != null)
+                SubtitlesViewModel.INSTANCE.InitSRTFile(browser.filePath);
         }
 
         /// <summary>

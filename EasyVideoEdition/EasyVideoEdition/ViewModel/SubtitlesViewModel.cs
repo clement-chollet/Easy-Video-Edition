@@ -11,10 +11,10 @@ using System.Windows;
 
 namespace EasyVideoEdition.ViewModel
 {
-    class SubtitlesViewModel : ObjectBase, BaseViewModel
+    class SubtitlesViewModel : ObjectBase, IBaseViewModel
     {
         #region Attributes
-
+        private static SubtitlesViewModel singleton = new SubtitlesViewModel();
         private String _startTime = "00:00:00,000";
         private String _endTime = "00:00:00,000";
         private String _subText = "New subtitle";
@@ -97,6 +97,17 @@ namespace EasyVideoEdition.ViewModel
                 RaisePropertyChanged("subText");
             }
         }
+
+        /// <summary>
+        /// Get the instance of the viewModel
+        /// </summary>
+        public static SubtitlesViewModel INSTANCE
+        {
+            get
+            {
+                return singleton;
+            }
+        }
         #endregion
 
         #region CommandList
@@ -129,7 +140,7 @@ namespace EasyVideoEdition.ViewModel
         /// <summary>
         ///  Creates the viewModel of subtitles. 
         /// </summary>
-        public SubtitlesViewModel()
+        private SubtitlesViewModel()
         {
             AddSubtitleCommand = new RelayCommand(AddSubtitle);
         }

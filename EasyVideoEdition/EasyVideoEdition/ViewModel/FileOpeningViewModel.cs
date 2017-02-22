@@ -11,12 +11,13 @@ namespace EasyVideoEdition.ViewModel
 {
     /// <summary>
     /// View Model of the File Opening. Define the command needed to open a video file.
+    /// SINGLETON
     /// </summary>
-    class FileOpeningViewModel : ObjectBase, BaseViewModel
+    class FileOpeningViewModel : ObjectBase, IBaseViewModel
     {
 
         #region Attributes
-
+        private static FileOpeningViewModel singleton = new FileOpeningViewModel();
         private FileBrowser _browser;
         /// <summary>
         /// Name of the ViewModel
@@ -29,6 +30,7 @@ namespace EasyVideoEdition.ViewModel
             }
         }
         #endregion
+
         #region Get/Set
         /// <summary>
         /// Model of the fileBrower. 
@@ -45,6 +47,17 @@ namespace EasyVideoEdition.ViewModel
                 RaisePropertyChanged("browser");
             }
         }
+
+        /// <summary>
+        /// Get the instance of the viewModel
+        /// </summary>
+        public static FileOpeningViewModel INSTANCE
+        {
+            get
+            {
+                return singleton;
+            }
+        }
         #endregion
 
         #region CommandList
@@ -55,15 +68,24 @@ namespace EasyVideoEdition.ViewModel
         {
             get; private set;
         }
+
+        /// <summary>
+        /// Getter and Setter for the OpenFileCommand. This Command launch the method NewProject. 
+        /// </summary>
+        public ICommand NewProjectCommand {
+            get; private set;
+        }
+
         #endregion
 
         /// <summary>
         /// Creation of the MainViewModel. Create the commands OpenFile and init the Model.
         /// </summary>
-        public FileOpeningViewModel()
+        private FileOpeningViewModel()
         {
             browser = new FileBrowser();
             OpenFileCommand = new RelayCommand(OpenFile);
+            NewProjectCommand = new RelayCommand(NewProject);
         }
 
         #region CommandDefinition
@@ -73,12 +95,16 @@ namespace EasyVideoEdition.ViewModel
         private void OpenFile()
         {
             browser.OpenFile();
-            MessageBox.Show(MainViewModel.viewModelList.ElementAt(2)+ "");
-            SubtitlesViewModel sb = (SubtitlesViewModel) MainViewModel.viewModelList.ElementAt(2);
-            sb.InitSRTFile(browser.filePath);
-
+            SubtitlesViewModel.INSTANCE.InitSRTFile(browser.filePath);
         }
 
+        /// <summary>
+        /// Method that switch the user to the new view for creating an empty project
+        /// </summary>
+        private void NewProject()
+        {
+            MainViewModel.INSTANCE.actualViewIndex = 1;
+        }
 
         #endregion
     }

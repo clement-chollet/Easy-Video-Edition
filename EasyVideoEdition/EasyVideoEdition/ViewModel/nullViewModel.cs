@@ -6,14 +6,38 @@ using System.Threading.Tasks;
 
 namespace EasyVideoEdition.ViewModel
 {
-    class nullViewModel : ObjectBase, BaseViewModel
+    class NullViewModel : ObjectBase, IBaseViewModel
     {
+        #region Attributes
+        private static NullViewModel singleton = new NullViewModel();
         public String name
         {
             get
             {
-                return "Save File/Project";
+                return "NULL VIEW MODEL";
             }
+        }
+
+        #endregion
+
+        #region Get/Set
+        public static NullViewModel INSTANCE
+        {
+            get
+            {
+                return singleton;
+            }
+
+            set
+            {
+                singleton = value;
+            }
+        } 
+        #endregion
+
+        private NullViewModel()
+        {
+
         }
     }
 }

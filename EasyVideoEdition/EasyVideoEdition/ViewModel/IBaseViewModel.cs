@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 namespace EasyVideoEdition.ViewModel
 {
     /// <summary>
-    /// Base interface needed to be implemented by all of the ViewModel to allow them to bve show in the button list.
+    /// Base interface needed to be implemented by all of the ViewModel to allow them to be show in the button list.
     /// </summary>
-    interface BaseViewModel
+    interface IBaseViewModel
     {
         String name { get; }
     }
+
+
+    
 }

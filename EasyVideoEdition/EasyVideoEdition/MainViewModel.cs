@@ -15,15 +15,21 @@ namespace EasyVideoEdition
 {
     /// <summary>
     /// Main View Model, this one control all of the other view model, and allow to switch between them by the use of a button.
+    /// SINGLETON
     /// </summary>
     class MainViewModel : ObjectBase
     {
         #region Attributes
+        private static MainViewModel singleton = new MainViewModel();
+
         private ObservableCollection<TabItem> _items = new ObservableCollection<TabItem>();
-        private static List<BaseViewModel> _viewModelList = new List<BaseViewModel>();
+        private int _actualViewIndex = 0;
         #endregion
 
         #region Get/Set
+        /// <summary>
+        /// Get the list of Items in the tab
+        /// </summary>
         public ObservableCollection<TabItem> Items
         {
             get
@@ -31,31 +37,51 @@ namespace EasyVideoEdition
                 return _items;
             }
         }
-        public static List<BaseViewModel> viewModelList
+
+        /// <summary>
+        /// Index of the viewModel use in the viewModelList. Allow switch between tab programaticaly
+        /// </summary>
+        public int actualViewIndex
         {
             get
             {
-                return _viewModelList;
+                return _actualViewIndex;
+            }
+
+            set
+            {
+                _actualViewIndex = value;
+                RaisePropertyChanged("actualViewIndex");
+            }
+        }
+
+        /// <summary>
+        /// Get the instance of the viewModel
+        /// </summary>
+        public static MainViewModel INSTANCE
+        {
+            get
+            {
+                return singleton;
             }
         }
         #endregion
 
         /// <summary>
-        /// Main View Model, manage all the other view model, and allow each viewModel to now eatch other.
+        /// Main View Model, manage all the other view model, and allow each viewModel to know eatch other.
         /// This class also manage the list for the tabItem.
         /// </summary>
-        public MainViewModel()
+        private MainViewModel()
         {
-            _viewModelList.Add(new FileOpeningViewModel());
-            _viewModelList.Add(new nullViewModel());
-            _viewModelList.Add(new SubtitlesViewModel());
-            _viewModelList.Add(new SaveFileViewModel());
+            FileOpeningViewModel FileOpeningViewModel = FileOpeningViewModel.INSTANCE;
+            SaveFileViewModel SaveFileViewModel = SaveFileViewModel.INSTANCE;
+            SubtitlesViewModel SubtitlesViewModel = SubtitlesViewModel.INSTANCE;
+            NullViewModel NullViewModel = NullViewModel.INSTANCE;
 
-
-            _items.Add(new TabItem { Header = "Ouvrir", Content = _viewModelList.ElementAt(0) });
-            _items.Add(new TabItem { Header = "Ajout Visuel", Content = _viewModelList.ElementAt(1) });
-            _items.Add(new TabItem { Header = "Ajout de sous titre", Content = _viewModelList.ElementAt(2) });
-            _items.Add(new TabItem { Header = "Enregistrer", Content = _viewModelList.ElementAt(3) });
+            _items.Add(new TabItem { Header = "Ouvrir", Content = FileOpeningViewModel });
+            _items.Add(new TabItem { Header = "Ajout Visuel", Content = NullViewModel });
+            _items.Add(new TabItem { Header = "Ajout de sous titre", Content =  SubtitlesViewModel });
+            _items.Add(new TabItem { Header = "Enregistrer", Content = SaveFileViewModel });
 
             _items.Add(new TabItem { Header = "Ajout Visuel", Content = "", Visibility = System.Windows.Visibility.Hidden, Height = 50 });
         }

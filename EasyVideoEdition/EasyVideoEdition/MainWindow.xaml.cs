@@ -26,10 +26,9 @@ namespace EasyVideoEdition
         {
             InitializeComponent();
 
-            MainViewModel mainVM = new MainViewModel();
-            this.DataContext = mainVM;
-            tabControl.SelectedIndex = 0;
+            MainViewModel mainVM = MainViewModel.INSTANCE;
 
+            this.DataContext = mainVM;
             foreach (TabItem t in tabControl.Items)
             {
                 t.Width = this.ActualWidth / 8.3;

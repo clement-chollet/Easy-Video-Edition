@@ -12,7 +12,7 @@
         MinWidth="710">
 
     <Grid SizeChanged="Window_SizeChanged">
-        <TabControl x:Name="tabControl" BorderBrush="#FF979797" ItemsSource="{Binding Items}" >
+        <TabControl x:Name="tabControl" BorderBrush="#FF979797" ItemsSource="{Binding Items}" SelectedIndex="{Binding actualViewIndex}">
 
             <TabControl.Resources>
                 <DataTemplate DataType="{x:Type ViewModels:FileOpeningViewModel}">
@@ -23,7 +23,7 @@
                     <View:Save/>
                 </DataTemplate>
 
-                <DataTemplate DataType="{x:Type ViewModels:nullViewModel}">
+                <DataTemplate DataType="{x:Type ViewModels:NullViewModel}">
                     <View:Visual_adding/>
                 </DataTemplate>
 

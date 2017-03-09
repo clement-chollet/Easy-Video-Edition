@@ -27,11 +27,6 @@ namespace EasyVideoEdition.ViewModel
             {
                 return singleton;
             }
-
-            set
-            {
-                singleton = value;
-            }
         } 
         #endregion
 

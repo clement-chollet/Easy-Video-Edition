@@ -6,6 +6,55 @@
              xmlns:local="clr-namespace:EasyVideoEdition.View"
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1280">
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="TemplateVideo">
+            <Grid Height="50" Width="170">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="9*"/>
+                    <ColumnDefinition Width="15*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image HorizontalAlignment="Left" Margin="0,5.333,0,5" Width="35.667" Source="{Binding miniatPath}"/>
+                <TextBlock Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="15.96" Width="Auto" Text="Nom: "></TextBlock>
+                <TextBlock Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Width="Auto" Margin="0" Text="Taille: "></TextBlock>
+                <TextBlock Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Margin="0" Text="Durée: "></TextBlock>
+
+                <TextBlock Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="15.96" Width="Auto" Text="{Binding fileName}"></TextBlock>
+                <TextBlock Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Width="Auto" Margin="0" Text="{Binding sizeLabel}"></TextBlock>
+                <TextBlock Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Margin="0" Text="{Binding duration}"></TextBlock>
+            </Grid>
+
+        </DataTemplate>
+
+        <DataTemplate x:Key="TemplateImage">
+            <Grid Height="50" Width="170">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="9*"/>
+                    <ColumnDefinition Width="15*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image HorizontalAlignment="Left" Margin="0,5.333,0,5" Width="35.667">
+                    <Image.Source>
+                        <BitmapImage DecodePixelWidth="100"  UriSource="{Binding filePath}"></BitmapImage>
+                    </Image.Source>
+                </Image>
+                <TextBlock Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="15.96" Width="Auto" Text="Nom: "></TextBlock>
+                <TextBlock Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Width="Auto" Margin="0" Text="Taille: "></TextBlock>
+
+                <TextBlock Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="15.96" Width="Auto" Text="{Binding fileName}"></TextBlock>
+                <TextBlock Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Width="Auto" Margin="0" Text="{Binding sizeLabel}"></TextBlock>
+            </Grid>
+
+        </DataTemplate>
+
+        <DataTemplate x:Key="TemplateBoard">
+            <Image HorizontalAlignment="Left" Margin="0,5.333,0,5" Width="100" Height="50" Source="{Binding miniatPath}" />
+        </DataTemplate>
+    </UserControl.Resources>
+
     <Grid SizeChanged="Window_SizeChanged">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="81*"/>
@@ -20,10 +69,10 @@
             <RowDefinition Height="35*"/>
             <RowDefinition Height="41*"/>
         </Grid.RowDefinitions>
-        <Slider x:Name="slider" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Width="1050"/>
+        <Slider x:Name="slider" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Width="1050" Margin="32,49,32,56"/>
         <Button x:Name="recButton" Content="Button" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" MinHeight="5" MinWidth="40" MaxHeight="60" MaxWidth="200"/>
-        <Button x:Name="addVidButton" Content="Button" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" MinHeight="5" MinWidth="40" MaxHeight="60" MaxWidth="200"/>
-        <Button x:Name="addPicButton" Content="Button" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" MinHeight="5" MinWidth="40" MaxHeight="60" MaxWidth="200"/>
+        <Button x:Name="addVidButton" Content="Ajouter Vidéo" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" MinHeight="5" MinWidth="40" MaxHeight="60" MaxWidth="200" Command="{Binding addVideoCommand}"/>
+        <Button x:Name="addPicButton" Content="Ajouter Photo" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" MinHeight="5" MinWidth="40" MaxHeight="60" MaxWidth="200" Command="{Binding addPhotoCommand}"/>
         <Grid x:Name="instructions" Grid.Column="3" MinHeight="350" MinWidth="150" MaxHeight="1000" MaxWidth="600" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.ColumnSpan="3" Width="370.812" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="23*"/>
@@ -50,13 +99,23 @@
         </Grid>
         <TabControl x:Name="library" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" MinHeight="350" MinWidth="150" MaxHeight="1000" MaxWidth="400">
             <TabItem x:Name="videoTab" Header="Mes vidéos">
-                <Grid Background="#FFE5E5E5"/>
+                <ListBox ItemsSource="{Binding listVideo}" ItemTemplate="{DynamicResource TemplateVideo}">
+
+                </ListBox>
             </TabItem>
             <TabItem x:Name="imageTab" Header="Mes images">
-                <Grid Background="#FFE5E5E5"/>
+                <ListBox ItemsSource="{Binding listPhoto}" ItemTemplate="{DynamicResource TemplateImage}">
+
+                </ListBox>
             </TabItem>
         </TabControl>
 
-
+        <ListView Grid.Column="1" Margin="32,63,32,10" Grid.Row="2" Grid.ColumnSpan="4" ItemsSource="{Binding storyBoard.fileList}" ItemTemplate="{DynamicResource TemplateBoard}">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
     </Grid>
 </UserControl>

@@ -58,17 +58,23 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\FileBrowser.cs" />
+    <Compile Include="Model\IFile.cs" />
+    <Compile Include="Model\Photo.cs" />
+    <Compile Include="Model\StoryBoard.cs" />
     <Compile Include="Model\Subtitle.cs" />
     <Compile Include="Model\Subtitles.cs" />
+    <Compile Include="Model\Video.cs" />
     <Compile Include="Model\VideoPlayer.cs" />
+    <Compile Include="Model\videoScreenshotCreator.cs" />
     <Compile Include="ObjectBase.cs" />
     <Compile Include="RelayCommand.cs" />
-    <Compile Include="ViewModel\FileOpeningViewModel.cs" />
+    <Compile Include="ViewModel\OpeningViewModel.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="ViewModel\IBaseViewModel.cs" />
     <Compile Include="ViewModel\NullViewModel.cs" />
     <Compile Include="ViewModel\SaveFileViewModel.cs" />
     <Compile Include="ViewModel\SubtitlesViewModel.cs" />
+    <Compile Include="ViewModel\VisualAddingViewModel.cs" />
     <Compile Include="View\Audio_adding.xaml.cs">
       <DependentUpon>Audio_adding.xaml</DependentUpon>
     </Compile>

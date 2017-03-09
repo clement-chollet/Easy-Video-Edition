@@ -1,10 +1,5 @@
 ﻿using EasyVideoEdition.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 
 namespace EasyVideoEdition.ViewModel
@@ -13,11 +8,11 @@ namespace EasyVideoEdition.ViewModel
     /// View Model of the File Opening. Define the command needed to open a video file.
     /// SINGLETON
     /// </summary>
-    class FileOpeningViewModel : ObjectBase, IBaseViewModel
+    class OpeningViewModel : ObjectBase, IBaseViewModel
     {
 
         #region Attributes
-        private static FileOpeningViewModel singleton = new FileOpeningViewModel();
+        private static OpeningViewModel singleton = new OpeningViewModel();
         private FileBrowser _browser;
         /// <summary>
         /// Name of the ViewModel
@@ -51,7 +46,7 @@ namespace EasyVideoEdition.ViewModel
         /// <summary>
         /// Get the instance of the viewModel
         /// </summary>
-        public static FileOpeningViewModel INSTANCE
+        public static OpeningViewModel INSTANCE
         {
             get
             {
@@ -81,7 +76,7 @@ namespace EasyVideoEdition.ViewModel
         /// <summary>
         /// Creation of the MainViewModel. Create the commands OpenFile and init the Model.
         /// </summary>
-        private FileOpeningViewModel()
+        private OpeningViewModel()
         {
             browser = new FileBrowser();
             OpenFileCommand = new RelayCommand(OpenFile);
@@ -97,6 +92,7 @@ namespace EasyVideoEdition.ViewModel
             browser.OpenFile();
             if(browser.filePath != null)
                 SubtitlesViewModel.INSTANCE.InitSRTFile(browser.filePath);
+            browser.reset();
         }
 
         /// <summary>

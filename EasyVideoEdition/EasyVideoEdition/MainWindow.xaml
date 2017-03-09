@@ -15,7 +15,7 @@
         <TabControl x:Name="tabControl" BorderBrush="#FF979797" ItemsSource="{Binding Items}" SelectedIndex="{Binding actualViewIndex}">
 
             <TabControl.Resources>
-                <DataTemplate DataType="{x:Type ViewModels:FileOpeningViewModel}">
+                <DataTemplate DataType="{x:Type ViewModels:OpeningViewModel}">
                     <View:Open/>
                 </DataTemplate>
 
@@ -23,12 +23,16 @@
                     <View:Save/>
                 </DataTemplate>
 
-                <DataTemplate DataType="{x:Type ViewModels:NullViewModel}">
+                <DataTemplate DataType="{x:Type ViewModels:VisualAddingViewModel}">
                     <View:Visual_adding/>
                 </DataTemplate>
 
                 <DataTemplate DataType="{x:Type ViewModels:SubtitlesViewModel}">
                     <View:Subtitles_adding/>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type ViewModels:NullViewModel}">
+                    <View:Open/>
                 </DataTemplate>
             </TabControl.Resources>
 

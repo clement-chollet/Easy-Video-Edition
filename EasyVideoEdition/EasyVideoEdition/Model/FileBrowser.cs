@@ -18,7 +18,6 @@ namespace EasyVideoEdition.Model
         private string _filePath;
         private string _fileTempPath;
         private string _fileName;
-        private byte[] _fileData;
         private long _fileSize;
         private bool _canOpenFile;
         private FileStream _stream;
@@ -106,22 +105,6 @@ namespace EasyVideoEdition.Model
         }
 
         /// <summary>
-        /// Contains the file data.
-        /// </summary>
-        public byte[] fileData
-        {
-            get
-            {
-                return _fileData;
-            }
-            set
-            {
-                _fileData = value;
-                RaisePropertyChanged("fileData");
-            }
-        }
-
-        /// <summary>
         /// Contains the size of the file
         /// </summary>
         public long fileSize
@@ -156,14 +139,42 @@ namespace EasyVideoEdition.Model
             if (opf.ShowDialog() != false)
             {
                 filePath = opf.FileName;
-
+                fileName = opf.SafeFileName;
                 stream = File.OpenRead(filePath);
 
                 fileSize = stream.Length;
                 canOpenFile = false;
             }
-
         }
 
+        /// <summary>
+        /// This method allow the user to open a file brower. The file path is stocked in the attribute filePath.
+        /// </summary>
+        public void OpenFile(String filter)
+        {
+            OpenFileDialog opf = new OpenFileDialog();
+            opf.Filter = filter;
+            opf.Multiselect = false;
+
+            if (opf.ShowDialog() != false)
+            {
+                filePath = opf.FileName;
+                fileName = opf.SafeFileName;
+                stream = File.OpenRead(filePath);
+
+                fileSize = stream.Length;
+                canOpenFile = false;
+            }
+        }
+
+
+        /// <summary>
+        /// Reset the description of the file
+        /// </summary>
+        public void reset()
+        {
+            filePath = null;
+            fileName = null;
+        }
     }
 }

@@ -1,13 +1,5 @@
-﻿using EasyVideoEdition.Model;
-using EasyVideoEdition.View;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using EasyVideoEdition.ViewModel;
 using System.Collections.ObjectModel;
 
@@ -21,7 +13,6 @@ namespace EasyVideoEdition
     {
         #region Attributes
         private static MainViewModel singleton = new MainViewModel();
-
         private ObservableCollection<TabItem> _items = new ObservableCollection<TabItem>();
         private int _actualViewIndex = 0;
         #endregion
@@ -73,17 +64,18 @@ namespace EasyVideoEdition
         /// </summary>
         private MainViewModel()
         {
-            FileOpeningViewModel FileOpeningViewModel = FileOpeningViewModel.INSTANCE;
+            OpeningViewModel FileOpeningViewModel = OpeningViewModel.INSTANCE;
             SaveFileViewModel SaveFileViewModel = SaveFileViewModel.INSTANCE;
             SubtitlesViewModel SubtitlesViewModel = SubtitlesViewModel.INSTANCE;
             NullViewModel NullViewModel = NullViewModel.INSTANCE;
+            VisualAddingViewModel VisualAddingViewModel = VisualAddingViewModel.INSTANCE;
 
             _items.Add(new TabItem { Header = "Ouvrir", Content = FileOpeningViewModel });
-            _items.Add(new TabItem { Header = "Ajout Visuel", Content = NullViewModel });
+            _items.Add(new TabItem { Header = "Ajout Visuel", Content = VisualAddingViewModel });
             _items.Add(new TabItem { Header = "Ajout de sous titre", Content =  SubtitlesViewModel });
             _items.Add(new TabItem { Header = "Enregistrer", Content = SaveFileViewModel });
 
-            _items.Add(new TabItem { Header = "Ajout Visuel", Content = "", Visibility = System.Windows.Visibility.Hidden, Height = 50 });
+            _items.Add(new TabItem { Header = "Ajout Visuel", Content = "", Visibility = Visibility.Hidden, Height = 50 });
         }
     }
 }

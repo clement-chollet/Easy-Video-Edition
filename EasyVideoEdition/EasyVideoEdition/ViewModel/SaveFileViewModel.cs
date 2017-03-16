@@ -1,8 +1,12 @@
-﻿using System;
+﻿using EasyVideoEdition.Model;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace EasyVideoEdition.ViewModel
 {
@@ -11,13 +15,7 @@ namespace EasyVideoEdition.ViewModel
         #region Attributes
         private static SaveFileViewModel singleton = new SaveFileViewModel();
 
-        public String name
-        {
-            get
-            {
-                return "Save File/Project";
-            }
-        }
+
         #endregion
 
         #region Get/Set
@@ -31,10 +29,48 @@ namespace EasyVideoEdition.ViewModel
                 return singleton;
             }
         }
+
+        /// <summary>
+        /// Get the name of the viewModel
+        /// </summary>
+        public String name
+        {
+            get
+            {
+                return "Save File/Project";
+            }
+        }
+
+        /// <summary>
+        /// Command to save the project into a file to future modification
+        /// </summary>
+        public ICommand SaveProjectCommand { get; private set; }
+
+        /// <summary>
+        /// Command that launch the export of the project into a readable videofile.
+        /// </summary>
+        public ICommand ExportProjectCommand { get; private set; }
+
+
         #endregion
 
         private SaveFileViewModel()
         {
+            SaveProjectCommand = new RelayCommand(SaveProject);
+            ExportProjectCommand = new RelayCommand(ExportProject);
+        }
+
+        private void ExportProject()
+        {
+            StoryBoard st = StoryBoard.INSTANCE;
+           
+            String json = JsonConvert.SerializeObject(st);
+            File.WriteAllText("D:\\Test.json", json);
+        }
+
+        private void SaveProject()
+        {
+            throw new NotImplementedException();
         }
     }
 }

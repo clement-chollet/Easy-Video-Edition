@@ -95,7 +95,7 @@ namespace EasyVideoEdition.ViewModel
             {
                 Video v = new Video(_filebrowser.filePath, _filebrowser.fileName, _filebrowser.fileSize);
                 listVideo.Add(v);
-                storyBoard.addFile(v);
+                storyBoard.addFile(v, 0, v.duration);
             }
            
             _filebrowser.reset();
@@ -111,7 +111,7 @@ namespace EasyVideoEdition.ViewModel
             {
                 Photo f = new Photo(_filebrowser.filePath, _filebrowser.fileName, _filebrowser.fileSize);
                 listPhoto.Add(f);
-                storyBoard.addFile(f);
+                storyBoard.addFile(f, 0, 5);
             }
                
             _filebrowser.reset();

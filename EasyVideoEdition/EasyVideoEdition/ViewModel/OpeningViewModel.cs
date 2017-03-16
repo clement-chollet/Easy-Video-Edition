@@ -1,5 +1,7 @@
 ﻿using EasyVideoEdition.Model;
+using Newtonsoft.Json;
 using System;
+using System.IO;
 using System.Windows.Input;
 
 namespace EasyVideoEdition.ViewModel
@@ -91,8 +93,14 @@ namespace EasyVideoEdition.ViewModel
         {
             browser.OpenFile();
             if(browser.filePath != null)
-                SubtitlesViewModel.INSTANCE.InitSRTFile(browser.filePath);
+            {
+                String json = File.ReadAllText(browser.filePath);
+                StoryBoard st = JsonConvert.DeserializeObject<StoryBoard>(json);
+
+            }
+            MainViewModel.INSTANCE.actualViewIndex = 1;
             browser.reset();
+           
         }
 
         /// <summary>

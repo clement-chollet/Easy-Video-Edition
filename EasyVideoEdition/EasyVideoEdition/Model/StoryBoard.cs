@@ -10,6 +10,8 @@ namespace EasyVideoEdition.Model
 {
     /// <summary>
     /// Class that define the storyboard for the video editor
+    /// THE ONLY STORYBOARD INSTANCE THAT SHOULD BY USE IS THE SINGLETON. DO NOT USE THIS CONSTRUCTOR !!! 
+    /// HE IS PUBLIC DUE TO THE JSON PARSER !!!
     /// </summary>
     class StoryBoard
     {
@@ -26,7 +28,7 @@ namespace EasyVideoEdition.Model
         }
 
         #region Attributes
-        ObservableCollection<IFile> _fileList = new ObservableCollection<IFile>();
+        private ObservableCollection<StoryBoardElement> _fileList = new ObservableCollection<StoryBoardElement>();
         private static StoryBoard singleton = new StoryBoard();
         #endregion
 
@@ -34,7 +36,7 @@ namespace EasyVideoEdition.Model
         /// <summary>
         /// List of the file (photo or video) within the storyBoard
         /// </summary>
-        public ObservableCollection<IFile> fileList
+        public ObservableCollection<StoryBoardElement> fileList
         {
             get
             {
@@ -43,17 +45,13 @@ namespace EasyVideoEdition.Model
         }
         #endregion
 
-        private StoryBoard()
-        {
-
-        }
         /// <summary>
         /// Add a file to the storyboard
         /// </summary>
         /// <param name="fileToAdd"></param>
-        public void addFile(IFile fileToAdd)
+        public void addFile(IFile fileToAdd, int startTime, int endTime)
         {
-            _fileList.Add(fileToAdd);
+            _fileList.Add(new StoryBoardElement(fileToAdd, startTime, endTime));
         }
     }
 }

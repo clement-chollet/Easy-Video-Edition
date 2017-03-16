@@ -51,7 +51,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="TemplateBoard">
-            <Image HorizontalAlignment="Left" Margin="0,5.333,0,5" Width="100" Height="50" Source="{Binding miniatPath}" />
+            <Image HorizontalAlignment="Left" Margin="0,5.333,0,5" Width="100" Height="50" Source="{Binding file.miniatPath}" />
         </DataTemplate>
     </UserControl.Resources>
 

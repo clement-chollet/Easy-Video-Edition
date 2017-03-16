@@ -95,7 +95,7 @@ namespace EasyVideoEdition.ViewModel
             {
                 Video v = new Video(_filebrowser.filePath, _filebrowser.fileName, _filebrowser.fileSize);
                 listVideo.Add(v);
-                storyBoard.addFile(v, 0, v.duration);
+                storyBoard.addFile(v, 0, v.duration, "Video");
             }
            
             _filebrowser.reset();
@@ -106,12 +106,12 @@ namespace EasyVideoEdition.ViewModel
         /// </summary>
         private void addPhoto()
         {
-            _filebrowser.OpenFile("Toute les images |*.png; *.jpeg; *.jpg|Image PNG (.png)|*.avi|Fichier JPEG (.jpeg, .jpg)|*.jpeg; *.jpg");
+            _filebrowser.OpenFile("Toute les images |*.png; *.jpeg; *.jpg|Image PNG (.png)|*.png|Fichier JPEG (.jpeg, .jpg)|*.jpeg; *.jpg");
             if (_filebrowser.filePath != null)
             {
                 Photo f = new Photo(_filebrowser.filePath, _filebrowser.fileName, _filebrowser.fileSize);
                 listPhoto.Add(f);
-                storyBoard.addFile(f, 0, 5);
+                storyBoard.addFile(f, 0, 5, "Image");
             }
                
             _filebrowser.reset();

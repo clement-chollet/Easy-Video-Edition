@@ -97,6 +97,26 @@ namespace EasyVideoEdition.ViewModel
                 String json = File.ReadAllText(browser.filePath);
                 StoryBoard st = JsonConvert.DeserializeObject<StoryBoard>(json);
 
+                StoryBoard.INSTANCE.purge();
+                VisualAddingViewModel.INSTANCE.listVideo.Clear();
+                VisualAddingViewModel.INSTANCE.listPhoto.Clear();
+
+                foreach (StoryBoardElement ste in st.fileList)
+                {
+                    if(ste.fileType == "Video")
+                    {
+                        Video v = new Video(ste.filePath, ste.fileName, ste.fileSize);
+                        StoryBoard.INSTANCE.addFile(v, ste.startTime, ste.endTime, ste.fileType);
+                        VisualAddingViewModel.INSTANCE.listVideo.Add(v);
+                    }
+
+                    if (ste.fileType == "Image")
+                    {
+                        Photo p = new Photo(ste.filePath, ste.fileName, ste.fileSize);
+                        StoryBoard.INSTANCE.addFile(p, ste.startTime, ste.endTime, ste.fileType);
+                        VisualAddingViewModel.INSTANCE.listPhoto.Add(p);
+                    }
+                }
             }
             MainViewModel.INSTANCE.actualViewIndex = 1;
             browser.reset();

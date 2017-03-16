@@ -49,9 +49,17 @@ namespace EasyVideoEdition.Model
         /// Add a file to the storyboard
         /// </summary>
         /// <param name="fileToAdd"></param>
-        public void addFile(IFile fileToAdd, int startTime, int endTime)
+        public void addFile(IFile fileToAdd, int startTime, int endTime, string type)
         {
-            _fileList.Add(new StoryBoardElement(fileToAdd, startTime, endTime));
+            _fileList.Add(new StoryBoardElement(fileToAdd, startTime, endTime, type, fileToAdd.fileName, fileToAdd.fileSize));
+        }
+
+        /// <summary>
+        /// /!\ Clean the storyboard /!\
+        /// </summary>
+        public void purge()
+        {
+            _fileList.Clear();
         }
     }
 }

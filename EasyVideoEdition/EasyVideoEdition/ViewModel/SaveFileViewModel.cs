@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace EasyVideoEdition.ViewModel
@@ -14,7 +15,7 @@ namespace EasyVideoEdition.ViewModel
     {
         #region Attributes
         private static SaveFileViewModel singleton = new SaveFileViewModel();
-
+        private FileBrowser _browser = new FileBrowser();
 
         #endregion
 
@@ -65,7 +66,10 @@ namespace EasyVideoEdition.ViewModel
             StoryBoard st = StoryBoard.INSTANCE;
            
             String json = JsonConvert.SerializeObject(st);
-            File.WriteAllText("D:\\Test.json", json);
+            String savePath = null;
+            savePath = _browser.SaveFile("Fichier JSON (.json)|*.json");
+            if(savePath != "")
+                File.WriteAllText(savePath, json);
         }
 
         private void SaveProject()

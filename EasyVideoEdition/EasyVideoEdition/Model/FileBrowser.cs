@@ -167,6 +167,15 @@ namespace EasyVideoEdition.Model
             }
         }
 
+        public string SaveFile(String filter)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = filter;
+            sfd.AddExtension = true;
+            sfd.ShowDialog();
+            return sfd.FileName;
+        }
+
 
         /// <summary>
         /// Reset the description of the file

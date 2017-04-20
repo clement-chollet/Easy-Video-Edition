@@ -12,6 +12,6 @@ namespace EasyVideoEdition.Model
         String fileName { get; set; }
         long fileSize { get; set; }
         String miniatPath { get; set; }
-        int duration { get; set; }
+        double duration { get; set; }
     }
 }

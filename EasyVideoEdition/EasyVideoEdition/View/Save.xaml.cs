@@ -24,5 +24,11 @@ namespace EasyVideoEdition.View
         {
             InitializeComponent();
         }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            NewProject.Width = this.ActualWidth / 8.3;
+            OpenProject.Width = this.ActualWidth / 8.3;
+        }
     }
 }

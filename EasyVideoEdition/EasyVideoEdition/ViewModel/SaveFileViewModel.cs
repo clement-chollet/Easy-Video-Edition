@@ -1,6 +1,8 @@
 ﻿using EasyVideoEdition.Model;
 using Newtonsoft.Json;
+using NReco.VideoConverter;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,6 +19,8 @@ namespace EasyVideoEdition.ViewModel
         private static SaveFileViewModel singleton = new SaveFileViewModel();
         private FileBrowser _browser = new FileBrowser();
 
+        private MainVideo _mainVideo = MainVideo.INSTANCE;
+        private VideoConverter _converter = VideoConverter.INSTANCE;
         #endregion
 
         #region Get/Set
@@ -42,6 +46,18 @@ namespace EasyVideoEdition.ViewModel
             }
         }
 
+        public VideoConverter converter
+        {
+            get
+            {
+                return _converter;
+            }
+        }
+        //--------------------------------------------------------------------------------------------\\
+        //----------------------------------------COMMAND LIST----------------------------------------\\
+        //--------------------------------------------------------------------------------------------\\
+
+
         /// <summary>
         /// Command to save the project into a file to future modification
         /// </summary>
@@ -51,6 +67,8 @@ namespace EasyVideoEdition.ViewModel
         /// Command that launch the export of the project into a readable videofile.
         /// </summary>
         public ICommand ExportProjectCommand { get; private set; }
+
+
 
 
         #endregion
@@ -64,17 +82,30 @@ namespace EasyVideoEdition.ViewModel
         private void ExportProject()
         {
             StoryBoard st = StoryBoard.INSTANCE;
-           
+
             String json = JsonConvert.SerializeObject(st);
             String savePath = null;
+            _browser.reset();
             savePath = _browser.SaveFile("Fichier JSON (.json)|*.json");
-            if(savePath != "")
+            if (savePath != "")
                 File.WriteAllText(savePath, json);
         }
 
         private void SaveProject()
         {
-            throw new NotImplementedException();
+            _browser.reset();
+            String savePath = null;
+            savePath = _browser.SaveFile("Fichier AVI (.avi)|*.avi");
+            IEnumerator<StoryBoardElement> fileToExport = StoryBoard.INSTANCE.fileList.GetEnumerator();
+
+            if (savePath != "")
+                VideoConverter.INSTANCE.exportVideoStart(1280, 720, 30, "h264", "ac3", fileToExport, savePath);
+            
+            
         }
+
+
+
+
     }
 }

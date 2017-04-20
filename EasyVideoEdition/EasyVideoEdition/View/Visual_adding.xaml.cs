@@ -70,5 +70,22 @@ namespace EasyVideoEdition.View
             //instructionButton resizing
             instructionsButton.Height = instructionTab.Height - recInstruction.Height; 
         }
+
+        public void MediaEl_Play(object sender, RoutedEventArgs e)
+        {      
+            this.MediaEl.Play();
+        }
+
+        public void MediaEl_Pause(object sender, RoutedEventArgs e)
+        {
+            this.MediaEl.Pause();
+        }
+
+        public void MediaEl_Stop(object sender, RoutedEventArgs e)
+        {
+            this.MediaEl.Stop();
+        }
+
+
     }
 }

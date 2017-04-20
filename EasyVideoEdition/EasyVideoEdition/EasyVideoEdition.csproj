@@ -39,6 +39,12 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NReco.VideoConverter">
+      <HintPath>..\NReco.VideoConverter.dll</HintPath>
+    </Reference>
+    <Reference Include="NReco.VideoInfo">
+      <HintPath>..\NReco.VideoInfo.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -52,6 +58,10 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="Unosquare.FFmpegMediaElement, Version=1.3.1.4, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Unosquare.FFmpegMediaElement.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -63,12 +73,14 @@
     </ApplicationDefinition>
     <Compile Include="Model\FileBrowser.cs" />
     <Compile Include="Model\IFile.cs" />
+    <Compile Include="Model\MainVideo.cs" />
     <Compile Include="Model\Photo.cs" />
     <Compile Include="Model\StoryBoard.cs" />
     <Compile Include="Model\StoryBoardElement.cs" />
     <Compile Include="Model\Subtitle.cs" />
     <Compile Include="Model\Subtitles.cs" />
     <Compile Include="Model\Video.cs" />
+    <Compile Include="Model\VideoConverter.cs" />
     <Compile Include="Model\VideoPlayer.cs" />
     <Compile Include="Model\videoScreenshotCreator.cs" />
     <Compile Include="ObjectBase.cs" />

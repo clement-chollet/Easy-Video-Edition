@@ -14,8 +14,8 @@ namespace EasyVideoEdition.Model
         private IFile _file;
         private string _filePath;
         private string _fileType;
-        private int _startTime;
-        private int _endTime;
+        private TimeSpan _startTime;
+        private TimeSpan _endTime;
         private string _fileName;
         private long _fileSize;
 
@@ -42,7 +42,7 @@ namespace EasyVideoEdition.Model
         /// <summary>
         /// Return or set the startTime of the video
         /// </summary>
-        public int startTime
+        public TimeSpan startTime
         {
             get
             {
@@ -58,7 +58,7 @@ namespace EasyVideoEdition.Model
         /// <summary>
         /// Return or set the endTime of the video
         /// </summary>
-        public int endTime
+        public TimeSpan endTime
         {
             get
             {
@@ -149,7 +149,7 @@ namespace EasyVideoEdition.Model
         /// <param name="fileType"></param>
         /// <param name="fileName"></param>
         /// <param name="fileSize"></param>
-        public StoryBoardElement(IFile file, int start, int end, string fileType, string fileName, long fileSize)
+        public StoryBoardElement(IFile file, TimeSpan start, TimeSpan end, string fileType, string fileName, long fileSize)
         {
             this.file = file;
             this.filePath = file.filePath;

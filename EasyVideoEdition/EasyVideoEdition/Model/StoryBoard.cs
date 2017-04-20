@@ -26,10 +26,11 @@ namespace EasyVideoEdition.Model
                 return singleton;
             }
         }
-
+       
         #region Attributes
         private ObservableCollection<StoryBoardElement> _fileList = new ObservableCollection<StoryBoardElement>();
         private static StoryBoard singleton = new StoryBoard();
+        private TimeSpan _duration = TimeSpan.FromMilliseconds(0);
         #endregion
 
         #region Get/Set
@@ -43,13 +44,28 @@ namespace EasyVideoEdition.Model
                 return _fileList;
             }
         }
+
+        public TimeSpan duration
+        {
+            get
+            {
+                return _duration;
+            }
+
+            set
+            {
+                _duration = value;
+            }
+        }
+
+
         #endregion
 
         /// <summary>
         /// Add a file to the storyboard
         /// </summary>
         /// <param name="fileToAdd"></param>
-        public void addFile(IFile fileToAdd, int startTime, int endTime, string type)
+        public void addFile(IFile fileToAdd, TimeSpan startTime, TimeSpan endTime, string type)
         {
             _fileList.Add(new StoryBoardElement(fileToAdd, startTime, endTime, type, fileToAdd.fileName, fileToAdd.fileSize));
         }

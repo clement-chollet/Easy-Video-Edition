@@ -15,7 +15,7 @@ namespace EasyVideoEdition.Model
         private long _fileSize;
         private string _sizeLabel;
         private String _miniatPath;
-        private int _duration;
+        private double _duration;
         #endregion
 
         #region Get/Set
@@ -99,7 +99,7 @@ namespace EasyVideoEdition.Model
             }
         }
 
-        public int duration
+        public double duration
         {
             get
             {

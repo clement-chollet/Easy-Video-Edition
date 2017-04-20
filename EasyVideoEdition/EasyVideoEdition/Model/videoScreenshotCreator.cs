@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using NReco.VideoInfo;
+using System;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -48,13 +45,20 @@ namespace EasyVideoEdition.Model
 
             m_Player.MediaOpened += new EventHandler(player_MediaOpened);
 
+            var ffProbe = new FFProbe();
+            var videoInfo_1 = ffProbe.GetMediaInfo(videoFilePath);
+
             m_Player.Play();
-            m_Player.Position = TimeSpan.FromSeconds(50);
+            m_Player.Position = TimeSpan.FromSeconds(videoInfo_1.Duration.Seconds/3);
+            m_Player.Pause();
+           
+            
 
         }
 
         private void player_MediaOpened(object sender, EventArgs e)
         {
+            
             DrawingVisual drawingVisual = new DrawingVisual();
             DrawingContext drawingContext = drawingVisual.RenderOpen();
 
@@ -74,7 +78,7 @@ namespace EasyVideoEdition.Model
 
             var byteArrayImage = ms.ToArray();
  
-            File.WriteAllBytes("D:\\Eve\\Temp\\Screenshot\\" + videoName.Split('.')[0] + ".jpeg", byteArrayImage);
+          //  File.WriteAllBytes("D:\\Eve\\Temp\\Screenshot\\" + videoName.Split('.')[0] + ".jpeg", byteArrayImage);
         }
     }
 }

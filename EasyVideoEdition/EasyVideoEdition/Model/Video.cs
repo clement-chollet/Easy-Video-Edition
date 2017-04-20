@@ -1,5 +1,8 @@
-﻿using System;
+﻿using NReco.VideoConverter;
+using NReco.VideoInfo;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,9 +16,12 @@ namespace EasyVideoEdition.Model
         private String _filePath;
         private String _fileName;
         private String _sizeLabel;
+        private String _durationLabel;
+
         private long _fileSize;
-        private int _duration;
+        private double _duration;
         private string _miniatPath;
+
         #endregion
 
         #region Get/Set
@@ -70,7 +76,7 @@ namespace EasyVideoEdition.Model
         /// <summary>
         /// Duration of the video in sec
         /// </summary>
-        public int duration
+        public double duration
         {
             get
             {
@@ -84,7 +90,7 @@ namespace EasyVideoEdition.Model
         }
 
         /// <summary>
-        ///  Contains the label of the file size in the format "size + unit"
+        /// Contains the label of the file size in the format "size + unit"
         /// </summary>
         public string sizeLabel
         {
@@ -100,8 +106,27 @@ namespace EasyVideoEdition.Model
         }
 
         /// <summary>
-        /// 
+        /// Contains the label of the file duration in the format "duration + unit"
         /// </summary>
+        public string durationLabel
+        {
+            get
+            {
+                return _durationLabel;
+            }
+
+            set
+            {
+                _durationLabel = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the miniat path.
+        /// </summary>
+        /// <value>
+        /// The miniat path.
+        /// </value>
         public string miniatPath
         {
             get
@@ -119,16 +144,27 @@ namespace EasyVideoEdition.Model
 
         #endregion
 
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Video"/> class.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="size">The size.</param>
         public Video(String path, String name, long size)
         {
+            var ffProbe = new FFProbe();
+            var videoInfo = ffProbe.GetMediaInfo(path);
+
             this.filePath = path;
             this.fileName = name;
+            
             videoScreenshotCreator vsc = new videoScreenshotCreator(filePath, fileName);
             this.fileSize = size;
-            this.duration = 2017;
+            this.duration = videoInfo.Duration.TotalMilliseconds;
+            this.durationLabel = calcDuration(videoInfo.Duration);
+
             this.miniatPath = "D:\\EVE\\loading.png";
-            sizeLabel = calcSize(size);
+            this.sizeLabel = calcSize(size);
             Task.Delay(2000).ContinueWith(_ =>
             {
                 this.miniatPath = "D:\\Eve\\Temp\\Screenshot\\" + fileName.Split('.')[0] + ".jpeg";
@@ -137,9 +173,15 @@ namespace EasyVideoEdition.Model
            
         }
 
+
+        /// <summary>
+        /// Calculates the size with the appropriate unit.
+        /// </summary>
+        /// <param name="size">The size.</param>
+        /// <returns>A string with the form of size + unit</returns>
         protected string calcSize(long size)
         {
-            String unit = "YOLO";
+            String unit = "";
             double div;
 
             if (size > 1000000000)
@@ -173,5 +215,27 @@ namespace EasyVideoEdition.Model
             return Math.Round(size / div, 1) + unit;
         }
 
+        /// <summary>
+        /// Calculates the duration with an appropriate unit.
+        /// </summary>
+        /// <param name="duration"></param>
+        /// <returns>A string with the form of duration + unit</returns>
+        protected string calcDuration(TimeSpan duration)
+        {
+            String unit = "";
+            double dur;
+           
+            if(duration.TotalSeconds < 60)
+            {
+                dur = duration.TotalSeconds;
+                unit = " sec";
+            }
+            else
+            {
+                dur = duration.TotalMinutes;
+                unit = " min";
+            }
+            return Math.Round(dur, 1) + unit;
+        }
     }
 }

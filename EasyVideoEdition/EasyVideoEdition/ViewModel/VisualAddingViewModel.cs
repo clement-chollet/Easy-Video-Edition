@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace EasyVideoEdition.ViewModel
 {
-    class VisualAddingViewModel
+    class VisualAddingViewModel : ObjectBase
     {
         /// <summary>
         /// Get the instance of the viewModel
@@ -28,6 +29,8 @@ namespace EasyVideoEdition.ViewModel
         private ObservableCollection<Video> _listVideo;
         private ObservableCollection<Photo> _listPhoto;
         private StoryBoard _storyBoard = StoryBoard.INSTANCE;
+        private MainVideo _mainVideo = MainVideo.INSTANCE;
+        private bool _firstVideo = true;
         #endregion
 
         #region Get/Set
@@ -68,6 +71,22 @@ namespace EasyVideoEdition.ViewModel
                 _storyBoard = value;
             }
         }
+
+        /// <summary>
+        /// Get and set the main video which will be playable in the ffmediaElement
+        /// </summary>
+        public MainVideo mainVideo
+        {
+            get
+            {
+                return _mainVideo;
+            }
+            set
+            {
+                _mainVideo = value;
+                RaisePropertyChanged("mainVideo");
+            }
+        }
         #endregion
 
         #region CommandList
@@ -95,7 +114,19 @@ namespace EasyVideoEdition.ViewModel
             {
                 Video v = new Video(_filebrowser.filePath, _filebrowser.fileName, _filebrowser.fileSize);
                 listVideo.Add(v);
-                storyBoard.addFile(v, 0, v.duration, "Video");
+
+                storyBoard.addFile(v, StoryBoard.INSTANCE.duration, StoryBoard.INSTANCE.duration.Add(TimeSpan.FromMilliseconds(v.duration)), "Video");
+                StoryBoard.INSTANCE.duration = StoryBoard.INSTANCE.duration.Add(TimeSpan.FromMilliseconds(v.duration));
+                if (_firstVideo == true)
+                {
+                    mainVideo.video = v;
+                    _firstVideo = false;
+                }
+                else
+                {
+                    //mainVideo.concatVideoStart(v);
+                }
+                   
             }
            
             _filebrowser.reset();
@@ -111,7 +142,7 @@ namespace EasyVideoEdition.ViewModel
             {
                 Photo f = new Photo(_filebrowser.filePath, _filebrowser.fileName, _filebrowser.fileSize);
                 listPhoto.Add(f);
-                storyBoard.addFile(f, 0, 5, "Image");
+                storyBoard.addFile(f, TimeSpan.FromMilliseconds(0), TimeSpan.FromSeconds(5), "Image");
             }
                
             _filebrowser.reset();

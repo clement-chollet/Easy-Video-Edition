@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:EasyVideoEdition.View"
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1280">
-    <Grid>
+    <Grid SizeChanged="Window_SizeChanged">
         <Grid.RowDefinitions>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -16,7 +16,10 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="1" d:LayoutOverrides="Height, LeftMargin, RightMargin" VerticalAlignment="Center">
             <Button x:Name="NewProject" Content="Sauvegarder le projet" VerticalContentAlignment="Center"  FontSize="28" Background="White" Padding="1,0,1,1" Height="171" VerticalAlignment="Top" Margin="0,30,0,0" MinWidth="450" Command="{Binding ExportProjectCommand}"/>
-            <Button x:Name="OpenProject" Content="Exporter la vidéo" VerticalContentAlignment="Center"  FontSize="28" Background="White" Padding="1,0,1,1" Height="171" VerticalAlignment="Top" Margin="0,30,0,0" MinWidth="450" Command="{Binding OpenFileCommand}"/>
+            <Button x:Name="OpenProject" Content="Exporter la vidéo" VerticalContentAlignment="Center"  FontSize="28" Background="White" Padding="1,0,1,1" Height="171" VerticalAlignment="Top" Margin="0,30,0,0" MinWidth="450" Command="{Binding SaveProjectCommand}"/>
+            <ProgressBar MinHeight="50px" MaxWidth="600px" Margin="20px" Maximum="100" Minimum="0" Value="{Binding converter.processedCalc}"></ProgressBar>
         </StackPanel>
+
+      
     </Grid>
 </UserControl>

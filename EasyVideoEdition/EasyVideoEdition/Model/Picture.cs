@@ -7,7 +7,10 @@ using System.Windows;
 
 namespace EasyVideoEdition.Model
 {
-    class Photo : IFile
+    /// <summary>
+    /// Describe a picture. Implement the interface IFile
+    /// </summary>
+    class Picture : IFile
     {
         #region Attributes
         private String _filePath;
@@ -20,7 +23,7 @@ namespace EasyVideoEdition.Model
 
         #region Get/Set
         /// <summary>
-        /// Get of set the path of the file
+        /// Get of set the path of the picture
         /// </summary>
         public string filePath
         {
@@ -36,7 +39,7 @@ namespace EasyVideoEdition.Model
         }
 
         /// <summary>
-        /// Get or Set the name of the file
+        /// Get or Set the name of the picture
         /// </summary>
         public string fileName
         {
@@ -52,7 +55,7 @@ namespace EasyVideoEdition.Model
         }
 
         /// <summary>
-        /// Size of the file
+        /// Size of the picture in octet
         /// </summary>
         public long fileSize
         {
@@ -84,7 +87,7 @@ namespace EasyVideoEdition.Model
         }
 
         /// <summary>
-        /// 
+        /// Contain the path of the thumbnail used for preview 
         /// </summary>
         public string miniatPath
         {
@@ -99,6 +102,9 @@ namespace EasyVideoEdition.Model
             }
         }
 
+        /// <summary>
+        /// Contains the duration of the picture in sec. It's how many time it will appears (5 sec by default)
+        /// </summary>
         public double duration
         {
             get
@@ -113,8 +119,13 @@ namespace EasyVideoEdition.Model
         }
         #endregion
 
-
-        public Photo(String path, String name, long size)
+        /// <summary>
+        /// Base constructor of a picture. Init it's path, it's name, it's size and size Label, the thumbnail path.
+        /// </summary>
+        /// <param name="path">Path of the picture</param>
+        /// <param name="name">Name of the picture with the extension</param>
+        /// <param name="size">Size of the picture</param>
+        public Picture(String path, String name, long size)
         {
             this.filePath = path;
             this.fileName = name;
@@ -123,9 +134,14 @@ namespace EasyVideoEdition.Model
             sizeLabel = calcSize(size);
         }
 
+        /// <summary>
+        /// Method that calc the size of the picture in a readable size and change it's unit depending of the size
+        /// </summary>
+        /// <param name="size">Size to proceed</param>
+        /// <returns>The new size + the new unit</returns>
         protected string calcSize(long size)
         {
-            String unit = "YOLO";
+            String unit = "";
             double div;
 
             if (size > 1000000000)

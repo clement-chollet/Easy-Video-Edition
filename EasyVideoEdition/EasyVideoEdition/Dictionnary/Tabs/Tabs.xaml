@@ -1,0 +1,55 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="EasyVideoEdition.Dictionnary.Tabs">
+
+
+    <!-- Template for the top tabs -->
+    <ControlTemplate x:Key="tabItemTemplate" TargetType="{x:Type TabItem}">
+        <!-- Definition of the tab visual -->
+        <Grid>
+            <!-- Tab border -->
+            <Border 
+                Height="50"
+                Name="Border"
+                Margin="0,0,-4,0" 
+                Background="Transparent"
+                BorderBrush="#CBCBCB" 
+                BorderThickness="0,0,0,4" >
+                
+                <!-- Present Content (text) of the button. -->    
+                <ContentPresenter x:Name="ContentSite"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    ContentSource="Header"
+                    Margin="12,2,12,2"
+                    RecognizesAccessKey="True"/>
+
+            </Border>
+            <!-- Rectangle to change the color when the mouse is over -->
+            <Rectangle x:Name="whiteRectangle"  Fill = "White" Opacity="0"/>
+
+        </Grid>
+        <!-- Actions on the tab -->
+        <ControlTemplate.Triggers>
+            <!-- Action when the tab is selected -->
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Panel.ZIndex" Value="100" />
+                <Setter TargetName="Border" Property="BorderBrush" Value="#02ADD9" />
+                <Setter TargetName="Border" Property="BorderThickness" Value="0,0,0,4" />
+            </Trigger>
+            <!-- Action when the mouse is over the tab -->
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property ="Rectangle.Opacity" TargetName="whiteRectangle" Value=".1" />
+            </Trigger>
+            <!-- Action when the tab is disabled -->
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="TabItem.Effect">
+                    <Setter.Value>
+                        <DropShadowEffect Color="Black" Direction="320" ShadowDepth="0" BlurRadius="5" Opacity="0.5" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+</ResourceDictionary>

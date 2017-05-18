@@ -1,19 +1,35 @@
-﻿<Window x:Class="EasyVideoEdition.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EasyVideoEdition"
-        xmlns:View="clr-namespace:EasyVideoEdition.View"
+        xmlns:Utils="clr-namespace:EasyVideoEdition.Utils"
+        xmlns:View="clr-namespace:EasyVideoEdition.View" x:Class="EasyVideoEdition.MainWindow"
         xmlns:ViewModels="clr-namespace:EasyVideoEdition.ViewModel"
         mc:Ignorable="d"
         Title="CroustyVideo" Height="720" Width="1280"
         MinHeight ="710"
-        MinWidth="710">
+        MinWidth="850"    
+        >
 
-    <Grid SizeChanged="Window_SizeChanged">
-        <TabControl x:Name="tabControl" BorderBrush="#FF979797" ItemsSource="{Binding Items}" SelectedIndex="{Binding actualViewIndex}">
+    <!-- Tab control resources for resizing -->
+    <Window.Resources>
+        <Utils:TabSizeConverter x:Key="tabSizeConverter" />
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="Width">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource tabSizeConverter}">
+                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor,AncestorType={x:Type TabControl}}" />
+                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor,AncestorType={x:Type TabControl}}" Path="ActualWidth" />
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
 
+    <Grid Background="#FF33333B"  SizeChanged="Window_SizeChanged">
+        <TabControl x:Name="tabControl" BorderBrush="#CBCBCB" Background="#FFE6E5EE" BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding Items}" SelectedIndex="{Binding actualViewIndex}">
             <TabControl.Resources>
                 <DataTemplate DataType="{x:Type ViewModels:OpeningViewModel}">
                     <View:Open/>
@@ -31,11 +47,26 @@
                     <View:Subtitles_adding/>
                 </DataTemplate>
 
+                <DataTemplate DataType="{x:Type ViewModels:AudioAddingViewModel}">
+                    <View:Audio_adding/>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type ViewModels:AudioEditionViewModel}">
+                    <View:Audio_edition/>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type ViewModels:ChapterViewModel}">
+                    <View:Chapters_adding/>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type ViewModels:VisualEditionViewModel}">
+                    <View:Visual_edition/>
+                </DataTemplate>
+
                 <DataTemplate DataType="{x:Type ViewModels:NullViewModel}">
                     <View:Open/>
                 </DataTemplate>
             </TabControl.Resources>
-
         </TabControl>
     </Grid>
 </Window>

@@ -46,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -60,6 +60,7 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -68,9 +69,10 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="name" use="required" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
@@ -85,9 +87,10 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -109,9 +112,66 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="addAudioHelp" xml:space="preserve">
+    <value>This tab allows you to add sounds, music and to record yourself</value>
+  </data>
+  <data name="addAudioInstrRec" xml:space="preserve">
+    <value>Click the button to record yourself</value>
+  </data>
+  <data name="addAudioInstrSound" xml:space="preserve">
+    <value>Click the button to add a sound file</value>
+  </data>
+  <data name="addChapterHelp" xml:space="preserve">
+    <value>This tab allows you to add chapters to your video</value>
+  </data>
+  <data name="addChapterInstrText" xml:space="preserve">
+    <value>Put the thumb where you want to add the chapter and click the button</value>
+  </data>
+  <data name="addSubtitlesHelp" xml:space="preserve">
+    <value>This tab allows you to add subtitles to your video</value>
+  </data>
+  <data name="addSubtitlesInstrText" xml:space="preserve">
+    <value>Put the desired section between the two slider thumbs and click the button. Then specify the text you want to see displayed.</value>
+  </data>
+  <data name="addVisualHelp" xml:space="preserve">
+    <value>This tab allows you to add videos and pictures, as well as record yourself</value>
+  </data>
+  <data name="addVisualInstrPic" xml:space="preserve">
+    <value>Click the button to add a picture</value>
+  </data>
+  <data name="addVisualInstrRec" xml:space="preserve">
+    <value>Click the button to record yourself</value>
+  </data>
+  <data name="addVisualInstrVid" xml:space="preserve">
+    <value>Click the button to add a video</value>
+  </data>
+  <data name="delChapterInstrText" xml:space="preserve">
+    <value>Choose the chapter you want to delete and click the button</value>
+  </data>
+  <data name="delSubtitlesInstrText" xml:space="preserve">
+    <value>Choose the subtitle you want to delete and click the button</value>
+  </data>
+  <data name="editAudioHelp" xml:space="preserve">
+    <value>This tab allows you to cut and edit the sound of your video</value>
+  </data>
+  <data name="editAudioInstrMusic" xml:space="preserve">
+    <value>Put the desired section between the two slider thumbs and click the button</value>
+  </data>
+  <data name="editAudioInstrSpeech" xml:space="preserve">
+    <value>Put the desired section between the two slider thumbs and click the button</value>
+  </data>
+  <data name="editVisualHelp" xml:space="preserve">
+    <value>This tab allows you to cut and edit your videos</value>
+  </data>
+  <data name="editVisualInstrCut" xml:space="preserve">
+    <value>Put the desired section between the two slider thumbs and click the button</value>
+  </data>
+  <data name="editVisualInstrMute" xml:space="preserve">
+    <value>Put the desired section between the two slider thumbs and click the button</value>
+  </data>
 </root>

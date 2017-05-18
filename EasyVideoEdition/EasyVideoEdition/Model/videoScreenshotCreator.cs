@@ -1,12 +1,19 @@
-﻿using NReco.VideoInfo;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace EasyVideoEdition.Model
 {
+    /// <summary>
+    /// Class to create a thumbnail for the video added in the project.
+    /// It's actualy broken with some codec of video due to the MediaPlayer. TO BE REWORKED
+    /// </summary>
     class videoScreenshotCreator
     {
         // Create a screenshot of the video
@@ -34,31 +41,29 @@ namespace EasyVideoEdition.Model
         }
         #endregion
 
+        /// <summary>
+        /// Create a thumbmail of a video.
+        /// </summary>
+        /// <param name="videoFilePath">Path of the video</param>
+        /// <param name="videoName">Name of the video. Will be used to name the Thumbmail</param>
         public videoScreenshotCreator(String videoFilePath, String videoName)
         {
             this.videoName = videoName;
             m_Player = new MediaPlayer();
             m_Player.Open(new Uri(videoFilePath));
-            
+
             vd.Rect = new Rect(0, 0, 120, 100);
             vd.Player = m_Player;
 
             m_Player.MediaOpened += new EventHandler(player_MediaOpened);
 
-            var ffProbe = new FFProbe();
-            var videoInfo_1 = ffProbe.GetMediaInfo(videoFilePath);
-
             m_Player.Play();
-            m_Player.Position = TimeSpan.FromSeconds(videoInfo_1.Duration.Seconds/3);
-            m_Player.Pause();
-           
-            
+            m_Player.Position = TimeSpan.FromSeconds(50);
 
         }
 
         private void player_MediaOpened(object sender, EventArgs e)
         {
-            
             DrawingVisual drawingVisual = new DrawingVisual();
             DrawingContext drawingContext = drawingVisual.RenderOpen();
 
@@ -77,8 +82,8 @@ namespace EasyVideoEdition.Model
             encoder.Save(ms);
 
             var byteArrayImage = ms.ToArray();
- 
-          //  File.WriteAllBytes("D:\\Eve\\Temp\\Screenshot\\" + videoName.Split('.')[0] + ".jpeg", byteArrayImage);
+
+            File.WriteAllBytes("D:\\Eve\\Temp\\Screenshot\\" + videoName.Split('.')[0] + ".jpeg", byteArrayImage);
         }
     }
 }

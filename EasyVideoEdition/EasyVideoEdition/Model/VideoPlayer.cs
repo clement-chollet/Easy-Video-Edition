@@ -2,13 +2,22 @@
 
 namespace EasyVideoEdition.Model
 {
-        /// <summary>
-        /// 
-        /// </summary>
-      class VideoPlayer : ObjectBase
-       {
+    /// <summary>
+    /// Class that is used to tell the source to the FFMediaElement
+    /// </summary>
+    class VideoPlayer : ObjectBase
+    {
+
+        public static VideoPlayer INSTANCE
+        {
+            get
+            {
+                return singleton;
+            }
+        }
 
         #region Attributes
+        private static VideoPlayer singleton = new VideoPlayer();
         private String _source = "";
         #endregion
 
@@ -31,11 +40,10 @@ namespace EasyVideoEdition.Model
         #endregion
 
         /// <summary>
-        /// Creates a video player
+        /// Create a video player
         /// </summary>
         public VideoPlayer()
-        {  
+        {
         }
-
-    }       
+    }
 }

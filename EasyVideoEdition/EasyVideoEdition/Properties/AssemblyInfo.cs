@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("EasyVideoEdition")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Université du Maine")]
 [assembly: AssemblyProduct("EasyVideoEdition")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyCopyright("Copyright © Université du Maine 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

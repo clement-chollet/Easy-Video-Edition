@@ -14,12 +14,14 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
+        <!-- Save/Export project and progress bar -->
         <StackPanel Grid.Column="1" d:LayoutOverrides="Height, LeftMargin, RightMargin" VerticalAlignment="Center">
-            <Button x:Name="NewProject" Content="Sauvegarder le projet" VerticalContentAlignment="Center"  FontSize="28" Background="White" Padding="1,0,1,1" Height="171" VerticalAlignment="Top" Margin="0,30,0,0" MinWidth="450" Command="{Binding ExportProjectCommand}"/>
-            <Button x:Name="OpenProject" Content="Exporter la vidéo" VerticalContentAlignment="Center"  FontSize="28" Background="White" Padding="1,0,1,1" Height="171" VerticalAlignment="Top" Margin="0,30,0,0" MinWidth="450" Command="{Binding SaveProjectCommand}"/>
-            <ProgressBar MinHeight="50px" MaxWidth="600px" Margin="20px" Maximum="100" Minimum="0" Value="{Binding converter.processedCalc}"></ProgressBar>
+            <Button x:Name="SaveProject" Content="Enregistrer le projet" VerticalContentAlignment="Center"  FontSize="28" Background="White" Padding="1,0,1,1" Height="175" MinWidth="300" VerticalAlignment="Top" Margin="0,30,0,0" Template="{StaticResource newButtonTemplate}" Command="{Binding ExportProjectCommand}"/>
+            <Button x:Name="ExportProject" Content="Exporter le projet" VerticalContentAlignment="Center"  FontSize="28" Background="White" Padding="1,0,1,1" Height="175" MinWidth="300" VerticalAlignment="Top" Margin="0,30,0,0" Template="{StaticResource openButtonTemplate}"  Command="{Binding SaveProjectCommand}"/>
+            <ProgressBar x:Name="Progressbar" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,30,0,0" MinWidth="300" Height="50" Maximum="100" Minimum="0" Value="{Binding converter.processedCalc}"/>
         </StackPanel>
 
-      
+
+
     </Grid>
 </UserControl>

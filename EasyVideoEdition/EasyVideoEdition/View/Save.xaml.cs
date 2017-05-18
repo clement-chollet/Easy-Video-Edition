@@ -25,10 +25,13 @@ namespace EasyVideoEdition.View
             InitializeComponent();
         }
 
+        // Action when the window is resized
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            NewProject.Width = this.ActualWidth / 8.3;
-            OpenProject.Width = this.ActualWidth / 8.3;
+            // Save/Export project buttons and progress bar resizing
+            SaveProject.Width = this.ActualWidth / 2;
+            ExportProject.Width = this.ActualWidth / 2;
+            Progressbar.Width = this.ActualWidth / 2.5;
         }
     }
 }

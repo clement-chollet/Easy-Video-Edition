@@ -12,6 +12,10 @@ using System.Xml.XPath;
 
 namespace EasyVideoEdition.Model
 {
+    /// <summary>
+    /// Class that contains the method to convert and export the video
+    /// Singleton
+    /// </summary>
     class VideoConverter : ObjectBase
     {
         #region Attributes
@@ -29,6 +33,9 @@ namespace EasyVideoEdition.Model
         #endregion
 
         #region Get/Set
+        /// <summary>
+        /// Get the instance of the class
+        /// </summary>
         public static VideoConverter INSTANCE
         {
             get
@@ -88,12 +95,16 @@ namespace EasyVideoEdition.Model
         /// <param name="savePath">Where to save the new video</param>
         public void exportVideoStart(int width, int height, int frameRate, string outputVideoCodec, string outputAudioCodec, IEnumerator<StoryBoardElement> videoList, String savePath)
         {
+            int nbVideo = 0;
             while (videoList.MoveNext())
             {
+                nbVideo++;
                 StoryBoardElement e = (StoryBoardElement)videoList.Current;
                 _totalConvertDuration += e.file.duration;
             }
-            _totalConvertDuration *= 2;
+            
+            if(nbVideo > 1)
+                _totalConvertDuration *= 2;
             videoList.Reset();
 
             Thread convertThread = new Thread(() =>
@@ -117,12 +128,12 @@ namespace EasyVideoEdition.Model
                 videoList.Reset();
                 //End of convertion
                 //-------------------------
-
-                Video FINAL = concatVideoArray(videoArray, width, height, frameRate, outputVideoCodec, savePath);
-
+                if (nbVideo > 1)
+                {
+                    Video FINAL = concatVideoArray(videoArray, width, height, frameRate, outputVideoCodec, savePath);
+                }
                 MessageBox.Show("Export de la vidéo termniné !");
             });
-
             convertThread.Start();
         }
 
@@ -191,9 +202,9 @@ namespace EasyVideoEdition.Model
             concatSetting.SetVideoFrameSize(width, height);
 
             ffMpegConverter.ConvertProgress += updateProgress;
-            ffMpegConverter.ConcatMedia(inputVideoPaths, outputVideoPath, Format.avi, concatSetting);
-
+            ffMpegConverter.ConcatMedia(inputVideoPaths, outputVideoPath, Format.mp4, concatSetting);
             return new Video(outputVideoPath, "final", outputSize);
+
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
 ﻿using EasyVideoEdition.Model;
+using GongSolutions.Wpf.DragDrop;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace EasyVideoEdition.ViewModel
@@ -27,17 +29,20 @@ namespace EasyVideoEdition.ViewModel
         private static VisualAddingViewModel singleton = new VisualAddingViewModel();
         private FileBrowser _filebrowser = new FileBrowser();
         private ObservableCollection<Video> _listVideo;
-        private ObservableCollection<Photo> _listPhoto;
+        private ObservableCollection<Picture> _listPhoto;
         private StoryBoard _storyBoard = StoryBoard.INSTANCE;
         private MainVideo _mainVideo = MainVideo.INSTANCE;
+        private VideoPlayer _videoPlayer = VideoPlayer.INSTANCE;
+        private VideoTimer _videoTimer = VideoTimer.INSTANCE;
         private bool _firstVideo = true;
+        private Visibility _isNoVideoAlert = Visibility.Visible;
         #endregion
 
         #region Get/Set
         /// <summary>
         /// Get the list of the photo added to the project
         /// </summary>
-        public ObservableCollection<Photo> listPhoto
+        public ObservableCollection<Picture> listPhoto
         {
             get
             {
@@ -87,21 +92,55 @@ namespace EasyVideoEdition.ViewModel
                 RaisePropertyChanged("mainVideo");
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public VideoPlayer videoPlayer
+        {
+            get
+            {
+                return _videoPlayer;
+            }
+
+            set
+            {
+                _videoPlayer = value;
+                RaisePropertyChanged("videoPlayer");
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Visibility isNoVideoAlert
+        {
+            get
+            {
+                return _isNoVideoAlert;
+            }
+            set
+            {
+                _isNoVideoAlert = value;
+                RaisePropertyChanged("isNoVideoAlert");
+            }
+        }
         #endregion
 
         #region CommandList
         public ICommand addVideoCommand { get; private set; }
         public ICommand addPhotoCommand { get; private set; }
-
+        public ICommand removeFileCommand { get; private set; }
 
         #endregion
 
         private VisualAddingViewModel()
         {
             _listVideo = new ObservableCollection<Video>();
-            _listPhoto = new ObservableCollection<Photo>();
+            _listPhoto = new ObservableCollection<Picture>();
             addPhotoCommand = new RelayCommand(addPhoto);
             addVideoCommand = new RelayCommand(addVideo);
+            removeFileCommand = new RelayCommand(removeFile);
         }
 
         /// <summary>
@@ -110,25 +149,27 @@ namespace EasyVideoEdition.ViewModel
         private void addVideo()
         {
             _filebrowser.OpenFile("Toute les vidéos |*.avi; *.mkv; *.mp4|Fichier AVI (.avi)|*.avi|Fichier MKV (*.mkv)|*.mkv|Fichier MP4 (.mp4)|*.mp4");
-            if(_filebrowser.filePath != null)
+            if (_filebrowser.filePath != null)
             {
                 Video v = new Video(_filebrowser.filePath, _filebrowser.fileName, _filebrowser.fileSize);
                 listVideo.Add(v);
 
                 storyBoard.addFile(v, StoryBoard.INSTANCE.duration, StoryBoard.INSTANCE.duration.Add(TimeSpan.FromMilliseconds(v.duration)), "Video");
                 StoryBoard.INSTANCE.duration = StoryBoard.INSTANCE.duration.Add(TimeSpan.FromMilliseconds(v.duration));
+
                 if (_firstVideo == true)
                 {
+                    videoPlayer.source = v.filePath;
                     mainVideo.video = v;
                     _firstVideo = false;
+                    isNoVideoAlert = Visibility.Hidden;
                 }
                 else
                 {
-                    //mainVideo.concatVideoStart(v);
+                    _videoTimer.stopTimer();
                 }
-                   
             }
-           
+
             _filebrowser.reset();
         }
 
@@ -140,12 +181,61 @@ namespace EasyVideoEdition.ViewModel
             _filebrowser.OpenFile("Toute les images |*.png; *.jpeg; *.jpg|Image PNG (.png)|*.png|Fichier JPEG (.jpeg, .jpg)|*.jpeg; *.jpg");
             if (_filebrowser.filePath != null)
             {
-                Photo f = new Photo(_filebrowser.filePath, _filebrowser.fileName, _filebrowser.fileSize);
+                Picture f = new Picture(_filebrowser.filePath, _filebrowser.fileName, _filebrowser.fileSize);
                 listPhoto.Add(f);
                 storyBoard.addFile(f, TimeSpan.FromMilliseconds(0), TimeSpan.FromSeconds(5), "Image");
             }
-               
+
             _filebrowser.reset();
         }
+
+        /// <summary>
+        /// Remove a file from the file list. If the file also appears in the storboard the file is also removed from it.
+        /// </summary>
+        /// <param name="file">The file to remove</param>
+        private void removeFile(Object file)
+        {
+            IEnumerator<StoryBoardElement> search = _storyBoard.fileList.GetEnumerator();
+            StoryBoardElement fileToRemove = null;
+            switch (file.GetType().Name)
+            {
+                case "Video":
+                    {
+                        Video v = (Video)file;
+                        listVideo.Remove(v);
+
+                        while (search.MoveNext())
+                        {
+                            if (search.Current.filePath == v.filePath)
+                            {
+                                fileToRemove = search.Current;
+                            }
+                        }
+
+                        break;
+                    }
+
+                case "Picture":
+                    {
+                        Picture p = (Picture)file;
+                        listPhoto.Remove(p);
+
+                        while (search.MoveNext())
+                        {
+                            if (search.Current.filePath == p.filePath)
+                            {
+                                fileToRemove = search.Current;
+                            }
+                        }
+
+                        break;
+                    }
+            }
+
+            storyBoard.fileList.Remove(fileToRemove);
+            _videoTimer.stopTimer();
+
+        }
+
     }
 }

@@ -5,10 +5,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace EasyVideoEdition.Model
 {
+    /// <summary>
+    /// Describe a Video. Implement the interface IFile
+    /// </summary>
     class Video : ObjectBase, IFile
     {
 
@@ -147,9 +151,9 @@ namespace EasyVideoEdition.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Video"/> class.
         /// </summary>
-        /// <param name="path">The path.</param>
-        /// <param name="name">The name.</param>
-        /// <param name="size">The size.</param>
+        /// <param name="path">The path of the video</param>
+        /// <param name="name">The name of the video with the extension</param>
+        /// <param name="size">The size of the video </param>
         public Video(String path, String name, long size)
         {
             var ffProbe = new FFProbe();
@@ -157,20 +161,19 @@ namespace EasyVideoEdition.Model
 
             this.filePath = path;
             this.fileName = name;
-            
+
             videoScreenshotCreator vsc = new videoScreenshotCreator(filePath, fileName);
             this.fileSize = size;
             this.duration = videoInfo.Duration.TotalMilliseconds;
             this.durationLabel = calcDuration(videoInfo.Duration);
 
-            this.miniatPath = "D:\\EVE\\loading.png";
+            this.miniatPath = "pack://application:,,,/Resources/loading_black.png";
             this.sizeLabel = calcSize(size);
             Task.Delay(2000).ContinueWith(_ =>
             {
                 this.miniatPath = "D:\\Eve\\Temp\\Screenshot\\" + fileName.Split('.')[0] + ".jpeg";
             });
-           
-           
+
         }
 
 

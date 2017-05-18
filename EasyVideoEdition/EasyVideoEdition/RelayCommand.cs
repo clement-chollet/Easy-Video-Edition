@@ -9,6 +9,7 @@ class RelayCommand : ICommand
 
     private Action function;
     private Predicate<Object> canExec;
+    private Action<Object> functionWithParam;
 
     /// <summary>
     /// Create a relay command who launch the function f
@@ -19,16 +20,35 @@ class RelayCommand : ICommand
         this.function = f;
     }
 
+    /// <summary>
+    /// Create a relay command who launch the function f. Can have parameter
+    /// </summary>
+    /// <param name="f">Function to launch</param>
+    public RelayCommand(Action<Object> f)
+    {
+        this.functionWithParam = f;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="f"></param>
+    /// <param name="canExec"></param>
     public RelayCommand(Action f, Predicate<Object> canExec)
     {
         this.function = f;
         this.canExec = canExec;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="parameter"></param>
+    /// <returns></returns>
     public bool CanExecute(object parameter)
     {
         if (this.canExec == null)
-            return this.function != null;
+            return this.function != null || this.functionWithParam != null;
         else
             return this.canExec(parameter);
     }
@@ -45,5 +65,11 @@ class RelayCommand : ICommand
         {
             this.function();
         }
+        else
+        {
+            if (this.functionWithParam != null)
+                this.functionWithParam(parameter);
+        }
+      
     }
 }

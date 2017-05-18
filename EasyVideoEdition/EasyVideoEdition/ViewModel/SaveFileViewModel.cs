@@ -13,6 +13,10 @@ using System.Windows.Input;
 
 namespace EasyVideoEdition.ViewModel
 {
+    /// <summary>
+    /// View Model of the view Save.xaml Define the command needed to save the project and export video file.
+    /// SINGLETON
+    /// </summary>
     class SaveFileViewModel : ObjectBase, IBaseViewModel
     {
         #region Attributes
@@ -53,6 +57,7 @@ namespace EasyVideoEdition.ViewModel
                 return _converter;
             }
         }
+
         //--------------------------------------------------------------------------------------------\\
         //----------------------------------------COMMAND LIST----------------------------------------\\
         //--------------------------------------------------------------------------------------------\\
@@ -73,12 +78,19 @@ namespace EasyVideoEdition.ViewModel
 
         #endregion
 
+        /// <summary>
+        /// Init the ViewModel by creating the command
+        /// </summary>
         private SaveFileViewModel()
         {
             SaveProjectCommand = new RelayCommand(SaveProject);
             ExportProjectCommand = new RelayCommand(ExportProject);
         }
 
+        /// <summary>
+        /// Method that export the project into a json file that describe the said project. 
+        /// The JSON can be opened later to retreive it's information.
+        /// </summary>
         private void ExportProject()
         {
             StoryBoard st = StoryBoard.INSTANCE;
@@ -91,18 +103,23 @@ namespace EasyVideoEdition.ViewModel
                 File.WriteAllText(savePath, json);
         }
 
+        /// <summary>
+        /// Method that export the project into a video file created from the storyboard.
+        /// Without parameters this function export the video into a .mp4 file whit:
+        /// H264 codec for the video
+        /// AC3 for the audio
+        /// </summary>
         private void SaveProject()
         {
             _browser.reset();
             String savePath = null;
-            savePath = _browser.SaveFile("Fichier AVI (.avi)|*.avi");
+            savePath = _browser.SaveFile("Fichier mp4 (.mp4)|*.mp4");
             IEnumerator<StoryBoardElement> fileToExport = StoryBoard.INSTANCE.fileList.GetEnumerator();
 
             if (savePath != "")
                 VideoConverter.INSTANCE.exportVideoStart(1280, 720, 30, "h264", "ac3", fileToExport, savePath);
-            
-            
         }
+
 
 
 

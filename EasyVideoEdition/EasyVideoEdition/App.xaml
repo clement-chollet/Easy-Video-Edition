@@ -2,10 +2,29 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:EasyVideoEdition"
-
              StartupUri="MainWindow.xaml">
+    
     <Application.Resources>
-       
-        
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Dictionnary/Instructions/InstructionsButtonShown.xaml"/>
+                <ResourceDictionary Source="Dictionnary/Instructions/InstructionsButtonHidden.xaml"/>
+                <ResourceDictionary Source="Dictionnary/Instructions/InstructionsTab.xaml"/>
+                <ResourceDictionary Source="Dictionnary/Instructions/BlueInstructionsTab.xaml"/>
+                <ResourceDictionary Source="Dictionnary/Instructions/RedInstructionsTab.xaml"/>
+                <ResourceDictionary Source="Dictionnary/Instructions/YellowInstructionsTab.xaml"/>
+                <ResourceDictionary Source="Dictionnary/Buttons/BlueButton.xaml"/>
+                <ResourceDictionary Source="Dictionnary/Buttons/RedButton.xaml"/>
+                <ResourceDictionary Source="Dictionnary/Buttons/YellowButton.xaml"/>
+                <ResourceDictionary Source="Dictionnary/Buttons/NewButton.xaml"/>
+                <ResourceDictionary Source="Dictionnary/Buttons/OpenButton.xaml"/>
+                <ResourceDictionary Source="Dictionnary/Buttons/PauseButton.xaml"/>
+                <ResourceDictionary Source="Dictionnary/Buttons/PlayButton.xaml"/>
+                <ResourceDictionary Source="Dictionnary/Buttons/StopButton.xaml"/>
+                <ResourceDictionary Source="Dictionnary/Buttons/InformationsButton.xaml"/>
+                <ResourceDictionary Source="Dictionnary/Tabs/Tabs.xaml"/>
+                <ResourceDictionary Source="Dictionnary/Slider/SimpleSlider.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

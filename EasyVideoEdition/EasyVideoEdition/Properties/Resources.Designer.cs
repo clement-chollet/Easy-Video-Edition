@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EasyVideoEdition.Properties
-{
-
-
+namespace EasyVideoEdition.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
     /// </summary>
@@ -22,49 +22,212 @@ namespace EasyVideoEdition.Properties
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if ((resourceMan == null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("EasyVideoEdition.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Remplace la propriété CurrentUICulture du thread actuel pour toutes
         ///   les recherches de ressources à l'aide de cette classe de ressource fortement typée.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à This tab allows you to add sounds, music and to record yourself.
+        /// </summary>
+        internal static string addAudioHelp {
+            get {
+                return ResourceManager.GetString("addAudioHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Click the button to record yourself.
+        /// </summary>
+        internal static string addAudioInstrRec {
+            get {
+                return ResourceManager.GetString("addAudioInstrRec", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Click the button to add a sound file.
+        /// </summary>
+        internal static string addAudioInstrSound {
+            get {
+                return ResourceManager.GetString("addAudioInstrSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à This tab allows you to add chapters to your video.
+        /// </summary>
+        internal static string addChapterHelp {
+            get {
+                return ResourceManager.GetString("addChapterHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Put the thumb where you want to add the chapter and click the button.
+        /// </summary>
+        internal static string addChapterInstrText {
+            get {
+                return ResourceManager.GetString("addChapterInstrText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à This tab allows you to add subtitles to your video.
+        /// </summary>
+        internal static string addSubtitlesHelp {
+            get {
+                return ResourceManager.GetString("addSubtitlesHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Put the desired section between the two slider thumbs and click the button. Then specify the text you want to see displayed..
+        /// </summary>
+        internal static string addSubtitlesInstrText {
+            get {
+                return ResourceManager.GetString("addSubtitlesInstrText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à This tab allows you to add videos and pictures, as well as record yourself.
+        /// </summary>
+        internal static string addVisualHelp {
+            get {
+                return ResourceManager.GetString("addVisualHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Click the button to add a picture.
+        /// </summary>
+        internal static string addVisualInstrPic {
+            get {
+                return ResourceManager.GetString("addVisualInstrPic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Click the button to record yourself.
+        /// </summary>
+        internal static string addVisualInstrRec {
+            get {
+                return ResourceManager.GetString("addVisualInstrRec", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Click the button to add a video.
+        /// </summary>
+        internal static string addVisualInstrVid {
+            get {
+                return ResourceManager.GetString("addVisualInstrVid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Choose the chapter you want to delete and click the button.
+        /// </summary>
+        internal static string delChapterInstrText {
+            get {
+                return ResourceManager.GetString("delChapterInstrText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Choose the subtitle you want to delete and click the button.
+        /// </summary>
+        internal static string delSubtitlesInstrText {
+            get {
+                return ResourceManager.GetString("delSubtitlesInstrText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à This tab allows you to cut and edit the sound of your video.
+        /// </summary>
+        internal static string editAudioHelp {
+            get {
+                return ResourceManager.GetString("editAudioHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Put the desired section between the two slider thumbs and click the button.
+        /// </summary>
+        internal static string editAudioInstrMusic {
+            get {
+                return ResourceManager.GetString("editAudioInstrMusic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Put the desired section between the two slider thumbs and click the button.
+        /// </summary>
+        internal static string editAudioInstrSpeech {
+            get {
+                return ResourceManager.GetString("editAudioInstrSpeech", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à This tab allows you to cut and edit your videos.
+        /// </summary>
+        internal static string editVisualHelp {
+            get {
+                return ResourceManager.GetString("editVisualHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Put the desired section between the two slider thumbs and click the button.
+        /// </summary>
+        internal static string editVisualInstrCut {
+            get {
+                return ResourceManager.GetString("editVisualInstrCut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Put the desired section between the two slider thumbs and click the button.
+        /// </summary>
+        internal static string editVisualInstrMute {
+            get {
+                return ResourceManager.GetString("editVisualInstrMute", resourceCulture);
             }
         }
     }

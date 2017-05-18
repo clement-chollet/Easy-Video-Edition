@@ -1,6 +1,4 @@
-﻿using EasyVideoEdition.View;
-using EasyVideoEdition.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,23 +23,32 @@ namespace EasyVideoEdition
         public MainWindow()
         {
             InitializeComponent();
-
             MainViewModel mainVM = MainViewModel.INSTANCE;
-
             this.DataContext = mainVM;
-            foreach (TabItem t in tabControl.Items)
-            {
-                t.Width = this.ActualWidth / 8.3;
-            }
-
         }
-
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            foreach (TabItem t in tabControl.Items)
+            /*
+            // Subtitles tab text changing
+            if (subtitles_adding.Width < 150)
             {
-                t.Width = this.ActualWidth / 8.3;
+                subtitles_adding.Header = "6. Sous titres";
             }
+            else
+            {
+                subtitles_adding.Header = "6. Ajouter sous titres";
+            }
+
+            // Chapters tab text changing
+            if (chapters_adding.Width < 150)
+            {
+                chapters_adding.Header = "7. Chapitres";
+            }
+            else
+            {
+                chapters_adding.Header = "7. Ajouter chapitres";
+            }
+            */
         }
     }
 }

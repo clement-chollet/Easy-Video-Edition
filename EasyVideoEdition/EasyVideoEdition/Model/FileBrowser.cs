@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace EasyVideoEdition.Model
 {
     /// <summary>   A file browser. </summary>
-    ///
+    /// Contains method like OpenFile, SaveFile... that allow to manipulate file.
     /// <remarks>   Théo, 10/11/2016. </remarks>
     
     class FileBrowser : ObjectBase
@@ -128,7 +128,7 @@ namespace EasyVideoEdition.Model
         }
 
         /// <summary>
-        /// This method allow the user to open a file brower. The file path is stocked in the attribute filePath.
+        /// This method allow the user to open a file brower. Allow the user to use the attributes filePath, fileName and fileSize of the this class
         /// </summary>
         public void OpenFile()
         {
@@ -148,8 +148,10 @@ namespace EasyVideoEdition.Model
         }
 
         /// <summary>
-        /// This method allow the user to open a file brower. The file path is stocked in the attribute filePath.
+        /// This method allow the user to open a file brower. Allow the user to use the attributes filePath, fileName and fileSize of the this class
+        /// This one also allow the use of a custom filter for file type allowed to open
         /// </summary>
+        /// <param name="filter">The custom filter to use with the File Dialog</param>
         public void OpenFile(String filter)
         {
             OpenFileDialog opf = new OpenFileDialog();
@@ -167,6 +169,12 @@ namespace EasyVideoEdition.Model
             }
         }
 
+        /// <summary>
+        /// Used to obtain a file path for saving a file in the disk.
+        /// Used with a filter for a default extension.
+        /// </summary>
+        /// <param name="filter">The custom filter to use with the File Dialog</param>
+        /// <returns>The path where the will be saved</returns>
         public string SaveFile(String filter)
         {
             SaveFileDialog sfd = new SaveFileDialog();

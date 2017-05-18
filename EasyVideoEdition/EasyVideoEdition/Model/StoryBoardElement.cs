@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace EasyVideoEdition.Model
 {
+    /// <summary>
+    /// Describe a element of the storyboard, without beeing dependant of the file type.
+    /// </summary>
     class StoryBoardElement
     {
         #region Attributes
@@ -40,7 +43,7 @@ namespace EasyVideoEdition.Model
         }
 
         /// <summary>
-        /// Return or set the startTime of the video
+        /// Return or set the startTime of the element
         /// </summary>
         public TimeSpan startTime
         {
@@ -56,7 +59,7 @@ namespace EasyVideoEdition.Model
         }
 
         /// <summary>
-        /// Return or set the endTime of the video
+        /// Return or set the endTime of the element
         /// </summary>
         public TimeSpan endTime
         {
@@ -72,7 +75,7 @@ namespace EasyVideoEdition.Model
         }
 
         /// <summary>
-        /// Path to the file
+        /// Path to the element
         /// </summary>
         public string filePath
         {
@@ -88,7 +91,7 @@ namespace EasyVideoEdition.Model
         }
 
         /// <summary>
-        /// Type of the file. Used for saving and retreive the project
+        /// Type of the element. Used for saving and retreive the project
         /// </summary>
         public string fileType
         {
@@ -104,7 +107,7 @@ namespace EasyVideoEdition.Model
         }
 
         /// <summary>
-        /// Size of the file
+        /// Size of the element
         /// </summary>
         public long fileSize
         {
@@ -120,7 +123,7 @@ namespace EasyVideoEdition.Model
         }
 
         /// <summary>
-        /// Name of the file
+        /// Name of the element
         /// </summary>
         public string fileName
         {
@@ -143,12 +146,12 @@ namespace EasyVideoEdition.Model
         /// <summary>
         /// Create a storyboard element.
         /// </summary>
-        /// <param name="file"></param>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        /// <param name="fileType"></param>
-        /// <param name="fileName"></param>
-        /// <param name="fileSize"></param>
+        /// <param name="file">The file that will be contained in the element</param>
+        /// <param name="start">Start time of the file</param>
+        /// <param name="end">End time of the file/param>
+        /// <param name="fileType">Type of file like Video / Picture. Used for retreive and save the project </param>
+        /// <param name="fileName">Name of the file within the element</param>
+        /// <param name="fileSize">The size of the file in octet</param>
         public StoryBoardElement(IFile file, TimeSpan start, TimeSpan end, string fileType, string fileName, long fileSize)
         {
             this.file = file;

@@ -112,13 +112,14 @@ namespace EasyVideoEdition.ViewModel
 
                     if (ste.fileType == "Image")
                     {
-                        Photo p = new Photo(ste.filePath, ste.fileName, ste.fileSize);
+                        Picture p = new Picture(ste.filePath, ste.fileName, ste.fileSize);
                         StoryBoard.INSTANCE.addFile(p, ste.startTime, ste.endTime, ste.fileType);
                         VisualAddingViewModel.INSTANCE.listPhoto.Add(p);
                     }
                 }
+                MainViewModel.INSTANCE.actualViewIndex = 1;
             }
-            MainViewModel.INSTANCE.actualViewIndex = 1;
+            
             browser.reset();
            
         }

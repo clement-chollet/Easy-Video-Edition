@@ -1,67 +1,16 @@
 ﻿<UserControl x:Class="EasyVideoEdition.View.Visual_adding"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:ffme="clr-namespace:Unosquare.FFmpegMediaElement;assembly=Unosquare.FFmpegMediaElement"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ffme="clr-namespace:Unosquare.FFmpegMediaElement;assembly=Unosquare.FFmpegMediaElement"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EasyVideoEdition.View"
+             xmlns:dd="urn:gong-wpf-dragdrop"
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1280">
 
-    <UserControl.Resources>
-        <DataTemplate x:Key="TemplateVideo">
-            <Grid Height="50" Width="170">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10*"/>
-                    <ColumnDefinition Width="9*"/>
-                    <ColumnDefinition Width="15*"/>
-                    <ColumnDefinition Width="10*"/>
-                </Grid.ColumnDefinitions>
 
-                <Image HorizontalAlignment="Left" Margin="0,5.333,0,5" Width="35.667" Source="{Binding file.miniatPath}"/>
-                <TextBlock Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="15.96" Width="Auto" Text="Nom: "></TextBlock>
-                <TextBlock Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Width="Auto" Margin="0" Text="Taille: "></TextBlock>
-                <TextBlock Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Margin="0" Text="Durée: "></TextBlock>
-
-                <TextBlock Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="15.96" Width="Auto" Text="{Binding file.fileName}"></TextBlock>
-                <TextBlock Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Width="Auto" Margin="0" Text="{Binding file.sizeLabel}"></TextBlock>
-                <TextBlock Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Margin="0" Text="{Binding file.durationLabel}"></TextBlock>
-
-                <TextBox Grid.Column="3" HorizontalAlignment="Stretch" Width="Auto" VerticalAlignment="Top" Text="{Binding startTime, StringFormat=\{0:h\\:mm\\:ss\}}"></TextBox>
-                <TextBox Grid.Column="3" HorizontalAlignment="Stretch" Width="Auto" VerticalAlignment="Bottom" Text="{Binding endTime, StringFormat=\{0:h\\:mm\\:ss\}}"></TextBox>
-            </Grid>
-
-        </DataTemplate>
-
-        <DataTemplate x:Key="TemplateImage">
-            <Grid Height="50" Width="170">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10*"/>
-                    <ColumnDefinition Width="9*"/>
-                    <ColumnDefinition Width="15*"/>
-                </Grid.ColumnDefinitions>
-
-                <Image HorizontalAlignment="Left" Margin="0,5.333,0,5" Width="35.667">
-                    <Image.Source>
-                        <BitmapImage DecodePixelWidth="100"  UriSource="{Binding filePath}"></BitmapImage>
-                    </Image.Source>
-                </Image>
-
-                <TextBlock Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="15.96" Width="Auto" Text="Nom: "></TextBlock>
-                <TextBlock Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Width="Auto" Margin="0" Text="Taille: "></TextBlock>
-
-                <TextBlock Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="15.96" Width="Auto" Text="{Binding fileName}"></TextBlock>
-                <TextBlock Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Width="Auto" Margin="0" Text="{Binding sizeLabel}"></TextBlock>
-            </Grid>
-
-        </DataTemplate>
-
-        <DataTemplate x:Key="TemplateBoard">
-            <Image HorizontalAlignment="Left" Margin="0,5.333,0,5" Width="100" Height="50" Source="{Binding file.miniatPath}" />
-        </DataTemplate>
-    </UserControl.Resources>
-
-    <Grid SizeChanged="Window_SizeChanged">
+    <Grid x:Name="grid1" SizeChanged="Window_SizeChanged">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="81*"/>
             <ColumnDefinition Width="530*"/>
@@ -73,61 +22,62 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="164*"/>
             <RowDefinition Height="35*"/>
-            <RowDefinition Height="123"/>
+            <RowDefinition Height="41*"/>
         </Grid.RowDefinitions>
-        <ffme:MediaElement x:Name="MediaEl" Background="White" LoadedBehavior="Pause" UnloadedBehavior="Manual" Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,5,0" Source="{Binding mainVideo.video.filePath}"/>
-        <Slider x:Name="slider" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Width="1050" Margin="32,49,32,56"/>
-        <ProgressBar Grid.Row="2" Grid.Column="1" Height="15px" VerticalAlignment="Top" Margin="0,10,0,0" Width="auto" Value="{Binding mainVideo.processedCalc}" Minimum="0" Maximum="100"/>
-        <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding mainVideo.processedCalcLabel}" VerticalAlignment="Top" Margin="5,10, 0,0"/>
-        <Button x:Name="recButton" Content="Button" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" MinHeight="5" MinWidth="40" MaxHeight="60" MaxWidth="200"/>
-        <Button x:Name="addVidButton" Content="Ajouter Vidéo" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" MinHeight="5" MinWidth="40" MaxHeight="60" MaxWidth="200" Command="{Binding addVideoCommand}"/>
-        <Button x:Name="addPicButton" Content="Ajouter Photo" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" MinHeight="5" MinWidth="40" MaxHeight="60" MaxWidth="200" Command="{Binding addPhotoCommand}"/>
-        <Grid x:Name="instructions" Grid.Column="3" MinHeight="350" MinWidth="150" MaxHeight="1000" MaxWidth="600" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.ColumnSpan="3" Width="370.812" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="23*"/>
-                <RowDefinition Height="327*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="40"/>
-                <ColumnDefinition Width="350*"/>
-            </Grid.ColumnDefinitions>
-            <Button  x:Name="instructionsButton" Grid.Column="0" Grid.Row="1" VerticalAlignment="Bottom" Content="Blabla"/>
-            <TabControl x:Name="instructionTab" Grid.Column="1" Grid.RowSpan="2">
-                <TabItem x:Name="recInstruction" Header="S'enregistrer" MinHeight="20" MaxHeight="30">
-                    <Grid Background="#FFE5E5E5"/>
-                </TabItem>
-                <TabItem x:Name="addVidInstruction" Header="Ajouter vidéo" MinHeight="20" MaxHeight="30">
-                    <Grid Background="#FFE5E5E5"/>
-                </TabItem>
-                <TabItem x:Name="addPicInstruction" Header="Ajouter image" MinHeight="20" MaxHeight="30">
-                    <Grid Background="#FFE5E5E5"/>
-                </TabItem>
-            </TabControl>
 
-
-        </Grid>
-        <TabControl x:Name="library" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" MinHeight="350" MinWidth="150" MaxHeight="1000" MaxWidth="400">
-            <TabItem x:Name="videoTab" Header="Mes vidéos">
-                <ListBox ItemsSource="{Binding storyBoard.fileList}" ItemTemplate="{DynamicResource TemplateVideo}">
-
-                </ListBox>
-            </TabItem>
-            <TabItem x:Name="imageTab" Header="Mes images">
-                <ListBox ItemsSource="{Binding listPhoto}" ItemTemplate="{DynamicResource TemplateImage}">
-
-                </ListBox>
-            </TabItem>
-        </TabControl>
-
-        <ListView Grid.Column="1" Margin="32,63,32,10" Grid.Row="2" Grid.ColumnSpan="4" ItemsSource="{Binding storyBoard.fileList}" ItemTemplate="{DynamicResource TemplateBoard}">
+        <ListView 
+            x:Name="listViewStoryboard"
+            Panel.ZIndex="5"
+            AllowDrop="True"
+            dd:DragDrop.IsDragSource="True"
+            dd:DragDrop.IsDropTarget="True"
+            Height="45" Margin="5,0,5,0" Width="1050" 
+            Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" 
+            VerticalAlignment="Center" HorizontalAlignment="Center"
+            Background="#FFAFB4B3"
+            ItemsSource="{Binding storyBoard.fileList}" ItemTemplate="{DynamicResource TemplateBoard}" >
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal" />
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
         </ListView>
-        <Button x:Name="buttonPlay" Content="Play" Grid.Column="1" HorizontalAlignment="Left" Margin="63.704,48,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="MediaEl_Play"/>
-        <Button x:Name="buttonPause" Content="Pause" Grid.Column="1" HorizontalAlignment="Left" Margin="172.704,48,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="MediaEl_Pause"/>
-        <Button x:Name="buttonStop" Content="Stop" Grid.Column="1" HorizontalAlignment="Left" Margin="286.704,48,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="MediaEl_Stop"/>
+        
+        <Slider DataContext="{Binding DataContext, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" 
+                x:Name="slider"
+                Panel.ZIndex="6"
+                VerticalAlignment="Center" HorizontalAlignment="Center" 
+                Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Width="1050" 
+                Template="{StaticResource sliderTemplate}"/>
+
+        <!-- Don't forgot to hide MediaElText when a video or an image is loaded -->
+        <ffme:MediaElement Panel.ZIndex="6" Visibility="Visible" x:Name="MediaEl" LoadedBehavior="Pause" BorderThickness="2px" BorderBrush="#40444d" UnloadedBehavior="Manual" Grid.Row="0" HorizontalAlignment="Center" Grid.ColumnSpan="2" Margin="10" Source="{Binding videoPlayer.source}">
+
+        </ffme:MediaElement>
+
+        <Rectangle x:Name="BlackRectangle" Panel.ZIndex="5" Fill="Black" Grid.Row="0" Grid.ColumnSpan="2" Margin="10"></Rectangle>
+
+        <TextBlock Panel.ZIndex="7" x:Name="MediaElText" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Calibri" FontSize="18" Foreground="White" Background="Black" Visibility="{Binding isNoVideoAlert}">
+                <Image Source="pack://application:,,,/Resources/warning.png" Width="20" Height="20" Margin="0,0,5,-5"/>
+                Veuillez ajouter une vidéo ou une image
+        </TextBlock>
+        
+        <!-- Record/Add video/Add picture buttons-->
+        <StackPanel x:Name="GroupButtons" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="4" Orientation="Horizontal">
+            <Button x:Name="recButton" Tag="/EasyVideoEdition;component/Resources/rec-button.png" Content="S'enregistrer" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="5" MinWidth="40" MaxHeight="60" MaxWidth="2000" Template="{StaticResource blueButtonTemplate}" Height="27" Width="60"/>
+            <Button x:Name="addVidButton" Tag="/EasyVideoEdition;component/Resources/video-camera.png" Content="Ajouter vidéo" VerticalAlignment="Center" HorizontalAlignment="Center" MinHeight="5" MinWidth="40" MaxHeight="60" MaxWidth="2000" Template="{StaticResource redButtonTemplate}" Margin="50,0,0,0" Command="{Binding addVideoCommand}"/>
+            <Button x:Name="addPicButton" Tag="/EasyVideoEdition;component/Resources/picture.png" Content="Ajouter image" VerticalAlignment="Center" HorizontalAlignment="Right" MinHeight="5" MinWidth="40" MaxHeight="60" MaxWidth="2000" Template="{StaticResource yellowButtonTemplate}" Height="27" Margin="50,0,50,0" Width="60" Command="{Binding addPhotoCommand}"/>
+        </StackPanel>
+        <!-- Play/Pause/Stop buttons -->
+        <StackPanel x:Name="playPauseStop" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="playButton" Tag="/EasyVideoEdition;component/Resources/play-button.png" VerticalAlignment="Center" HorizontalAlignment="Center" Click="MediaEl_Play" Template="{StaticResource playButtonTemplate}" Height="50"  Width="50"/>
+            <Button x:Name="pauseButton" Tag="/EasyVideoEdition;component/Resources/pause-button.png"  VerticalAlignment="Center" HorizontalAlignment="Left" Click="MediaEl_Pause" Template="{StaticResource pauseButtonTemplate}" Height="50" Margin="30,0,0,0" Width="50"/>
+            <Button x:Name="stopButton" Tag="/EasyVideoEdition;component/Resources/stop-button.png" VerticalAlignment="Center" HorizontalAlignment="Right" Click="MediaEl_Stop" Template="{StaticResource stopButtonTemplate}" Height="50" Margin="30,0,50,0" Width="50"/>
+        </StackPanel>
+        <local:BasicUserControl DataContext="{Binding DataContext, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" x:Name="instructionsLib" Grid.ColumnSpan="4" Grid.Column="2" HorizontalAlignment="Right" Grid.RowSpan="1" VerticalAlignment="Top" Width="668" Height="492" ClipToBounds="True"/>
+        <!-- Informations button -->
+        <Button x:Name="informationsButton" Grid.Row="2" Grid.Column="5" Tag="/EasyVideoEdition;component/Resources/info.png" VerticalAlignment="Center" HorizontalAlignment="Center" Template="{StaticResource informationsButtonTemplate}" Height="50" Margin="0,0,0,0" Width="50"/>
+
+
     </Grid>
 </UserControl>

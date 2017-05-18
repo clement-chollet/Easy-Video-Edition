@@ -23,12 +23,15 @@ namespace EasyVideoEdition.View
         public Open()
         {
             InitializeComponent();
+            
         }
 
+        // Actions when the window is resized
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            NewProject.Width = this.ActualWidth / 8.3;
-            OpenProject.Width = this.ActualWidth / 8.3;
+            // New/Open project buttons resizing
+            NewProject.Width = this.ActualWidth / 2;
+            OpenProject.Width = this.ActualWidth / 2;
         }
     }
 }

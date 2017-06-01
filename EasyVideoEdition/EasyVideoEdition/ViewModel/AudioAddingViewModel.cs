@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace EasyVideoEdition.ViewModel
 {
+    /// <summary>
+    /// ViewModel corresponding to the AudioAdding View
+    /// </summary>
     class AudioAddingViewModel
     {
         /// <summary>

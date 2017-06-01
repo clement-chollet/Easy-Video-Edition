@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace EasyVideoEdition.Model
 {
@@ -25,6 +26,8 @@ namespace EasyVideoEdition.Model
         private long _fileSize;
         private double _duration;
         private string _miniatPath;
+        private String _extension;
+        private String _directory;
 
         #endregion
 
@@ -145,6 +148,38 @@ namespace EasyVideoEdition.Model
             }
         }
 
+        /// <summary>
+        /// Gets or sets the extension of the video
+        /// </summary>
+        public string extension
+        {
+            get
+            {
+                return _extension;
+            }
+
+            set
+            {
+                _extension = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the directory of the video
+        /// </summary>
+        public string directory
+        {
+            get
+            {
+                return _directory;
+            }
+
+            set
+            {
+                _directory = value;
+            }
+        }
+
 
         #endregion
 
@@ -166,14 +201,6 @@ namespace EasyVideoEdition.Model
             this.fileSize = size;
             this.duration = videoInfo.Duration.TotalMilliseconds;
             this.durationLabel = calcDuration(videoInfo.Duration);
-
-            this.miniatPath = "pack://application:,,,/Resources/loading_black.png";
-            this.sizeLabel = calcSize(size);
-            Task.Delay(2000).ContinueWith(_ =>
-            {
-                this.miniatPath = "D:\\Eve\\Temp\\Screenshot\\" + fileName.Split('.')[0] + ".jpeg";
-            });
-
         }
 
 
@@ -240,5 +267,62 @@ namespace EasyVideoEdition.Model
             }
             return Math.Round(dur, 1) + unit;
         }
+
+        /// <summary>
+        /// Find the extension of the video
+        /// </summary>
+        public void getExtension()
+        {
+            String extensRev = "";
+            String extens = "";
+            int i = this.filePath.Length - 1;
+            while (this.filePath[i] != '.')
+            {
+                extensRev += filePath[i];
+                i--;
+            }
+
+            for (int k = extensRev.Length - 1; k >= 0; k--)
+            {
+                extens += extensRev[k];
+            }
+
+            this.extension = extens;
+        }
+
+        /// <summary>
+        /// Find the name of the video
+        /// </summary>
+        public void getFileName()
+        {
+            String nameRev = "";
+            String name = "";
+            int i = this.filePath.Length - 1;
+            while (this.filePath[i] != '/' && this.filePath[i] != '\\')
+            {
+                nameRev += filePath[i];
+                i--;
+            }
+            //MessageBox.Show(nameRev);
+            for (int k = nameRev.Length - 1; k >= 0; k--)
+            {
+                name += nameRev[k];
+            }
+
+            this.fileName = name;
+
+        }
+
+        /// <summary>
+        /// Find the directory of the video
+        /// </summary>
+        public void getDirectory()
+        {
+
+            String[] parts = Regex.Split(filePath, this.fileName);
+
+            this.directory = parts[0];
+        }
     }
+
 }

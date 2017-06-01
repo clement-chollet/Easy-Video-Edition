@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace EasyVideoEdition.ViewModel
 {
+    /// <summary>
+    /// ViewModel corresponding to the VisualEdition View
+    /// </summary>
     class VisualEditionViewModel
     {
         /// <summary>

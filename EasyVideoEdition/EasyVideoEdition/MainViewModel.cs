@@ -81,14 +81,14 @@ namespace EasyVideoEdition
             tabDictionary.Source = new Uri("Dictionnary/Tabs/Tabs.xaml", UriKind.RelativeOrAbsolute);
 
 
-            _items.Add(new TabItem { Header = "Début", Content = FileOpeningViewModel, Template = tabDictionary["tabItemTemplate"] as ControlTemplate, Foreground = Brushes.White} );
-            _items.Add(new TabItem { Header = "Ajout visuel", Content = VisualAddingViewModel, Template = tabDictionary["tabItemTemplate"] as ControlTemplate, Foreground = Brushes.White });
-            _items.Add(new TabItem { Header = "Edition visuel", Content = VisualEditionViewModel, Template = tabDictionary["tabItemTemplate"] as ControlTemplate, Foreground = Brushes.White });
-            _items.Add(new TabItem { Header = "Ajout audio", Content = AudioAddingViewModel, Template = tabDictionary["tabItemTemplate"] as ControlTemplate, Foreground = Brushes.White });
-            _items.Add(new TabItem { Header = "Edition audio", Content = AudioEditionViewModel, Template = tabDictionary["tabItemTemplate"] as ControlTemplate, Foreground = Brushes.White });
-            _items.Add(new TabItem { Header = "Ajout sous-titres", Content = SubtitlesViewModel, Template = tabDictionary["tabItemTemplate"] as ControlTemplate, Foreground = Brushes.White });
-            _items.Add(new TabItem { Header = "Ajout chapitres", Content = ChapterViewModel, Template = tabDictionary["tabItemTemplate"] as ControlTemplate, Foreground = Brushes.White });
-            _items.Add(new TabItem { Header = "Enregistrer", Content = SaveFileViewModel, Template = tabDictionary["tabItemTemplate"] as ControlTemplate, Foreground = Brushes.White });
+            _items.Add(new TabItem { Header = "1. Début", Content = FileOpeningViewModel, Template = tabDictionary["tabItemTemplate"] as ControlTemplate, Foreground = Brushes.White} );
+            _items.Add(new TabItem { Header = "2. Ajout visuel", Content = VisualAddingViewModel, Template = tabDictionary["tabItemTemplate"] as ControlTemplate, Foreground = Brushes.White });
+            _items.Add(new TabItem { Header = "3. Edition visuel", Content = VisualEditionViewModel, Template = tabDictionary["tabItemTemplate"] as ControlTemplate, Foreground = Brushes.White });
+            _items.Add(new TabItem { Header = "4. Ajout audio", Content = AudioAddingViewModel, Template = tabDictionary["tabItemTemplate"] as ControlTemplate, Foreground = Brushes.White });
+            _items.Add(new TabItem { Header = "5. Edition audio", Content = AudioEditionViewModel, Template = tabDictionary["tabItemTemplate"] as ControlTemplate, Foreground = Brushes.White });
+            _items.Add(new TabItem { Header = "6. Ajout sous-titres", Content = SubtitlesViewModel, Template = tabDictionary["tabItemTemplate"] as ControlTemplate, Foreground = Brushes.White });
+            _items.Add(new TabItem { Header = "7. Ajout chapitres", Content = ChapterViewModel, Template = tabDictionary["tabItemTemplate"] as ControlTemplate, Foreground = Brushes.White });
+            _items.Add(new TabItem { Header = "8. Enregistrer", Content = SaveFileViewModel, Template = tabDictionary["tabItemTemplate"] as ControlTemplate, Foreground = Brushes.White });
 
         }
     }

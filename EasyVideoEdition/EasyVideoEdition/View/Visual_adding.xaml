@@ -64,7 +64,7 @@
         
         <!-- Record/Add video/Add picture buttons-->
         <StackPanel x:Name="GroupButtons" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="4" Orientation="Horizontal">
-            <Button x:Name="recButton" Tag="/EasyVideoEdition;component/Resources/rec-button.png" Content="S'enregistrer" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="5" MinWidth="40" MaxHeight="60" MaxWidth="2000" Template="{StaticResource blueButtonTemplate}" Height="27" Width="60"/>
+            <Button x:Name="recButton" Tag="/EasyVideoEdition;component/Resources/rec-button.png" Content="S'enregistrer" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="5" MinWidth="40" MaxHeight="60" MaxWidth="2000" Template="{StaticResource blueButtonTemplate}" Height="27" Width="60" Command="{Binding testCommand}"/>
             <Button x:Name="addVidButton" Tag="/EasyVideoEdition;component/Resources/video-camera.png" Content="Ajouter vidéo" VerticalAlignment="Center" HorizontalAlignment="Center" MinHeight="5" MinWidth="40" MaxHeight="60" MaxWidth="2000" Template="{StaticResource redButtonTemplate}" Margin="50,0,0,0" Command="{Binding addVideoCommand}"/>
             <Button x:Name="addPicButton" Tag="/EasyVideoEdition;component/Resources/picture.png" Content="Ajouter image" VerticalAlignment="Center" HorizontalAlignment="Right" MinHeight="5" MinWidth="40" MaxHeight="60" MaxWidth="2000" Template="{StaticResource yellowButtonTemplate}" Height="27" Margin="50,0,50,0" Width="60" Command="{Binding addPhotoCommand}"/>
         </StackPanel>

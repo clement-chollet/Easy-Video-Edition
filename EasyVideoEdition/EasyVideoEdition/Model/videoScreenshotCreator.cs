@@ -62,6 +62,11 @@ namespace EasyVideoEdition.Model
 
         }
 
+        /// <summary>
+        /// Method that creates the Screenshot of the video.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void player_MediaOpened(object sender, EventArgs e)
         {
             DrawingVisual drawingVisual = new DrawingVisual();
@@ -83,7 +88,7 @@ namespace EasyVideoEdition.Model
 
             var byteArrayImage = ms.ToArray();
 
-            File.WriteAllBytes("D:\\Eve\\Temp\\Screenshot\\" + videoName.Split('.')[0] + ".jpeg", byteArrayImage);
+            //File.WriteAllBytes("D:\\Eve\\Temp\\Screenshot\\" + videoName.Split('.')[0] + ".jpeg", byteArrayImage);
         }
     }
 }

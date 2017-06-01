@@ -7,6 +7,9 @@ using System.Xml.XPath;
 
 namespace EasyVideoEdition.Model
 {
+    /// <summary>
+    /// Class that allow the video to be notified on the player
+    /// </summary>
     class MainVideo : ObjectBase
     {
 

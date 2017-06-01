@@ -24,7 +24,11 @@ namespace EasyVideoEdition.View
         {
             InitializeComponent();
         }
-        // Actions when the window is resized
+        /// <summary>
+        ///  Actions when the window is resized
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             //Variables for button bottom colored line resizing

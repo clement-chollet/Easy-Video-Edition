@@ -12,6 +12,9 @@ using System.Windows.Input;
 
 namespace EasyVideoEdition.ViewModel
 {
+    /// <summary>
+    /// ViewModel corresponding to the VisualAdding View
+    /// </summary>
     class VisualAddingViewModel : ObjectBase
     {
         /// <summary>
@@ -62,7 +65,7 @@ namespace EasyVideoEdition.ViewModel
         }
 
         /// <summary>
-        /// 
+        /// Get or set the storyboard of the project
         /// </summary>
         public StoryBoard storyBoard
         {
@@ -94,7 +97,7 @@ namespace EasyVideoEdition.ViewModel
         }
 
         /// <summary>
-        /// 
+        /// Get or set the video player of the view
         /// </summary>
         public VideoPlayer videoPlayer
         {
@@ -111,7 +114,7 @@ namespace EasyVideoEdition.ViewModel
         }
 
         /// <summary>
-        /// 
+        /// Indicate if there is a video to be played or not
         /// </summary>
         public Visibility isNoVideoAlert
         {
@@ -131,6 +134,7 @@ namespace EasyVideoEdition.ViewModel
         public ICommand addVideoCommand { get; private set; }
         public ICommand addPhotoCommand { get; private set; }
         public ICommand removeFileCommand { get; private set; }
+        public ICommand testCommand { get; private set; }
 
         #endregion
 
@@ -141,6 +145,7 @@ namespace EasyVideoEdition.ViewModel
             addPhotoCommand = new RelayCommand(addPhoto);
             addVideoCommand = new RelayCommand(addVideo);
             removeFileCommand = new RelayCommand(removeFile);
+            testCommand = new RelayCommand(test);
         }
 
         /// <summary>
@@ -234,7 +239,23 @@ namespace EasyVideoEdition.ViewModel
 
             storyBoard.fileList.Remove(fileToRemove);
             _videoTimer.stopTimer();
+            if(storyBoard.fileList.Count == 0)
+            {
+                isNoVideoAlert = Visibility.Visible;
+            }
+        }
 
+        private void test()
+        {
+            storyBoard.printAllElements();
+            TimeSpan newDuration = TimeSpan.FromMilliseconds(2000);
+            //storyBoard.cutFromTo(TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(6));
+            Console.WriteLine("/////////////////////////");
+            storyBoard.insertInto(storyBoard.fileList[2], newDuration);
+            //storyBoard.printAllElements();
+            //storyBoard.sortFileList();
+            Console.WriteLine("/////////////////////////");
+            //storyBoard.printAllElements();
         }
 
     }

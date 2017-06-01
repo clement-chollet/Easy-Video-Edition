@@ -11,6 +11,9 @@ using System.Windows;
 
 namespace EasyVideoEdition.ViewModel
 {
+    /// <summary>
+    /// ViewModel corresponding to the Subtiles View
+    /// </summary>
     class SubtitlesViewModel : ObjectBase, IBaseViewModel
     {
         #region Attributes

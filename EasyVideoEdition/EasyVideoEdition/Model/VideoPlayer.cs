@@ -7,7 +7,6 @@ namespace EasyVideoEdition.Model
     /// </summary>
     class VideoPlayer : ObjectBase
     {
-
         public static VideoPlayer INSTANCE
         {
             get

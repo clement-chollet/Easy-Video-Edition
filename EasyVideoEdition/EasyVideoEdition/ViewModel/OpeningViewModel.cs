@@ -106,14 +106,14 @@ namespace EasyVideoEdition.ViewModel
                     if(ste.fileType == "Video")
                     {
                         Video v = new Video(ste.filePath, ste.fileName, ste.fileSize);
-                        StoryBoard.INSTANCE.addFile(v, ste.startTime, ste.endTime, ste.fileType);
+                        StoryBoard.INSTANCE.addFile(v, ste.startTime, ste.endTime, ste.startTimeInSource, ste.endTimeInSource, ste.fileType);
                         VisualAddingViewModel.INSTANCE.listVideo.Add(v);
                     }
 
                     if (ste.fileType == "Image")
                     {
                         Picture p = new Picture(ste.filePath, ste.fileName, ste.fileSize);
-                        StoryBoard.INSTANCE.addFile(p, ste.startTime, ste.endTime, ste.fileType);
+                        StoryBoard.INSTANCE.addFile(p, ste.startTime, ste.endTime, ste.startTimeInSource, ste.endTimeInSource, ste.fileType);
                         VisualAddingViewModel.INSTANCE.listPhoto.Add(p);
                     }
                 }

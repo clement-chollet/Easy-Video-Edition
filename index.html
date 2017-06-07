@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/EVEWebSite/assets/css/style.css?v=2d1d5b61b48492947b8b0c0aa3300fef59cc5eb7">
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script>
+      
+      $(document).ready(function(){
+        $('.collapsible').collapsible();
+        $('.parallax').parallax();
+        $(".button-collapse").sideNav(); 
+        $(".dropdown-button").dropdown();
+        $('.scrollspy').scrollSpy();
+        $('#navbarTop').hide();
+        /*if($(window).width() < 801){
+           $('#menuTop').show();
+           $('#menu1').show();
+        }
+        if($(window).width() > 800){
+           $('#menuTop').hide();
+           $('#menu1').hide();
+        }*/
+        
+        $(window).scroll(function () {
+          console.log($(window).scrollTop());
+          if ($(window).scrollTop() > 170) {
+           $('#navbarTop').show();
+           $('#navbar1').hide();
+          }
+          if ($(window).scrollTop() < 171) {
+            $('#navbarTop').hide();
+            $('#navbar1').show();
+          }
+        });
+        
+        /*$( window ).resize(function() {
+          if($(window).width() < 801){
+           $('#menuTop').show();
+           $('#menu1').show();
+        }
+        if($(window).width() > 800){
+           $('#menuTop').hide();
+           $('#menu1').hide();
+        }
+        });*/
+        
+      }); 
+      
+  </script>
+</head>
+
+<body>
+
+    <div id="navbarTop" class="navbar-fixed">   
+      
+        <!-- Dropdown Structure -->
+        <ul id="dropdownTop" class="dropdown-content" style="z-index: 10;">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="GettingStarted.html">Getting started</a></li>
+            <li><a href="tutorial.html">Tut</a></li>   
+            <li><a href="api.html">APIs</a></li>              
+            <li><a href="docu/index.html">Documentation</a></li>
+        </ul>
+      
+        <nav>
+          <div class="nav-wrapper teal lighten-1" style="z-index: 10; padding-left:15%;">
+            <ul id="nav-mobile" class="left">
+              <li style="width: 200px;"><a id="menuTop" class="dropdown-button hide-on-large-only" href="#!" data-activates="dropdownTop">Menu</a></li> 
+              <li class="active hide-on-med-and-down"><a href="index.html">Home</a></li>
+              <li class="hide-on-med-and-down"><a href="GettingStarted.html">Getting started</a></li>
+              <li class="hide-on-med-and-down"><a href="tutorial.html">Tutorial</a></li>      
+              <li class="hide-on-med-and-down"><a href="api.html">APIs</a></li>              
+              <li class="hide-on-med-and-down"><a href="documentation/index.html">Documentation</a></li>
+            </ul>
+          </div>
+        </nav>
+    </div>
+
+        <div  style="z-index: 20; position: relative;">
+          <section id="topPage" class="page-header" style="height: 15vh;">
+            <h1 class="project-name">Easy Video Edition</h1>
+            <h2 class="project-tagline"></h2>
+          </section>
+         </div>
+  
+      <!-- Dropdown Structure -->
+        <ul id="dropdown1" class="dropdown-content" style="z-index: 10;">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="GettingStarted.html">Getting started</a></li>
+            <li><a href="tutorial.html">Tutorial</a></li>   
+            <li><a href="api.html">APIs</a></li>              
+            <li><a href="docu/index.html">Documentation</a></li>
+        </ul>
+  
+      <nav id="navbar1">
+      <div class="nav-wrapper teal lighten-1" style="z-index: 20; padding-left:15%;">
+        <ul id="nav-mobile" class="left">
+              <li style="width: 200px;"><a id="menu1" class="dropdown-button hide-on-large-only" href="#!" data-activates="dropdown1">Menu</a></li> 
+              <li class="active hide-on-med-and-down"><a href="index.html">Home</a></li>
+              <li class="hide-on-med-and-down"><a href="GettingStarted.html">Getting started</a></li>
+              <li class="hide-on-med-and-down"><a href="tutorial.html">Tutorial</a></li>
+              <li class="hide-on-med-and-down"><a href="api.html">APIs</a></li>              
+              <li class="hide-on-med-and-down"><a href="documentation/index.html">Documentation</a></li>
+            </ul>
+      </div>
+    </nav>
+       
+  <div class="parallax-container" style="height: 78vh;">
+    <div class="parallax"><img src="univ2.jpg"></div>  
+  </div>
+  
+  <div class="section white">
+      
+    <div class="row container">
+
+      <ul class="collapsible" data-collapsible="accordion">
+        <li style="margin: 20px;">
+          <i class="material-icons">videocam</i>
+          <p>
+            EasyVideoEdition is a piece of software allowing users to edit videos without complexity. 
+            It was created by a group of six ENSIM students as a school year-long project. 
+            The main aim of this project is to provide professors with an easy-to-use tool  
+            to create and edit videos of their courses. 
+          </p>
+        <li>
+          <div class="collapsible-header"><span class="badge"></span><i class="material-icons">play_for_work</i>Using EasyVideoEdition</div>
+          <div class="collapsible-body">
+            
+            <ul class="collection">
+               <li class="collection-item avatar">
+                  <p>1. Download EasyVideoEdition from <a href="https://github.com/clement-chollet/Easy-Video-Edition">here</a></p>
+              </li>
+              <li class="collection-item avatar">
+                  <p>2. Launch EasyVideoEdition.exe in the root directory</p>
+                </li>
+                <li class="collection-item avatar">
+                  <p>3. Create a new project</p>
+                 </li>
+                <li class="collection-item avatar">
+                  <p>4. Add the first video in the Add tab</p>
+                </li>
+                <li class="collection-item avatar">
+                  <p>5. Follow the rest of instructions</p>
+                 </li>
+              </ul>
+          
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><span class="badge"></span><i class="material-icons">view_module</i>Features</div>
+          <div class="collapsible-body">
+            <ul class="collection">
+               <li class="collection-item avatar">
+                  <p>Easy and quick video edition</p>
+              </li>
+              <li class="collection-item avatar">
+                  <p>All common video extensions accepted</p>
+                </li>
+                <li class="collection-item avatar">
+                  <p>Multiple quality options</p>
+                 </li>
+              </ul>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><span class="badge"></span><i class="material-icons">warning</i>Requierements</div>
+          <div class="collapsible-body">
+            <ul class="collection">
+               <li class="collection-item avatar">
+                  <p>Windows 7 or more required</p>
+              </li>
+              <li class="collection-item avatar">
+                  <p>Intel i3 or Amd FX recommanded</p>
+                </li>
+                <li class="collection-item avatar">
+                  <p>5 GB disk space</p>
+                 </li>
+              </ul>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><span class="badge"></span><i class="material-icons">supervisor_account</i>Team</div>
+          <div class="collapsible-body">
+          <div class="row">            
+            <div class="col s4">
+              <div class="card-panel grey lighten-5 z-depth-1 hoverable">
+                <div class="row valign-wrapper">
+                  <div class="col s2">
+                    <img src="anoGitHub.png" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                  </div>
+                  <div class="col s10">
+                    <span class="black-text">
+                      <a href="https://github.com/GERVIER">Rémy Geriver</a>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+              <div class="col s4">
+              <div class="card-panel grey lighten-5 z-depth-1 hoverable">
+                <div class="row valign-wrapper">
+                  <div class="col s2">
+                    <img src="anoGitHub.png" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                  </div>
+                  <div class="col s10">
+                    <span class="black-text">
+                      <a href="https://github.com/clement-chollet">Clément Chollet</a>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+              <div class="col s4">
+              <div class="card-panel grey lighten-5 z-depth-1 hoverable">
+                <div class="row valign-wrapper">
+                  <div class="col s2">
+                    <img src="anoGitHub.png" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                  </div>
+                  <div class="col s10">
+                    <span class="black-text">
+                      <a href="https://github.com/eommer">Théo Charlot</a>
+                    </span>
+                  </div>
+                </div>
+              </div>
+             </div>
+            
+            <div class="col s4">
+              <div class="card-panel grey lighten-5 z-depth-1 hoverable">
+                <div class="row valign-wrapper">
+                  <div class="col s2">
+                    <img src="anoGitHub.png" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                  </div>
+                  <div class="col s10">
+                    <span class="black-text">
+                      <a href="https://github.com/eommer">Camille Goupil</a>
+                    </span>
+                  </div>
+                </div>
+              </div>
+             </div>
+          
+             <div class="col s4">
+              <div class="card-panel grey lighten-5 z-depth-1 hoverable">
+                <div class="row valign-wrapper">
+                  <div class="col s2">
+                    <img src="anoGitHub.png" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                  </div>
+                  <div class="col s10">
+                    <span class="black-text">
+                      <a href="https://github.com/eommer">Elisabeth saliou</a>
+                    </span>
+                  </div>
+                </div>
+              </div>
+             </div>
+      
+          <div class="col s4">
+              <div class="card-panel grey lighten-5 z-depth-1 hoverable">
+                <div class="row valign-wrapper">
+                  <div class="col s2">
+                    <img src="anoGitHub.png" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                  </div>
+                  <div class="col s10">
+                    <span class="black-text">
+                      <a href="https://github.com/eommer">Antoine Richard</a>
+                    </span>
+                  </div>
+                </div>
+              </div>
+             </div>
+            </div>
+            
+          </div>
+        </li>
+      </ul>
+      
+    </div>
+  </div>
+  
+</body>
+
+<footer class="page-footer teal lighten-1">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">EasyVideoEdition</h5>
+                <p class="grey-text text-lighten-4">Student project made at ENSIM (Ecole Nationale Supérieure d'Ingérnieurs du Mans).</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="contact.html">Contact us</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://github.com/clement-chollet/Easy-Video-Edition">Github</a></li>
+                  <li><a class="grey-text text-lighten-3" href="documentation/index.html">Documentation</a></li>
+                  <li><a class="grey-text text-lighten-3" href="index.html">Website</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2017 ENSIM | Project under Ms-PL licence
+            </div>
+          </div>
+</footer>

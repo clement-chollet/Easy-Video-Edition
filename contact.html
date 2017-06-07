@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/EVEWebSite/assets/css/style.css?v=2d1d5b61b48492947b8b0c0aa3300fef59cc5eb7">
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script>
+      
+      $(document).ready(function(){
+        $('.collapsible').collapsible();
+        $('.parallax').parallax();
+        $(".button-collapse").sideNav(); 
+        $(".dropdown-button").dropdown();
+        $('.scrollspy').scrollSpy();
+        $('#navbarTop').hide();
+        /*if($(window).width() < 801){
+           $('#menuTop').show();
+           $('#menu1').show();
+        }
+        if($(window).width() > 800){
+           $('#menuTop').hide();
+           $('#menu1').hide();
+        }*/
+        
+        $(window).scroll(function () {
+          console.log($(window).scrollTop());
+          if ($(window).scrollTop() > 170) {
+           $('#navbarTop').show();
+           $('#navbar1').hide();
+          }
+          if ($(window).scrollTop() < 171) {
+            $('#navbarTop').hide();
+            $('#navbar1').show();
+          }
+        });
+        
+        /*$( window ).resize(function() {
+          if($(window).width() < 801){
+           $('#menuTop').show();
+           $('#menu1').show();
+        }
+        if($(window).width() > 800){
+           $('#menuTop').hide();
+           $('#menu1').hide();
+        }
+        });*/
+        
+      }); 
+      
+  </script>
+</head>
+
+<body>
+
+    <div id="navbarTop" class="navbar-fixed">   
+      
+        <!-- Dropdown Structure -->
+        <ul id="dropdownTop" class="dropdown-content" style="z-index: 10;">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="GettingStarted.html">Getting started</a></li>
+            <li><a href="tutorial.html">Tut</a></li>   
+            <li><a href="api.html">APIs</a></li>              
+            <li><a href="docu/index.html">Documentation</a></li>
+        </ul>
+      
+        <nav>
+          <div class="nav-wrapper teal lighten-1" style="z-index: 10; padding-left:15%;">
+            <ul id="nav-mobile" class="left">
+              <li style="width: 200px;"><a id="menuTop" class="dropdown-button hide-on-large-only" href="#!" data-activates="dropdownTop">Menu</a></li> 
+              <li class="hide-on-med-and-down"><a href="index.html">Home</a></li>
+              <li class="hide-on-med-and-down"><a href="GettingStarted.html">Getting started</a></li>
+              <li class="hide-on-med-and-down"><a href="tutorial.html">Tutorial</a></li>      
+              <li class="hide-on-med-and-down"><a href="api.html">APIs</a></li>              
+              <li class="hide-on-med-and-down"><a href="documentation/index.html">Documentation</a></li>
+            </ul>
+          </div>
+        </nav>
+    </div>
+
+     <div  style="z-index: 20; position: relative;">
+      <section id="topPage" class="page-header" style="height: 15vh;">
+        <h1 class="project-name">Easy Video Edition</h1>
+        <h2 class="project-tagline"></h2>
+      </section>
+     </div>
+  
+      <!-- Dropdown Structure -->
+        <ul id="dropdown1" class="dropdown-content" style="z-index: 10;">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="GettingStarted.html">Getting started</a></li>
+            <li><a href="tutorial.html">Tutorial</a></li>   
+            <li><a href="api.html">APIs</a></li>              
+            <li><a href="docu/index.html">Documentation</a></li>
+        </ul>
+  
+      <nav id="navbar1">
+      <div class="nav-wrapper teal lighten-1" style="z-index: 20; padding-left:15%;">
+        <ul id="nav-mobile" class="left">
+              <li style="width: 200px;"><a id="menu1" class="dropdown-button hide-on-large-only" href="#!" data-activates="dropdown1">Menu</a></li> 
+              <li class="hide-on-med-and-down"><a href="index.html">Home</a></li>
+              <li class="hide-on-med-and-down"><a href="GettingStarted.html">Getting started</a></li>
+              <li class="hide-on-med-and-down"><a href="tutorial.html">Tutorial</a></li>
+              <li class="hide-on-med-and-down"><a href="api.html">APIs</a></li>              
+              <li class="hide-on-med-and-down"><a href="documentation/index.html">Documentation</a></li>
+            </ul>
+      </div>
+    </nav>
+  
+  <div class="row container">
+    
+    <div class="col s12" style="margin-bottom: 40px; margin-top: 70px;">
+      <h4> Contact us</h4>
+      <p>
+        Send your message to the development team if you need help or details about EasyVideoEdition. 
+      </p>
+    </div>
+    
+  </div>
+    
+    <div class="row container hoverable" style="padding: 15px;">
+   
+    <form action="https://www.enformed.io/94ewg96g" method="POST"> 
+      
+      <div class="input-field col s3">
+         <input name="first_name" id="first_name" type="text" class="validate">
+         <label for="first_name">First Name</label>
+       </div>
+      <div class="input-field col s3">
+         <input name="last_name" id="last_name" type="text" class="validate">
+         <label for="last_name">Last Name</label>
+       </div>
+      <div class="input-field col s6">
+         <input name="email" id="email" type="text" class="validate">
+         <label for="email">Email</label>
+      </div>
+
+      <div class="col s12">
+        <div class="input-field col s12">
+           <textarea name="textarea" id="textarea" class="materialize-textarea"></textarea>
+           <label for="textarea">Question</label>
+         </div>
+       </div>
+      
+      <input class="waves-effect waves-light btn center" type="submit" value="Send">
+    
+    </form>
+    
+  </div>
+  
+</body>
+
+<footer class="page-footer teal lighten-1">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">EasyVideoEdition</h5>
+                <p class="grey-text text-lighten-4">Student project made at ENSIM (Ecole Nationale Supérieure d'Ingérnieurs du Mans).</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="contact.html">Contact us</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://github.com/clement-chollet/Easy-Video-Edition">Github</a></li>
+                  <li><a class="grey-text text-lighten-3" href="documentation/index.html">Documentation</a></li>
+                  <li><a class="grey-text text-lighten-3" href="index.html">Website</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2017 ENSIM | Project under Ms-PL licence
+            </div>
+          </div>
+</footer>

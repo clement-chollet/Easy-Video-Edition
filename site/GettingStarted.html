@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/EVEWebSite/assets/css/style.css?v=2d1d5b61b48492947b8b0c0aa3300fef59cc5eb7">
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script>
+      
+      $(document).ready(function(){
+        $('.collapsible').collapsible();
+        $('.parallax').parallax();
+        $(".button-collapse").sideNav(); 
+        $(".dropdown-button").dropdown();
+        $('.scrollspy').scrollSpy();
+        $('#navbarTop').hide();
+        /*if($(window).width() < 801){
+           $('#menuTop').show();
+           $('#menu1').show();
+        }
+        if($(window).width() > 800){
+           $('#menuTop').hide();
+           $('#menu1').hide();
+        }*/
+        
+        $(window).scroll(function () {
+          console.log($(window).scrollTop());
+          if ($(window).scrollTop() > 170) {
+           $('#navbarTop').show();
+           $('#navbar1').hide();
+          }
+          if ($(window).scrollTop() < 171) {
+            $('#navbarTop').hide();
+            $('#navbar1').show();
+          }
+        });
+        
+        /*$( window ).resize(function() {
+          if($(window).width() < 801){
+           $('#menuTop').show();
+           $('#menu1').show();
+        }
+        if($(window).width() > 800){
+           $('#menuTop').hide();
+           $('#menu1').hide();
+        }
+        });*/
+        
+      }); 
+      
+  </script>
+</head>
+
+<body>
+
+    <div id="navbarTop" class="navbar-fixed">   
+      
+        <!-- Dropdown Structure -->
+        <ul id="dropdownTop" class="dropdown-content" style="z-index: 10;">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="GettingStarted.html">Getting started</a></li>
+            <li><a href="tutorial.html">Tut</a></li>   
+            <li><a href="api.html">APIs</a></li>              
+            <li><a href="docu/index.html">Documentation</a></li>
+        </ul>
+      
+        <nav>
+          <div class="nav-wrapper teal lighten-1" style="z-index: 10; padding-left:15%;">
+            <ul id="nav-mobile" class="left">
+              <li style="width: 200px;"><a id="menuTop" class="dropdown-button hide-on-large-only" href="#!" data-activates="dropdownTop">Menu</a></li> 
+              <li class="hide-on-med-and-down"><a href="index.html">Home</a></li>
+              <li class="active hide-on-med-and-down"><a href="GettingStarted.html">Getting started</a></li>
+              <li class="hide-on-med-and-down"><a href="tutorial.html">Tutorial</a></li>      
+              <li class="hide-on-med-and-down"><a href="api.html">APIs</a></li>              
+              <li class="hide-on-med-and-down"><a href="documentation/index.html">Documentation</a></li>
+            </ul>
+          </div>
+        </nav>
+    </div>
+
+     <div  style="z-index: 20; position: relative;">
+      <section id="topPage" class="page-header" style="height: 15vh;">
+        <h1 class="project-name">Easy Video Edition</h1>
+        <h2 class="project-tagline"></h2>
+      </section>
+     </div>
+  
+      <!-- Dropdown Structure -->
+        <ul id="dropdown1" class="dropdown-content" style="z-index: 10;">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="GettingStarted.html">Getting started</a></li>
+            <li><a href="tutorial.html">Tutorial</a></li>   
+            <li><a href="api.html">APIs</a></li>              
+            <li><a href="docu/index.html">Documentation</a></li>
+        </ul>
+  
+      <nav id="navbar1">
+      <div class="nav-wrapper teal lighten-1" style="z-index: 20; padding-left:15%;">
+        <ul id="nav-mobile" class="left">
+              <li style="width: 200px;"><a id="menu1" class="dropdown-button hide-on-large-only" href="#!" data-activates="dropdown1">Menu</a></li> 
+              <li class="hide-on-med-and-down"><a href="index.html">Home</a></li>
+              <li class="active hide-on-med-and-down"><a href="GettingStarted.html">Getting started</a></li>
+              <li class="hide-on-med-and-down"><a href="tutorial.html">Tutorial</a></li>
+              <li class="hide-on-med-and-down"><a href="api.html">APIs</a></li>              
+              <li class="hide-on-med-and-down"><a href="documentation/index.html">Documentation</a></li>
+            </ul>
+      </div>
+    </nav>
+
+     <div class="hide-on-med-and-down">
+        <div class="toc-wrapper pinned grey lighten-4 hoverable z-depth-3" style="top: 0px;bottom: 0px;left: 0px;width: 15vw; z-index: 15; position: absolute;padding-top: 30vh;padding-left:10px;">
+            <ul class="section table-of-contents">
+              <li><a href="#install" class="grey-text text-darken-4" >Installation</a></li>
+              <li><a href="#examples" class="grey-text text-darken-4" >Code snippets</a></li>
+                <li><a href="#exConv" class="grey-text text-darken-4"  style="margin-left: 15px;margin-right: 15px;"><div>Video Converter</div></a></li>
+                <li><a href="#exSub" class="grey-text text-darken-4"  style="margin-left: 15px;margin-right: 15px;"><div>Subtitles</div></a></li>
+                <li><a href="#exVid" class="grey-text text-darken-4"  style="margin-left: 15px;margin-right: 15px;"><div>Video</div></a></li>
+                <li><a href="#exExpo" class="grey-text text-darken-4"  style="margin-left: 15px;margin-right: 15px;"><div>Export video</div></a></li>
+		<li><a href="#exDSlider" class="grey-text text-darken-4"  style="margin-left: 15px;margin-right: 15px;"><div>Double Slider</div></a></li>
+		<li><a href="#exCCompo" class="grey-text text-darken-4"  style="margin-left: 15px;margin-right: 15px;"><div>Custom components</div></a></li>
+              <li><a href="#features" class="grey-text text-darken-4" >Features implementation</a></li>
+              <li><a href="#files" class="grey-text text-darken-4" >Useful files</a></li>
+            </ul>
+         </div>
+      </div>
+  
+  <div class="container">
+  
+  <div class="row">
+
+    <div class="col s11 offset-s1" style="margin-top: 30px;">
+
+    <div id="install"  class="section scrollspy" style="padding: 10px;">
+      <h4> Installation </h4>
+
+        <ol>
+          <li><a href="https://www.visualstudio.com/fr/downloads/?rr=https%3A%2F%2Fwww.google.fr%2F">Download</a> and install Visual Studio</li>
+          <li>Clone the github repository</li>
+          <li>Open EasyVideoEdition.sln with Visual Studio</li>
+        </ol>
+      </div>
+
+    <div id="examples" style="padding: 10px;">
+      <h4> Code snippets </h4>
+
+      <div id="exConv"  class="section scrollspy">
+      <p><b>videoConverter use</b></p>
+	      
+        <p>
+          
+          Options for the conversion or the concatenation that can be changed :
+        
+        </p>
+
+	<div class="language-c# highlighter-rouge" style="align:left;"><pre class="highlight"><code>	<span class="n">Video</span> <span class="n">vid1</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Video</span><span class="p">(</span><span class="s">@"C:/Program/name1.avi"</span><span class="p">,</span> <span class="n">name1</span><span class="p">,</span> <span class="m">20000</span><span class="p">);</span>
+	<span class="n">Video</span> <span class="n">vid2</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Video</span><span class="p">(</span><span class="s">@"C:/Program/name2.avi"</span><span class="p">,</span> <span class="n">name2</span><span class="p">,</span> <span class="m">10000</span><span class="p">);</span>
+	<span class="c1">//Convert video
+	</span>	<span class="n">VideoConverter</span><span class="p">.</span><span class="nf">convertVideo</span><span class="p">(</span><span class="m">1920</span><span class="p">,</span> <span class="m">1080</span><span class="p">,</span> <span class="m">30</span><span class="p">,</span> <span class="s">"h264"</span><span class="p">,</span> <span class="s">"ac3"</span><span class="p">,</span> <span class="n">vid1</span><span class="p">);</span>
+	<span class="n">VideoConverter</span><span class="p">.</span><span class="nf">convertVideo</span><span class="p">(</span><span class="m">1920</span><span class="p">,</span> <span class="m">1080</span><span class="p">,</span> <span class="m">30</span><span class="p">,</span> <span class="s">"h264"</span><span class="p">,</span> <span class="s">"ac3"</span><span class="p">,</span> <span class="n">vid2</span><span class="p">);</span>
+	<span class="c1">//split video
+	</span>	<span class="n">Video</span> <span class="n">vid1Part1</span> <span class="p">=</span> <span class="n">VideoConverter</span><span class="p">.</span><span class="nf">splitVideo</span><span class="p">(</span><span class="n">vid1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="s">"00"</span><span class="p">,</span> <span class="s">"00"</span><span class="p">,</span> <span class="s">"00"</span><span class="p">,</span> <span class="s">"00"</span><span class="p">,</span> <span class="s">"00"</span><span class="p">,</span> <span class="s">"18"</span><span class="p">);</span>
+	<span class="c1">//concatenate videos
+	</span>	<span class="n">Video</span> <span class="n">vid3</span> <span class="p">=</span> <span class="n">VideoConverter</span><span class="p">.</span><span class="nf">concatTwoVideos</span><span class="p">(</span><span class="n">vid1</span><span class="p">,</span> <span class="n">vid2</span><span class="p">);</span>
+	</code></pre>
+	</div>
+	      
+        <div class="card-panel grey lighten-5"> 
+          <div class="row">
+            <div class="col s4 "><b>Name</b></div>
+            <div class="col s4"><b>Utility</b></div>
+            <div class="col s4"><b>Possible values</b></div>
+          </div>
+          <div class="row">
+            <div class="col s4">Width</div>
+            <div class="col s4">Width of the converted video</div>
+            <div class="col s4">any (1280 or 1920 recommended)</div>
+          </div>
+          <div class="row">
+            <div class="col s4">Height</div>
+            <div class="col s4">Height of the converted video</div>
+            <div class="col s4">any (720 or 1080 recommended)</div>
+          </div>
+          <div class="row">
+            <div class="col s4">Framerate</div>
+            <div class="col s4">number of frames per second</div>
+            <div class="col s4">any (24, 30 or 60 recommended)</div>
+          </div>
+          <div class="row">
+            <div class="col s4">Video codec</div>
+            <div class="col s4">codec in which the video will be encoded</div>
+            <div class="col s4">check bellow</div>
+          </div>
+          <div class="row">
+            <div class="col s4">Audio codec</div>
+            <div class="col s4">codec in which the audio will be encoded</div>
+            <div class="col s4">ac3, aac, wma, amr</div>
+          </div>
+        </div>
+        
+        <p>
+          
+          Video codecs : 
+        
+        </p>
+        
+        <div class="card-panel grey lighten-5">
+          <div class="row">
+            <div class="col s4"><b>Codec</b></div>
+            <div class="col s4"><b>Advantages</b></div>
+            <div class="col s4"><b>Drawbacks</b></div>
+          </div>
+          <div class="row">
+            <div class="col s4">h264</div>
+            <div class="col s4">High definition</div>
+            <div class="col s4">Important timing process</div>
+          </div>
+          <div class="row">
+            <div class="col s4">mpeg</div>
+            <div class="col s4">Low quality</div>
+            <div class="col s4">Fast timing process</div>
+          </div>
+          
+        </div>
+        
+        <p><a href="/EVEWebSite/doc/class_easy_video_edition_1_1_model_1_1_file_browser.html">see documentation</a></p>
+
+      </div>
+
+      <div id="exSub" class="section scrollspy">
+
+        <p><b>subtitles usage</b></p>
+        
+        <p>
+          
+          The project uses srt format for subtitles. They can be loaded from an existing file if it exists and others can be added and saved in an srt file.
+        
+        </p>
+
+        <div class="language-c# highlighter-rouge"><pre class="highlight"><code>	<span class="n">Video</span> <span class="n">vid1</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Video</span><span class="p">(</span><span class="s">@"C:/Program/name1.avi"</span><span class="p">,</span> <span class="n">name1</span><span class="p">,</span> <span class="m">20000</span><span class="p">);</span>
+          <span class="n">Subtitles</span> <span class="n">subs</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Subtitles</span><span class="p">(</span><span class="n">vid1</span><span class="p">.</span><span class="n">filePath</span><span class="p">);</span>
+          <span class="c1">//Reads the srt file if it already exists and adds subtitles to the list
+        </span>	<span class="n">subs</span><span class="p">.</span><span class="nf">readSrtFile</span><span class="p">();</span>
+          <span class="c1">//adds a subtitle to the existing list
+        </span>	<span class="n">subs</span><span class="p">.</span><span class="nf">addSubtitle</span><span class="p">(</span><span class="s">"00:00:03,000"</span><span class="p">,</span> <span class="s">"00:00:07,000"</span><span class="p">,</span> <span class="s">"this is a subtitle example"</span><span class="p">);</span>
+          <span class="c1">//edits the first subtitle of the list
+        </span>	<span class="n">subs</span><span class="p">.</span><span class="nf">editSubtitle</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="s">"00:00:03,000"</span><span class="p">,</span> <span class="s">"00:00:07,000"</span><span class="p">,</span> <span class="s">"this is another subtitle example"</span><span class="p">);</span>
+          <span class="c1">//updates or creates the srt file
+        </span>	<span class="n">subs</span><span class="p">.</span><span class="nf">createSrtFile</span><span class="p">();</span>
+        </code></pre>
+        </div>
+        
+        <p>
+          The software allows to link an srt file to any video.
+          In order to do that a ffmpeg command is required to create a new mkv video file which then includes the srt file content
+        </p>
+        
+        <div class="language-c# highlighter-rouge"><pre class="highlight"><code>	<span class="cm">/* Initializing the process */</span>
+            <span class="n">Process</span> <span class="n">process</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Process</span><span class="p">();</span>
+            <span class="n">process</span><span class="p">.</span><span class="n">StartInfo</span><span class="p">.</span><span class="n">RedirectStandardOutput</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+            <span class="n">process</span><span class="p">.</span><span class="n">StartInfo</span><span class="p">.</span><span class="n">RedirectStandardError</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+            <span class="n">process</span><span class="p">.</span><span class="n">StartInfo</span><span class="p">.</span><span class="n">FileName</span> <span class="p">=</span> <span class="s">"ffmpeg"</span><span class="p">;</span>
+            <span class="n">process</span><span class="p">.</span><span class="n">StartInfo</span><span class="p">.</span><span class="n">UseShellExecute</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+            <span class="n">process</span><span class="p">.</span><span class="n">StartInfo</span><span class="p">.</span><span class="n">CreateNoWindow</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+            
+            <span class="n">process</span><span class="p">.</span><span class="n">StartInfo</span><span class="p">.</span><span class="n">Arguments</span> <span class="p">=</span> <span class="s">"-i "</span> <span class="p">+</span> <span class="n">pathVideo</span> <span class="p">+</span> <span class="s">" -i "</span> <span class="p">+</span> <span class="n">pathsrt</span> <span class="p">+</span> <span class="s">" -map 0 -map 1 -c copy output.mkv"</span><span class="p">;</span>
+            </code></pre>
+        </div>
+        
+         <div class="row grey lighten-5 card-panel">
+              <i class="col s2 medium material-icons orange-text text-ligthen-1" style="text-align: center;">report_problem</i>
+              <div class="col s10">
+                <span>
+                 Mind the video player, indeed many video player don't read mkv files.
+		 The ffmediaElement used in EVE is able to play mkv files.
+                </span>
+              </div>
+         </div>
+
+        <p><a href="/EVEWebSite/doc/class_easy_video_edition_1_1_model_1_1_file_browser.html">See documentation</a></p>
+
+      </div>
+
+      <div id="exVid" class="section scrollspy">
+
+        <p><b>Video usage</b></p>
+
+        <p>
+          
+          Some functions are meant to collect informations about the video.
+        
+        </p>
+        
+        <div class="language-c# highlighter-rouge"><pre class="highlight"><code>	<span class="n">Video</span> <span class="n">vid1</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Video</span><span class="p">(</span><span class="s">@"C:/Program/name1.avi"</span><span class="p">,</span> <span class="n">name1</span><span class="p">,</span> <span class="m">20000</span><span class="p">);</span>
+          <span class="c1">//gets the extention, the directory and the name of the video
+        </span>	<span class="n">vid1</span><span class="p">.</span><span class="nf">getExtension</span><span class="p">();</span>
+          <span class="n">vid1</span><span class="p">.</span><span class="nf">getFileName</span><span class="p">();</span>
+          <span class="n">vid1</span><span class="p">.</span><span class="nf">getDirectory</span><span class="p">();</span>
+          <span class="c1">//shows the duration of the video with the appropriate unit
+        </span>	<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">vid1</span><span class="p">.</span><span class="nf">calDuration</span><span class="p">(</span><span class="n">vid1</span><span class="p">.</span><span class="n">duration</span><span class="p">));</span>
+          <span class="c1">//shows the size of the video with the appropriate unit
+        </span>	<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">vid1</span><span class="p">.</span><span class="nf">calcSize</span><span class="p">(</span><span class="n">vid1</span><span class="p">.</span><span class="n">size</span><span class="p">));</span>
+        </code></pre>
+        </div>     
+
+        <p><a href="/EVEWebSite/doc/class_easy_video_edition_1_1_model_1_1_file_browser.html">see documentation</a></p>
+
+        </div>
+        <div id="exExpo" class="section scrollspy">
+          
+          <p><b>Export video</b></p>
+          
+          <p>
+            In order to export a video, a process is needed. It will get every elements from the storyBoard and split some some of them if needed. Then it'll convert every videos and merge all converted elements in an unique video.
+          </p>
+          
+          <div class="language-cs highlighter-rouge"><pre class="highlight"><code>	<span class="k">public</span> <span class="k">void</span> <span class="nf">exportVideoStart</span><span class="p">(</span><span class="kt">int</span> <span class="n">width</span><span class="p">,</span> <span class="kt">int</span> <span class="n">height</span><span class="p">,</span> <span class="kt">int</span> <span class="n">frameRate</span><span class="p">,</span> <span class="kt">string</span> <span class="n">outputVideoCodec</span><span class="p">,</span> <span class="kt">string</span> <span class="n">outputAudioCodec</span><span class="p">,</span> <span class="n">IEnumerator</span><span class="p">&lt;</span><span class="n">StoryBoardElement</span><span class="p">&gt;</span> <span class="n">videoList</span><span class="p">,</span> <span class="n">String</span> <span class="n">savePath</span><span class="p">)</span>
+          </code></pre>
+          </div>
+          
+          The process behind this function is : 
+          
+          <div class="language-cs highlighter-rouge"><pre class="highlight"><code>	<span class="n">List</span><span class="p">&lt;</span><span class="n">Video</span><span class="p">&gt;</span> <span class="n">videoArray</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Video</span><span class="p">&gt;();</span>
+            <span class="c1">//-------------------------
+              </span>	<span class="c1">//Convertion of the video file 
+              </span>	<span class="k">while</span> <span class="p">(</span><span class="n">videoList</span><span class="p">.</span><span class="nf">MoveNext</span><span class="p">())</span>
+                <span class="p">{</span>
+                    <span class="n">StoryBoardElement</span> <span class="n">ele</span> <span class="p">=</span> <span class="n">videoList</span><span class="p">.</span><span class="n">Current</span><span class="p">;</span>
+                    <span class="n">Video</span> <span class="n">v</span><span class="p">;</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">ele</span><span class="p">.</span><span class="n">fileType</span><span class="p">.</span><span class="nf">Equals</span><span class="p">(</span><span class="s">"Video"</span><span class="p">))</span>
+                    <span class="p">{</span>
+                      <span class="cm">/* Splits the storyBoard element if necessary */</span>
+                  <span class="k">if</span><span class="p">(</span><span class="n">ele</span><span class="p">.</span><span class="n">hasToBeSplit</span> <span class="p">==</span> <span class="k">true</span><span class="p">)</span>
+                  <span class="p">{</span>
+
+                      <span class="n">v</span> <span class="p">=</span> <span class="nf">splitVideo</span><span class="p">((</span><span class="n">Video</span><span class="p">)</span><span class="n">ele</span><span class="p">.</span><span class="n">file</span><span class="p">,</span> <span class="n">ele</span><span class="p">.</span><span class="n">numPart</span><span class="p">,</span> <span class="n">ele</span><span class="p">.</span><span class="n">startTimeInSource</span><span class="p">,</span> <span class="n">ele</span><span class="p">.</span><span class="n">endTimeInSource</span><span class="p">);</span> <span class="c1">//extract the part from the original video
+              </span>
+                  <span class="p">}</span>
+                  <span class="k">else</span>
+                  <span class="p">{</span>
+                      <span class="n">v</span> <span class="p">=</span> <span class="p">(</span><span class="n">Video</span><span class="p">)</span><span class="n">ele</span><span class="p">.</span><span class="n">file</span><span class="p">;</span>
+                  <span class="p">}</span>
+
+                  <span class="nf">convertVideo</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">frameRate</span><span class="p">,</span> <span class="n">outputVideoCodec</span><span class="p">,</span> <span class="n">outputAudioCodec</span><span class="p">,</span> <span class="n">v</span><span class="p">);</span>
+                  <span class="c1">//update of the path in the file list
+              </span>		<span class="n">ele</span><span class="p">.</span><span class="n">filePath</span> <span class="p">=</span> <span class="n">v</span><span class="p">.</span><span class="n">filePath</span><span class="p">;</span>
+                  <span class="n">_offsetConvertProgress</span> <span class="p">+=</span> <span class="n">v</span><span class="p">.</span><span class="n">duration</span><span class="p">;</span>
+                  <span class="n">videoArray</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+                <span class="n">videoList</span><span class="p">.</span><span class="nf">Reset</span><span class="p">();</span>
+                <span class="c1">//End of convertion
+              </span>	<span class="c1">//-------------------------
+              </span>
+                <span class="n">Video</span> <span class="n">FINAL</span> <span class="p">=</span> <span class="nf">concatVideoArray</span><span class="p">(</span><span class="n">videoArray</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">frameRate</span><span class="p">,</span> <span class="n">outputVideoCodec</span><span class="p">,</span> <span class="n">savePath</span><span class="p">);</span>
+              </code></pre>
+              </div>
+          
+            <div class="row grey lighten-5 card-panel">
+              <i class="col s2 medium material-icons orange-text text-ligthen-1" style="text-align: center;">report_problem</i>
+              <div class="col s10">
+                <span>
+                  Even if inserting a video into another isn't implemented yet in the interface, it has been coded and is functionnal.
+                  You can use the functions given below to split a storyboard element. The export process checks if videos need to be split and does so as needed
+                </span>
+              </div>
+            </div>
+          
+        </div>
+        
+	    <div id="exDSlider" class="section scrollspy">
+          
+		  <p><b>Double Slider</b></p>
+
+		  <p>
+		    In order to delimit a section of the video to be cut or otherwise edited, a slider with two thumbs was needed. The solution found to achieve this was a user control to create a new template. The following describes the appearance of this user control.
+		  </p>
+		    <div class="language-xml highlighter-rouge"><pre class="highlight"><code>	<span class="nt">&lt;UserControl.Resources&gt;</span>
+			<span class="nt">&lt;ControlTemplate</span> <span class="na">x:Key=</span><span class="s">"simpleSlider"</span> <span class="na">TargetType=</span><span class="s">"{x:Type Slider}"</span><span class="nt">&gt;</span>
+			    <span class="nt">&lt;Border</span> <span class="na">SnapsToDevicePixels=</span><span class="s">"true"</span> <span class="na">BorderBrush=</span><span class="s">"{TemplateBinding BorderBrush}"</span> <span class="na">BorderThickness=</span><span class="s">"{TemplateBinding BorderThickness}"</span><span class="nt">&gt;</span>
+				<span class="nt">&lt;Grid&gt;</span>
+				    <span class="nt">&lt;Grid.RowDefinitions&gt;</span>
+					<span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">"Auto"</span><span class="nt">/&gt;</span>
+					<span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">"Auto"</span> <span class="na">MinHeight=</span><span class="s">"{TemplateBinding MinHeight}"</span><span class="nt">/&gt;</span>
+					<span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">"Auto"</span><span class="nt">/&gt;</span>
+				    <span class="nt">&lt;/Grid.RowDefinitions&gt;</span>
+
+				    <span class="nt">&lt;Rectangle</span> <span class="na">x:Name=</span><span class="s">"PART_SelectionRange"</span><span class="nt">/&gt;</span>
+
+				    <span class="nt">&lt;Track</span> <span class="na">x:Name=</span><span class="s">"PART_Track"</span> <span class="na">Grid.Row=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+					<span class="nt">&lt;Track.Thumb&gt;</span>
+					    <span class="nt">&lt;Thumb</span> <span class="na">x:Name=</span><span class="s">"Thumb"</span><span class="nt">&gt;</span>
+						<span class="nt">&lt;Thumb.Template&gt;</span>
+						    <span class="nt">&lt;ControlTemplate</span> <span class="na">TargetType=</span><span class="s">"Thumb"</span><span class="nt">&gt;</span>
+							<span class="nt">&lt;Rectangle</span> <span class="na">Fill=</span><span class="s">"Black"</span> 
+								   <span class="na">Stroke=</span><span class="s">"#656767"</span>
+								   <span class="na">StrokeThickness=</span><span class="s">"0.5"</span> 
+								   <span class="na">Width=</span><span class="s">"7"</span>
+								   <span class="na">Height=</span><span class="s">"55"</span>
+								   <span class="na">SnapsToDevicePixels=</span><span class="s">"True"</span>
+								  <span class="na">RadiusX=</span><span class="s">"10"</span> <span class="na">RadiusY=</span><span class="s">"2"</span><span class="nt">/&gt;</span>
+						    <span class="nt">&lt;/ControlTemplate&gt;</span>
+						<span class="nt">&lt;/Thumb.Template&gt;</span>
+					    <span class="nt">&lt;/Thumb&gt;</span>
+					<span class="nt">&lt;/Track.Thumb&gt;</span>
+				    <span class="nt">&lt;/Track&gt;</span>
+				<span class="nt">&lt;/Grid&gt;</span>
+			    <span class="nt">&lt;/Border&gt;</span>
+			<span class="nt">&lt;/ControlTemplate&gt;</span>
+
+		    <span class="nt">&lt;/UserControl.Resources&gt;</span>
+		    <span class="nt">&lt;Grid</span> <span class="na">VerticalAlignment=</span><span class="s">"Center"</span><span class="nt">&gt;</span>
+			<span class="nt">&lt;Rectangle</span> <span class="na">Fill=</span><span class="s">"#FFAFB4B3"</span> <span class="na">VerticalAlignment=</span><span class="s">"Center"</span> <span class="na">Height=</span><span class="s">"45"</span> <span class="na">Margin=</span><span class="s">"5,0,5,0"</span> <span class="na">Stroke=</span><span class="s">"#3E4145"</span><span class="nt">/&gt;</span>
+
+			<span class="nt">&lt;Slider</span> <span class="na">x:Name=</span><span class="s">"LowerSlider"</span>
+				<span class="na">Minimum=</span><span class="s">"{Binding ElementName=root, Path=Minimum}"</span>
+				<span class="na">Maximum=</span><span class="s">"{Binding ElementName=root, Path=Maximum}"</span>
+				<span class="na">Value=</span><span class="s">"{Binding ElementName=root, Path=LowerValue, Mode=TwoWay}"</span>
+				<span class="na">Template=</span><span class="s">"{StaticResource simpleSlider}"</span>
+				<span class="na">Margin=</span><span class="s">"0,0,7,0"</span>
+				<span class="nt">/&gt;</span>
+
+			<span class="nt">&lt;Slider</span> <span class="na">x:Name=</span><span class="s">"UpperSlider"</span>
+				<span class="na">Minimum=</span><span class="s">"{Binding ElementName=root, Path=Minimum}"</span>
+				<span class="na">Maximum=</span><span class="s">"{Binding ElementName=root, Path=Maximum}"</span>
+				<span class="na">Value=</span><span class="s">"{Binding ElementName=root, Path=UpperValue, Mode=TwoWay}"</span>
+				<span class="na">Template=</span><span class="s">"{StaticResource simpleSlider}"</span>
+				<span class="na">Margin=</span><span class="s">"7,0,0,0"</span>
+				<span class="nt">/&gt;</span>
+		    <span class="nt">&lt;/Grid&gt;</span>
+		</code></pre>
+		</div>
+		<p>
+			Then, in order to access the positions of the two thumbs, functions had to be implemented in the .cs of the userControl. 
+		</p>
+		    <div class="language-cs highlighter-rouge"><pre class="highlight"><code>    <span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">DoubleSlider</span> <span class="p">:</span> <span class="n">UserControl</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="nf">DoubleSlider</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="nf">InitializeComponent</span><span class="p">();</span>
+
+            <span class="k">this</span><span class="p">.</span><span class="n">Loaded</span> <span class="p">+=</span> <span class="n">Slider_Loaded</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">void</span> <span class="nf">Slider_Loaded</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">LowerSlider</span><span class="p">.</span><span class="n">ValueChanged</span> <span class="p">+=</span> <span class="n">LowerSlider_ValueChanged</span><span class="p">;</span>
+            <span class="n">UpperSlider</span><span class="p">.</span><span class="n">ValueChanged</span> <span class="p">+=</span> <span class="n">UpperSlider_ValueChanged</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">/// &lt;summary&gt;
+</span>        <span class="c1">/// Updates value of the right thumb to both sliders composing the doubleSlider
+</span>        <span class="c1">/// &lt;/summary&gt;
+</span>        <span class="c1">/// &lt;param name="sender"&gt;&lt;/param&gt;
+</span>        <span class="c1">/// &lt;param name="e"&gt;&lt;/param&gt;
+</span>        <span class="k">private</span> <span class="k">void</span> <span class="nf">LowerSlider_ValueChanged</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedPropertyChangedEventArgs</span><span class="p">&lt;</span><span class="kt">double</span><span class="p">&gt;</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">UpperSlider</span><span class="p">.</span><span class="n">Value</span> <span class="p">=</span> <span class="n">Math</span><span class="p">.</span><span class="nf">Max</span><span class="p">(</span><span class="n">UpperSlider</span><span class="p">.</span><span class="n">Value</span><span class="p">,</span> <span class="n">LowerSlider</span><span class="p">.</span><span class="n">Value</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">/// &lt;summary&gt;
+</span>        <span class="c1">/// Updates value of the left thumb to both sliders composing the doubleSlider
+</span>        <span class="c1">/// &lt;/summary&gt;
+</span>        <span class="c1">/// &lt;param name="sender"&gt;&lt;/param&gt;
+</span>        <span class="c1">/// &lt;param name="e"&gt;&lt;/param&gt;
+</span>        <span class="k">private</span> <span class="k">void</span> <span class="nf">UpperSlider_ValueChanged</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedPropertyChangedEventArgs</span><span class="p">&lt;</span><span class="kt">double</span><span class="p">&gt;</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">LowerSlider</span><span class="p">.</span><span class="n">Value</span> <span class="p">=</span> <span class="n">Math</span><span class="p">.</span><span class="nf">Min</span><span class="p">(</span><span class="n">UpperSlider</span><span class="p">.</span><span class="n">Value</span><span class="p">,</span> <span class="n">LowerSlider</span><span class="p">.</span><span class="n">Value</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">/// &lt;summary&gt;
+</span>        <span class="c1">/// Minimum is the lowest value the left thumb can have
+</span>        <span class="c1">/// &lt;/summary&gt;
+</span>        <span class="k">public</span> <span class="kt">double</span> <span class="n">Minimum</span>
+        <span class="p">{</span>
+            <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="nf">GetValue</span><span class="p">(</span><span class="n">MinimumProperty</span><span class="p">);</span> <span class="p">}</span>
+            <span class="k">set</span> <span class="p">{</span> <span class="nf">SetValue</span><span class="p">(</span><span class="n">MinimumProperty</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span> <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">DependencyProperty</span> <span class="n">MinimumProperty</span> <span class="p">=</span>
+            <span class="n">DependencyProperty</span><span class="p">.</span><span class="nf">Register</span><span class="p">(</span><span class="s">"Minimum"</span><span class="p">,</span> <span class="k">typeof</span><span class="p">(</span><span class="kt">double</span><span class="p">),</span> <span class="k">typeof</span><span class="p">(</span><span class="n">DoubleSlider</span><span class="p">),</span> <span class="k">new</span> <span class="nf">UIPropertyMetadata</span><span class="p">(</span><span class="m">0d</span><span class="p">));</span>
+
+        <span class="c1">/// &lt;summary&gt;
+</span>        <span class="c1">/// LowerValue is the value of the left thumb, between Minimum and Maximum (defined in other functions)
+</span>        <span class="c1">/// &lt;/summary&gt;
+</span>        <span class="k">public</span> <span class="kt">double</span> <span class="n">LowerValue</span>
+        <span class="p">{</span>
+            <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="nf">GetValue</span><span class="p">(</span><span class="n">LowerValueProperty</span><span class="p">);</span> <span class="p">}</span>
+            <span class="k">set</span> <span class="p">{</span> <span class="nf">SetValue</span><span class="p">(</span><span class="n">LowerValueProperty</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span> <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">DependencyProperty</span> <span class="n">LowerValueProperty</span> <span class="p">=</span>
+            <span class="n">DependencyProperty</span><span class="p">.</span><span class="nf">Register</span><span class="p">(</span><span class="s">"LowerValue"</span><span class="p">,</span> <span class="k">typeof</span><span class="p">(</span><span class="kt">double</span><span class="p">),</span> <span class="k">typeof</span><span class="p">(</span><span class="n">DoubleSlider</span><span class="p">),</span> <span class="k">new</span> <span class="nf">UIPropertyMetadata</span><span class="p">(</span><span class="m">0d</span><span class="p">));</span>
+
+
+        <span class="c1">/// &lt;summary&gt;
+</span>        <span class="c1">/// UpperValue is the value of the right thumb, between Minimum and Maximum (defined in other functions)
+</span>        <span class="c1">/// &lt;/summary&gt;
+</span>        <span class="k">public</span> <span class="kt">double</span> <span class="n">UpperValue</span>
+        <span class="p">{</span>
+            <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="nf">GetValue</span><span class="p">(</span><span class="n">UpperValueProperty</span><span class="p">);</span> <span class="p">}</span>
+            <span class="k">set</span> <span class="p">{</span> <span class="nf">SetValue</span><span class="p">(</span><span class="n">UpperValueProperty</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span> <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">DependencyProperty</span> <span class="n">UpperValueProperty</span> <span class="p">=</span>
+            <span class="n">DependencyProperty</span><span class="p">.</span><span class="nf">Register</span><span class="p">(</span><span class="s">"UpperValue"</span><span class="p">,</span> <span class="k">typeof</span><span class="p">(</span><span class="kt">double</span><span class="p">),</span> <span class="k">typeof</span><span class="p">(</span><span class="n">DoubleSlider</span><span class="p">),</span> <span class="k">new</span> <span class="nf">UIPropertyMetadata</span><span class="p">(</span><span class="m">0d</span><span class="p">));</span>
+
+        <span class="c1">/// &lt;summary&gt;
+</span>        <span class="c1">/// Maximum is the highest value the right thumb can have
+</span>        <span class="c1">/// &lt;/summary&gt;
+</span>        <span class="k">public</span> <span class="kt">double</span> <span class="n">Maximum</span>
+        <span class="p">{</span>
+            <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="nf">GetValue</span><span class="p">(</span><span class="n">MaximumProperty</span><span class="p">);</span> <span class="p">}</span>
+            <span class="k">set</span> <span class="p">{</span> <span class="nf">SetValue</span><span class="p">(</span><span class="n">MaximumProperty</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span> <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">DependencyProperty</span> <span class="n">MaximumProperty</span> <span class="p">=</span>
+            <span class="n">DependencyProperty</span><span class="p">.</span><span class="nf">Register</span><span class="p">(</span><span class="s">"Maximum"</span><span class="p">,</span> <span class="k">typeof</span><span class="p">(</span><span class="kt">double</span><span class="p">),</span> <span class="k">typeof</span><span class="p">(</span><span class="n">DoubleSlider</span><span class="p">),</span> <span class="k">new</span> <span class="nf">UIPropertyMetadata</span><span class="p">(</span><span class="m">1d</span><span class="p">));</span>
+    <span class="p">}</span>
+
+</code></pre>
+</div>
+	     </div>
+	    
+	    <div id="exCCompo" class="section scrollspy">
+		    <p><b>Custom Components</b></p>
+		    <p>Component custumization was a big part of the interface design process. To do this in an organized way, ResourceDictionnaries were used. The following code was added to the App.xaml file : </p>
+		    <div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Application.Resources&gt;</span>
+        <span class="nt">&lt;ResourceDictionary&gt;</span>
+            <span class="nt">&lt;ResourceDictionary.MergedDictionaries&gt;</span>
+                <span class="nt">&lt;ResourceDictionary</span> <span class="na">Source=</span><span class="s">"Dictionnary/Instructions/InstructionsButtonShown.xaml"</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;ResourceDictionary</span> <span class="na">Source=</span><span class="s">"Dictionnary/Instructions/InstructionsButtonHidden.xaml"</span><span class="nt">/&gt;</span>
+				[...]
+            <span class="nt">&lt;/ResourceDictionary.MergedDictionaries&gt;</span>
+        <span class="nt">&lt;/ResourceDictionary&gt;</span>
+<span class="nt">&lt;/Application.Resources&gt;</span>
+</code></pre>
+</div>
+		    
+	    </div>
+	    
+        </div>
+      
+      <div id="features" class="section scrollspy">
+        
+        <p><b>Features implementation</b></p>
+      
+      <div style="margin-top:20px;padding:10%;" class="grey lighten-5 card-panel">
+        <div class="row">
+          <div class="col s6">
+            <b>Feature</b>
+          </div>
+          <div class="col s2">
+            <b>Fully implemented</b>
+          </div>
+          <div class="col s2">
+            <b>Partially implemented</b>
+          </div>
+          <div class="col s2">
+            <b>Not implemented</b>
+          </div> 
+        </div>
+        
+        <div class="row">
+          <div class="col s6">
+            Switching between tabs
+          </div>
+          <div class="col s2">
+            <i class="small material-icons green-text">done</i>
+          </div>
+          <div class="col s2">
+
+          </div>
+          <div class="col s2">  
+
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col s6">
+            Add video
+          </div>
+          <div class="col s2">
+            <i class="small material-icons  green-text">done</i>
+          </div>
+          <div class="col s2">
+            
+          </div>
+          <div class="col s2">  
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col s6">
+            Add image
+          </div>
+          <div class="col s2">
+
+          </div>
+          <div class="col s2">
+
+          </div>
+          <div class="col s2">  
+            <i class="small material-icons red-text">done</i>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col s6">
+            Video player
+          </div>
+          <div class="col s2">
+            <i class="small material-icons green-text">done</i>
+          </div>
+          <div class="col s2">
+            
+          </div>
+          <div class="col s2">  
+          </div>
+        </div>
+           
+        <div class="row">
+          <div class="col s6">
+            Subtitles management
+          </div>
+          <div class="col s2">
+            
+          </div>
+          <div class="col s2">
+            <i class="small material-icons orange-text">done</i>
+          </div>
+          <div class="col s2">  
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col s6">
+            Cut video
+          </div>
+          <div class="col s2">
+            
+          </div>
+          <div class="col s2">
+            <i class="small material-icons orange-text">done</i>
+          </div>
+          <div class="col s2">  
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col s6">
+            Convert video
+          </div>
+          <div class="col s2">
+            <i class="small material-icons green-text">done</i>
+          </div>
+          <div class="col s2">
+
+          </div>
+          <div class="col s2">  
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col s6">
+            Concatenate video
+          </div>
+          <div class="col s2">
+            <i class="small material-icons green-text">done</i>
+          </div>
+          <div class="col s2">
+
+          </div>
+          <div class="col s2">  
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col s6">
+            Insert video into another one
+          </div>
+          <div class="col s2">
+
+          </div>
+          <div class="col s2">
+            <i class="small material-icons orange-text">done</i>
+          </div>
+          <div class="col s2">  
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col s6">
+            Chapters management
+          </div>
+          <div class="col s2">
+
+          </div>
+          <div class="col s2">
+
+          </div>
+          <div class="col s2">  
+            <i class="small material-icons red-text">done</i>
+          </div>
+        </div>
+               
+        <div class="row">
+          <div class="col s6">
+            Add image
+          </div>
+          <div class="col s2">
+
+          </div>
+          <div class="col s2">
+
+          </div>
+          <div class="col s2">  
+            <i class="small material-icons red-text">done</i>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col s6">
+            Add sound
+          </div>
+          <div class="col s2">
+            
+          </div>
+          <div class="col s2">
+            
+          </div>
+          <div class="col s2">  
+            <i class="small material-icons red-text">done</i>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col s6">
+            Sound management
+          </div>
+          <div class="col s2">
+            
+          </div>
+          <div class="col s2">
+            
+          </div>
+          <div class="col s2">  
+            <i class="small material-icons red-text">done</i>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col s6">
+            Video recording
+          </div>
+          <div class="col s2">
+            
+          </div>
+          <div class="col s2">
+            
+          </div>
+          <div class="col s2">  
+            <i class="small material-icons red-text">done</i>
+          </div>
+        </div>
+                
+      </div>
+        
+      </div>
+
+      <div id="files" class="section scrollspy" style="padding: 10px;">
+
+      <h4> Useful files </h4>
+
+        <ul>
+          <li><a href="https://www.visualstudio.com/fr/downloads/?rr=https%3A%2F%2Fwww.google.fr%2F">Naming convention</a></li>
+          <li><a href="https://www.visualstudio.com/fr/downloads/?rr=https%3A%2F%2Fwww.google.fr%2F">Specifications</a></li>
+          <li><a href="https://www.visualstudio.com/fr/downloads/?rr=https%3A%2F%2Fwww.google.fr%2F">Apis files</a></li>
+        </ul>
+
+
+    </div>
+
+  </div>
+  </div>
+  </div>
+
+  </body>
+
+<div  style="z-index: 20; position: relative;">
+<footer class="page-footer teal lighten-1">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">EasyVideoEdition</h5>
+                <p class="grey-text text-lighten-4">Student project made at ENSIM (Ecole Nationale Supérieure d'Ingérnieurs du Mans).</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="contact.html">Contact us</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://github.com/clement-chollet/Easy-Video-Edition">Github</a></li>
+                  <li><a class="grey-text text-lighten-3" href="documentation/index.html">Documentation</a></li>
+                  <li><a class="grey-text text-lighten-3" href="index.html">Website</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2017 ENSIM | Project under Ms-PL licence
+            </div>
+          </div>
+</footer>
+</div>
+
+ 

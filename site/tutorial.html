@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/EVEWebSite/assets/css/style.css?v=2d1d5b61b48492947b8b0c0aa3300fef59cc5eb7">
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script>
+      
+      $(document).ready(function(){
+        $('.collapsible').collapsible();
+        $('.parallax').parallax();
+        $(".button-collapse").sideNav(); 
+        $(".dropdown-button").dropdown();
+        $('.scrollspy').scrollSpy();
+        $('#navbarTop').hide();
+        $('.materialboxed').materialbox();
+        /*if($(window).width() < 801){
+           $('#menuTop').show();
+           $('#menu1').show();
+        }
+        if($(window).width() > 800){
+           $('#menuTop').hide();
+           $('#menu1').hide();
+        }*/
+        
+        $(window).scroll(function () {
+          console.log($(window).scrollTop());
+          if ($(window).scrollTop() > 170) {
+           $('#navbarTop').show();
+           $('#navbar1').hide();
+          }
+          if ($(window).scrollTop() < 171) {
+            $('#navbarTop').hide();
+            $('#navbar1').show();
+          }
+        });
+        
+        /*$( window ).resize(function() {
+          if($(window).width() < 801){
+           $('#menuTop').show();
+           $('#menu1').show();
+        }
+        if($(window).width() > 800){
+           $('#menuTop').hide();
+           $('#menu1').hide();
+        }
+        });*/
+        
+      }); 
+      
+  </script>
+</head>
+
+<body>
+
+    <div id="navbarTop" class="navbar-fixed">   
+      
+        <!-- Dropdown Structure -->
+        <ul id="dropdownTop" class="dropdown-content" style="z-index: 10;">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="GettingStarted.html">Getting started</a></li>
+            <li><a href="tutorial.html">Tut</a></li>   
+            <li><a href="api.html">APIs</a></li>              
+            <li><a href="docu/index.html">Documentation</a></li>
+        </ul>
+      
+        <nav>
+          <div class="nav-wrapper teal lighten-1" style="z-index: 10; padding-left:15%;">
+            <ul id="nav-mobile" class="left">
+              <li style="width: 200px;"><a id="menuTop" class="dropdown-button hide-on-large-only" href="#!" data-activates="dropdownTop">Menu</a></li> 
+              <li class="hide-on-med-and-down"><a href="index.html">Home</a></li>
+              <li class="hide-on-med-and-down"><a href="GettingStarted.html">Getting started</a></li>
+              <li class="active hide-on-med-and-down"><a href="tutorial.html">Tutorial</a></li>      
+              <li class="hide-on-med-and-down"><a href="api.html">APIs</a></li>              
+              <li class="hide-on-med-and-down"><a href="documentation/index.html">Documentation</a></li>
+            </ul>
+          </div>
+        </nav>
+    </div>
+
+     <div  style="z-index: 20; position: relative;">
+      <section id="topPage" class="page-header" style="height: 15vh;">
+        <h1 class="project-name">Easy Video Edition</h1>
+        <h2 class="project-tagline"></h2>
+      </section>
+     </div>
+  
+      <!-- Dropdown Structure -->
+        <ul id="dropdown1" class="dropdown-content" style="z-index: 10;">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="GettingStarted.html">Getting started</a></li>
+            <li><a href="tutorial.html">Tutorial</a></li>   
+            <li><a href="api.html">APIs</a></li>              
+            <li><a href="docu/index.html">Documentation</a></li>
+        </ul>
+  
+      <nav id="navbar1">
+      <div class="nav-wrapper teal lighten-1" style="z-index: 20; padding-left:15%;">
+        <ul id="nav-mobile" class="left">
+              <li style="width: 200px;"><a id="menu1" class="dropdown-button hide-on-large-only" href="#!" data-activates="dropdown1">Menu</a></li> 
+              <li class="hide-on-med-and-down"><a href="index.html">Home</a></li>
+              <li class="hide-on-med-and-down"><a href="GettingStarted.html">Getting started</a></li>
+              <li class="active hide-on-med-and-down"><a href="tutorial.html">Tutorial</a></li>
+              <li class="hide-on-med-and-down"><a href="api.html">APIs</a></li>              
+              <li class="hide-on-med-and-down"><a href="documentation/index.html">Documentation</a></li>
+            </ul>
+      </div>
+    </nav>
+
+     <div class="hide-on-med-and-down">
+        <div class="toc-wrapper pinned grey lighten-4 hoverable z-depth-3" style="top: 0px;bottom: 0px;left: 0px;width: 15vw; z-index: 15; position: absolute;padding-top: 30vh;padding-left:10px;">
+            <ul class="section table-of-contents">
+              <li><a href="#tuto1" class="grey-text text-darken-4" >Starting</a></li>
+              <li><a href="#tuto2" class="grey-text text-darken-4" >Visual adding</a></li>
+              <li><a href="#tuto3" class="grey-text text-darken-4" >Visual edition</a></li>
+              <li><a href="#tuto4" class="grey-text text-darken-4" >Audio adding</a></li>
+              <li><a href="#tuto5" class="grey-text text-darken-4" >Audio eddition</a></li>
+              <li><a href="#tuto6" class="grey-text text-darken-4" >Subtitles adding</a></li>
+              <li><a href="#tuto7" class="grey-text text-darken-4" >Chapters adding</a></li>
+              <li><a href="#tuto8" class="grey-text text-darken-4" >Save</a></li>
+            </ul>
+         </div>
+      </div>
+  
+  <div class="container">
+   <div class="row">
+
+    <div class="col s11 offset-s1" style="margin-top: 30px;">
+
+    <!-- Debut -->  
+    <div id="tuto1"  class="section scrollspy" style="padding: 10px;">
+        <h4> Starting/Début </h4>
+        <img class="materialboxed z-depth-4 responsive-img" margin-bottom="10" align="middle" src="https://image.noelshack.com/fichiers/2017/22/1496307777-0-1-debut.png">
+        <ul class="collapsible" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header"><img style="margin-right:10px;" width="15" height="15" src="https://www.iconfinder.com/data/icons/european-country-flags/83/france-128.png"/>
+                Francais
+            </div>
+            <div class="collapsible-body">
+              <span>
+                  Vous disposez sur cet onglet de 2 boutons. Le premier vous permet d'ouvrir un projet et le deuxième d'en créer un.
+                  Ainsi vous pouvez choisir de reprendre un projet dans l'état dans lequel il avait été précédemment sauvegardé
+                  ou de créer un projet vide.
+              </span>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header"><img style="margin-right:10px;" width="15" height="15" src="https://www.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_United_Kingdom_-_Circle-128.png"/>
+                English
+            </div>
+            <div class="collapsible-body">
+              <span>
+                You have 2 buttons on this tab. The first allows you to open a project and the second to create one.
+                Thus you can choose to resume a project in the state in which it was previously saved
+                Or create an empty project.
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Ajout visuel -->  
+      <div id="tuto2"  class="section scrollspy" style="padding: 10px;">
+        <h4> Visual adding/Ajout visuel </h4>
+        <img class="materialboxed z-depth-4 responsive-img" margin-bottom="10" align="middle" src="https://image.noelshack.com/fichiers/2017/22/1496307777-0-2-ajout-visuel.png">
+        <ul class="collapsible" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header"><img style="margin-right:10px;" width="15" height="15" src="https://www.iconfinder.com/data/icons/european-country-flags/83/france-128.png"/>
+                Francais
+            </div>
+            <div class="collapsible-body">
+              <span>
+                Vous pouvez via cet onglet ajouter des vidéos déja existantes, des images et vous enregistrez via une webcam.
+                En cliquans sur s'enregistrez, une nouvelle fenêtre s'ouvre grâce à laquelle vous pourrez vous enregistrez via votre
+                webcam. Le fichier créé sera ensuite sauvegardé dans le dossier du projet sur votre ordinateur et sera visible dans
+                l'onglet "Mes vidéos".
+                Si vous voulez ajouter une vidéo ou une photo, il vous faut cliquer sur le bouton "Ajout photo" ou "Ajout vidéo".
+                S'ouvre alors une fenêtre grâce à laquelle vous pouvez parcourir vos dossiers afin de choisir une photo ou une vidéo.
+                Le choix sera ensuite visible dans l'onglet "Mes photos" ou "Mes vidéos".
+              </span>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header"><img style="margin-right:10px;" width="15" height="15" src="https://www.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_United_Kingdom_-_Circle-128.png"/>
+                English
+            </div>
+            <div class="collapsible-body">
+              <span>
+                 You can use this tab to add already existing videos, images and you can record via a webcam.
+                 By clicking on register, a new window opens whereby you can register via your
+                 webcam. The created file will then be saved in the project folder on your computer and will be visible in
+                 The "My Videos" tab.
+                 If you want to add a video or a photo, click on the "Add photo" or "Add video" button.
+                 This opens a window where you can browse your folders to choose a photo or video.
+                 The choice will then be visible in the "My Photos" or "My Videos" tab.              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Edition visuel -->  
+      <div id="tuto3"  class="section scrollspy" style="padding: 10px;">
+        <h4> Visual edition/Edition visuel </h4>
+        <img class="materialboxed z-depth-4 responsive-img" margin-bottom="10" align="middle" src="https://image.noelshack.com/fichiers/2017/22/1496307777-0-3-edition-visuel.png">
+        <ul class="collapsible" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header"><img style="margin-right:10px;" width="15" height="15" src="https://www.iconfinder.com/data/icons/european-country-flags/83/france-128.png"/>
+                Francais
+            </div>
+            <div class="collapsible-body">
+              <span>
+                Dans cet onglet, vous gèrez tous les éléments visuels précédemment ajoutés, qui forment dorénavant 
+                un seul bloc de vidéo. Il est alors possible de couper la timeline en différents blocs en choisissant le point 
+                de coupure sur la timeline de la vidéo puis en cliquant sur “Couper”. Une fois un bloc créé, il est possible de 
+                le supprimer entièrement ou juste supprimer la bande sonore qui lui est associée. 
+              </span>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header"><img style="margin-right:10px;" width="15" height="15" src="https://www.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_United_Kingdom_-_Circle-128.png"/>
+                English
+            </div>
+            <div class="collapsible-body">
+              <span>
+                In this tab, you manage all the previously added visual elements, which now form a single block of video. 
+                It is then possible to cut the timeline into different blocks by choosing the cut-off point on the video 
+                timeline and then clicking on "Cut". Once a block has been created, you can delete it completely or just 
+                delete the soundtrack associated with it.             
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Ajout audio -->  
+      <div id="tuto4"  class="section scrollspy" style="padding: 10px;">
+        <h4> Audio adding/Ajout audio </h4>
+        <img class="materialboxed z-depth-4 responsive-img" margin-bottom="10" align="middle" src="https://image.noelshack.com/fichiers/2017/22/1496307777-0-4-ajout-audio.png">
+        <ul class="collapsible" data-collapsible="accordion">
+          <li>
+           <div class="collapsible-header"><img style="margin-right:10px;" width="15" height="15" src="https://www.iconfinder.com/data/icons/european-country-flags/83/france-128.png"/>
+                Francais
+            </div>
+            <div class="collapsible-body">
+              <span>
+                  Cet onglet vous permet de rajouter deux pistes audio supplémentaires, une pour de la parole et une autre pour de 
+                  la musique. En appuyant sur “s’enregistrer”, vous ajouterez votre voix par dessus la vidéo à l’emplacement 
+                  du curseur. Le fichier audio correspondant est également disponible dans le bloc sur le côté droit nommé 
+                  “Mes audios”.
+                  En appuyant sur ajout audio, vous pouvez parcourir vos dossiers personnels afin de rajouter un fichier 
+                  audio à l’emplacement du curseur. Ce fichier sera également disponible dans le bloc du milieu.
+                  Si le fichier ouvert a une durée supérieur à celle de la vidéo, une nouvelle fenêtre s’ouvre dans laquelle 
+                  il peut choisir la partie qui vous intéresse.
+                
+
+              </span>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header"><img style="margin-right:10px;" width="15" height="15" src="https://www.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_United_Kingdom_-_Circle-128.png"/>
+                English
+            </div>
+            <div class="collapsible-body">
+              <span>
+                This tab allows you to add two additional audio tracks, one for speech and another for music. By pressing "rec",
+                you will add your voice over the video at the cursor location. The corresponding audio file is also available in the
+                block on the right side named "My Audio".
+                By pressing Add audio, you can browse your personal folders to add a file
+                Audio at the cursor location. This file will also be available in the middle block.
+                If the open file is longer than the video, a new window opens in which
+                He can choose the part that interests you.
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Edition audio -->  
+      <div id="tuto5"  class="section scrollspy" style="padding: 10px;">
+        <h4> Aduio edition/Edition audio </h4>
+        <img class="materialboxed z-depth-4 responsive-img" margin-bottom="10" align="middle" src="https://image.noelshack.com/fichiers/2017/22/1496307777-0-5-edition-audio.png">
+        <ul class="collapsible" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header"><img style="margin-right:10px;" width="15" height="15" src="https://www.iconfinder.com/data/icons/european-country-flags/83/france-128.png"/>
+                Francais
+            </div><div class="collapsible-body">
+              <span>                
+                Dans cet onglet, vous gérez les deux pistes audio paroles et musiques qui forment désormais deux blocs distincts.
+                Il vous est possible de supprimer des parties de ces deux pistes en la délimitant grâce aux deux curseurs. Lorsque vous
+                cliquez sur l'un des boutons "supprimer" vous pouvez choisir de laisser l'espace supprimé vide ou de rassembler les
+                deux blocs adjacents
+              </span>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header"><img style="margin-right:10px;" width="15" height="15" src="https://www.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_United_Kingdom_-_Circle-128.png"/>
+                English
+            </div>
+            <div class="collapsible-body">
+              <span>
+                In this tab, you manage both audio tracks, music and lyrics, which now form two separate blocks.
+                You can delete parts of these two tracks by delimiting them with the two cursors.
+                When you click on one of the "delete" buttons you can choose to leave the deleted space blank 
+                or to gather the two adjacent blocks              
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Ajout sous-titres -->  
+      <div id="tuto6"  class="section scrollspy" style="padding: 10px;">
+        <h4> Subtitles adding/Ajout sous-titres </h4>
+        <img class="materialboxed z-depth-4 responsive-img" margin-bottom="10" align="middle" src="https://image.noelshack.com/fichiers/2017/22/1496307777-0-6-ajout-sous-titres.png">
+        <ul class="collapsible" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header"><img style="margin-right:10px;" width="15" height="15" src="https://www.iconfinder.com/data/icons/european-country-flags/83/france-128.png"/>
+                Francais
+            </div>
+            <div class="collapsible-body">
+              <span>
+                  Sur cet écran, vous pouvez ajouter des sous-titres à votre vidéo en plaçant deux curseurs correspondants 
+                  au début et à la fin de la piste de sous-titres puis en cliquant sur “Ajouter sous-titre”. Une fenêtre pop-up 
+                  apparaît alors et vous pouvez renseigner le texte que vous voulez voir apparaître.
+
+              </span>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header"><img style="margin-right:10px;" width="15" height="15" src="https://www.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_United_Kingdom_-_Circle-128.png"/>
+                English
+            </div>
+            <div class="collapsible-body">
+              <span>
+                On this screen, you can add subtitles to your video by placing two corresponding cursors at the beginning 
+                and at the end of the subtitle track and then clicking on "Add subtitle". A pop-up window appears and you can enter 
+                the text you want to appear.
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Ajout chapitres -->  
+      <div id="tuto7"  class="section scrollspy" style="padding: 10px;">
+        <h4> Chapters adding/Ajout chapitres </h4>
+        <img class="materialboxed z-depth-4 responsive-img" margin-bottom="10" align="middle" src="https://image.noelshack.com/fichiers/2017/22/1496307779-0-7-ajout-chapitres.png">
+        <ul class="collapsible" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header"><img style="margin-right:10px;" width="15" height="15" src="https://www.iconfinder.com/data/icons/european-country-flags/83/france-128.png"/>
+                Francais
+            </div>
+            <div class="collapsible-body">
+              <span>
+                  Dans cet onglet, vous pouvez diviser votre vidéo en plusieurs chapitres.
+                  Le premier chapitre commence obligatoirement à 00:00. Pour ajouter un chapitre, vous devez positionner 
+                  un curseur à l’aide sa souris sur la timeline de la vidéo. En appuyant sur le bouton ajouter un chapitre,
+                  un nouveau chapitre est alors créé. Le durée du chapitre précédent est également mis à jour.
+                  Au milieu de l’interface, vous pouvez voir un récapitulatif des différents chapitres avec 
+                  la durée de chacun.
+
+              </span>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header"><img style="margin-right:10px;" width="15" height="15" src="https://www.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_United_Kingdom_-_Circle-128.png"/>
+                English
+            </div>
+            <div class="collapsible-body">
+              <span>
+                In this tab, you can divide your video into several chapters. The first chapter begins at 00:00. 
+                To add a chapter, you must position a cursor with the mouse on the video timeline. 
+                By pressing the add chapter button, a new chapter is created. 
+                The duration of the previous chapter is also updated.
+                In the middle of the interface, you can see a summary of the different chapters with the duration of each.              
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Enregistrer -->  
+      <div id="tuto8"  class="section scrollspy" style="padding: 10px;">
+        <h4> Save/Enregistrer </h4>
+        <img class="materialboxed z-depth-4 responsive-img" margin-bottom="10" align="middle" src="https://image.noelshack.com/fichiers/2017/22/1496307779-0-8-enregistrer.png">
+        <ul class="collapsible" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header"><img style="margin-right:10px;" width="15" height="15" src="https://www.iconfinder.com/data/icons/european-country-flags/83/france-128.png"/>
+                Francais
+            </div>
+            <div class="collapsible-body">
+              <span>
+                Cet onglet permet de sauvegarder la vidéo ou de sauvegarder le projet pour pouvoir le reprendre plus tard.
+              </span>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header"><img style="margin-right:10px;" width="15" height="15" src="https://www.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_United_Kingdom_-_Circle-128.png"/>
+                English
+            </div>
+            <div class="collapsible-body">
+              <span>
+                This tab allows you to save the video or save the project ion order to resume it later.
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+  </div>
+  </div>            
+    
+  </div>
+
+  </body>
+
+<div  style="z-index: 20; position: relative;">
+<footer class="page-footer teal lighten-1">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">EasyVideoEdition</h5>
+                <p class="grey-text text-lighten-4">Student project made at ENSIM (Ecole Nationale Supérieure d'Ingérnieurs du Mans).</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="contact.html">Contact us</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://github.com/clement-chollet/Easy-Video-Edition">Github</a></li>
+                  <li><a class="grey-text text-lighten-3" href="documentation/index.html">Documentation</a></li>
+                  <li><a class="grey-text text-lighten-3" href="index.html">Website</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2017 ENSIM | Project under Ms-PL licence
+            </div>
+          </div>
+</footer>
+</div>
